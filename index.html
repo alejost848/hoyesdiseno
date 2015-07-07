@@ -1,1 +1,232 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="generator" content="Hoy es Diseño">
+	<title>Hoy es Diseño</title>
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+	<!-- Chrome for Android theme color -->
+	<meta id="bar" name="theme-color" content="#211f29">
+
+	<!-- Web Application Manifest -->
+	<link rel="manifest" href="manifest.json">
+
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="application-name" content="Hoy es Diseño">
+	<link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Hoy es Diseño">
+	<link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+	<meta name="msapplication-TileColor" content="#3372DF">
+
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="howler.min.js"></script>
+	<script src="jquery.min.js"></script>
+
+	<link rel="import" href="elements.html">
+</head>
+<body unresolved>	
+	<paper-drawer-panel id="drawerPanel" force-narrow disable-swipe responsiveWidth="850">
+		<paper-header-panel mode="scroll" main>
+			<paper-toolbar id="app_toolbar">
+				<paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+				<div class="flex"></div>
+				<div>Evento</div>
+			</paper-toolbar>
+				
+			<more-route-selector>
+				<iron-pages>
+				 	<section route="inicio">	
+				 		<custom-ripple id="ripple_bg"></custom-ripple>									
+						<paper-progress min="1" max="9"></paper-progress>						
+						<div class="section_container layout horizontal center">
+							<puzzle-element id="1" icon="puzzle-icons:h"></puzzle-element>
+							<puzzle-element id="2" icon="puzzle-icons:o"></puzzle-element>
+							<puzzle-element id="3" icon="puzzle-icons:y"></puzzle-element>
+							<puzzle-element id="4" icon="puzzle-icons:e"></puzzle-element>
+							<puzzle-element id="5" icon="puzzle-icons:s"></puzzle-element>
+							<puzzle-element id="6" icon="puzzle-icons:d"></puzzle-element>
+							<puzzle-element id="7" icon="puzzle-icons:i"></puzzle-element>
+							<puzzle-element id="8" icon="puzzle-icons:s"></puzzle-element>
+							<puzzle-element id="9" icon="puzzle-icons:e"></puzzle-element>
+							<puzzle-element id="10" icon="puzzle-icons:ñ"></puzzle-element>
+							<puzzle-element id="11" icon="puzzle-icons:o"></puzzle-element>
+						</div>		
+				 	</section>
+
+				 	<section route="evento">		 	
+						<div class="layout horizontal center">
+							<div id="event_info" class="flex-3">
+								<div id="event_bg">
+									<iron-image class="bg_img" sizing="cover" preload fade src="http://lorempixel.com/1920/1080" placeholder="pholder3.gif"></iron-image>
+									<div class="overlay"></div>
+								</div>
+								<div class="description_container">
+							 		<h1 class="titulo paper-font-display2">Evento</h1>			 		
+									<paper-material elevation="1">
+										<div class="parrafo paper-font-headline">
+										Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.
+										<br>
+										<br>
+										El evento está enfocado principalmente a la comunidad del diseño, sin embargo, es una importante ventana para que empresarios y personas de diversas disciplinas amplíen su percepción y conocimiento del tema para construir una verdadera cultura de diseño en la región.
+										</div>											 	 
+								 	
+								 		<div id="ver_fotos_wrapper">
+										 	<div id="ver_fotos" class="horizontal layout center">
+										 		<iron-icon icon="image:photo-library"></iron-icon>
+										 		<div id="more_pics_text_mobile">Ver fotos de la edición anterior</div>
+										 	</div>
+										 </div>
+								 	</paper-material>
+								 </div>	
+							 </div>		
+								
+							<div id="right_images" class="flex">
+								<div id="sidebar">
+							 		<div class="more_pictures">
+							 			<iron-image class="full_width" sizing="cover" preload fade src="http://lorempixel.com/600/600" placeholder="pholder.gif"></iron-image>
+							 			<div class="overlay"></div>
+							 		</div>
+							
+							 		<div class="more_pictures">
+							 			<iron-image class="full_width" sizing="cover" preload fade src="http://lorempixel.com/600/601" placeholder="pholder2.gif"></iron-image>	
+							 			<div id="view_pics_button" class="layout vertical">
+											<iron-icon id="pictures_icon" icon="image:photo-library"></iron-icon>											
+											<div id="more_pics_text">Ver fotos de la edición anterior</div>
+										</div>	
+										<div id="view_pics_overlay" class="overlay"></div>	
+							 		</div>
+						 		</div>
+							</div>
+						</div>
+				 	</section>
+				 	<section route="agenda"> 	
+						<div class="section_container layout horizontal">
+							<div class="agenda_container">
+						 		<h1 class="titulo paper-font-display2">Agenda</h1>	
+
+					 			<template is="dom-bind" id="app">
+							 		<paper-tabs class="schedule_tabs" noink attr-for-selected="day" selected="{{selected_day}}">
+										<paper-tab day="1">DÍA 1</paper-tab>
+										<paper-tab day="2">DÍA 2</paper-tab>					
+									</paper-tabs>
+								
+
+									<div class="divider"></div>
+									<iron-pages attr-for-selected="day" selected="{{selected_day}}">
+										<div day="1">	
+											<paper-material class="agenda_box" elevation="1">	
+												<div class="day_title paper-font-headline">Octubre 22</div>
+												<div class="schedule_items">
+													<schedule-item icon="content-paste" time="7:30 AM - 8:30 AM">Inscripciones</schedule-item>
+													<schedule-item icon="schedule" time="8:30 AM - 9:00 AM">Apertura</schedule-item>
+													<schedule-item icon="" time="9:00 AM - 10:30 AM" streaming>Conferencia 1</schedule-item>
+													<schedule-item icon="" time="11:00 AM - 12:30 AM" streaming>Conferencia 2</schedule-item>
+													<schedule-item icon="schedule" time="12:30 AM - 2:00 PM">Almuerzo</schedule-item>
+													<schedule-item icon="" time="2:00 PM - 3:30 PM" streaming>Conferencia 3</schedule-item>
+													<schedule-item icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming>Taller 1</schedule-item>
+													<schedule-item icon="" time="4:00 PM - 6:00 PM" streaming>Taller 2</schedule-item>
+													<schedule-item icon="" time="4:00 PM - 6:00 PM" streaming>Taller 3</schedule-item>
+												</div>
+										 	</paper-material>
+										</div>
+										<div day="2">
+											<paper-material class="agenda_box" elevation="1">
+												<div class="day_title paper-font-headline">Octubre 23</div>
+												<div class="schedule_items">
+													<schedule-item icon="content-paste" time="7:30 AM - 8:30 AM">Inscripciones</schedule-item>
+													<schedule-item icon="schedule" time="8:30 AM - 9:00 AM">Introducción</schedule-item>
+													<schedule-item icon="" time="9:00 AM - 10:30 AM" streaming>Conferencia 4</schedule-item>
+													<schedule-item icon="" time="11:00 AM - 12:30 AM" streaming>Conferencia 5</schedule-item>
+													<schedule-item icon="schedule" time="12:30 AM - 2:00 PM">Almuerzo</schedule-item>
+													<schedule-item icon="" time="2:00 PM - 3:30 PM" streaming>Conferencia 6</schedule-item>
+													<schedule-item icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming>Taller 4</schedule-item>
+													<schedule-item icon="" time="4:00 PM - 6:00 PM" streaming>Taller 5</schedule-item>
+													<schedule-item icon="" time="4:00 PM - 6:00 PM" streaming>Taller 6</schedule-item>
+												</div>		 	 
+										 	</paper-material>
+										</div>
+									</iron-pages>
+								</template>
+							 </div>		
+						</div>
+				 	</section>
+				 	<section route="contacto">
+					 	<div class="section_container layout horizontal">
+							<div class="agenda_container">
+								<h1 class="titulo paper-font-display2">Contacto</h1>	
+					 			<paper-material class="agenda_box" elevation="1">							
+									<paper-input label="label"></paper-input>	
+							 	</paper-material>
+					 		</div>
+					 	</div>
+				 	</section>
+				 	<section route="registro"></section>
+				</iron-pages>
+			</more-route-selector>	
+
+			<div id="loadingCard" class="layout vertical center-center">
+				<div id="logoHED"></div>
+			</div>		
+			
+			<div id="footer" class="horizontal layout center"> 						
+			    <div id="left_info_wrapper" class="horizontal layout center">
+			    	<a href="#!/">
+			    		<paper-icon-button route="inicio" icon="puzzle-icons:logo" title="Hoy es Diseño" class="small"></paper-icon-button>
+			    	</a>
+			    	<div id="spacer"></div>
+			    	<div class="flex"></div>
+			    	<div id="location_info" class="left_text vertical layout">
+				    	<div id="dateHome">Octubre 22 - 23, 2015</div>
+				    	<div id="placeHome">Universidad Icesi</div>		
+			    	</div>			    
+				</div>
+				<div class="flex"></div>
+				<div id="sections" class="horizontal layout">
+					<more-route-selector> 
+				    	<paper-tabs noink>
+							<paper-tab route="evento">EVENTO</paper-tab>
+							<paper-tab route="agenda">AGENDA</paper-tab>
+							<paper-tab route="contacto">CONTACTO</paper-tab>						
+						</paper-tabs>
+					</more-route-selector> 
+					<paper-button raised class="colorful">INSCRIBIRSE</paper-button>
+				</div>
+				  
+			</div>	 		
+		</paper-header-panel>
+
+		<paper-header-panel drawer id="drawer">
+			<paper-toolbar id="drawer_toolbar" class="tall">
+				<iron-icon id="logo_drawer" icon="puzzle-icons:logo" title="Hoy es Diseño" class="medium"></iron-icon>
+				<div class="left_text vertical layout bottom">
+		    		<div id="dateHome">Octubre 22 - 23, 2015</div>
+		    		<div id="placeHome">Universidad Icesi</div>		
+	    		</div>	
+			</paper-toolbar>
+			<more-route-selector>
+				<paper-menu>
+					<paper-item route="inicio">Inicio</paper-item>
+					<paper-item route="evento">Evento</paper-item>
+					<paper-item route="agenda">Agenda</paper-item>
+					<paper-item route="contacto">Contacto</paper-item>
+					<paper-item route="registro">Inscribirse</paper-item>
+				</paper-menu>
+			</more-route-selector>
+		</paper-header-panel>
+	</paper-drawer-panel>	
+
+	<!-- <the-app></the-app> -->   
+	<script src="app.js"></script>
+</body>
+</html>

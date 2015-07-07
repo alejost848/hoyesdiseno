@@ -1,0 +1,115 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE
+The complete set of authors may be found at http://polymer.github.io/AUTHORS
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+
+<dom-module id="schedule-item">
+  <style>
+    /*Default typography styles*/
+    .paper-font-display4 {@apply(--paper-font-display4);}
+    .paper-font-display3 {@apply(--paper-font-display3);}
+    .paper-font-display2 {@apply(--paper-font-display2);}
+    .paper-font-display1 {@apply(--paper-font-display1);}
+    .paper-font-headline {@apply(--paper-font-headline);}
+    .paper-font-title {@apply(--paper-font-title);}
+    .paper-font-subhead {@apply(--paper-font-subhead);}
+    .paper-font-body2 {@apply(--paper-font-body2);}
+    .paper-font-body1 {@apply(--paper-font-body1);}
+    .paper-font-caption {@apply(--paper-font-caption);}
+    .paper-font-menu {@apply(--paper-font-menu);}
+    .paper-font-button {@apply(--paper-font-button);}
+
+    .schedule_item{
+      padding: 18px 30px;
+    }
+
+    .schedule_time{
+      width: 140px;
+      margin-right: 5%;
+      color: #606060;            
+    }
+
+    .schedule_icon{
+      margin-right: 20px;
+      color: #404040;
+    }
+
+    .streaming_icon{
+      color: #808080;
+    }
+
+    .streaming_icon{
+       display: none;
+    }
+
+    :host[streaming] .streaming_icon{
+       display: inline;
+    }
+
+    @media (max-width: 850px) {
+      .schedule_item{
+        padding: 8px 6px;
+      }
+
+      .schedule_time{
+        width: 100px;
+        margin-right: 5%;
+        @apply(--paper-font-caption);
+      }
+
+      .schedule_text{
+        @apply(--paper-font-body1);
+      }
+
+      .schedule_icon{
+        width: 15px;
+        height: 15px;
+      }
+
+    }
+
+  </style>
+  <template>
+    <div class="schedule_item layout horizontal center">
+      <iron-icon class="schedule_icon" icon="[[icon]]"></iron-icon> 
+      <div class="schedule_time paper-font-body1">[[time]]</div>    
+      <div class="schedule_text paper-font-subhead">
+        <content></content>
+      </div>
+      <div class="flex"></div>
+      <iron-icon title="Streaming" class="streaming_icon" icon="av:videocam"></iron-icon> 
+    </div>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'schedule-item',
+
+    properties: {
+
+      time: {
+        type: String
+      },
+
+      icon: {
+        type: String
+      },
+
+      streaming: {
+        type: Boolean,
+        value: false
+      }
+    }
+  });
+</script>

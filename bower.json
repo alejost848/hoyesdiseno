@@ -1,0 +1,22 @@
+{
+  "name": "hoyesdiseno",
+  "version": "0.0.0",
+  "authors": [
+    "alejost848 <alejost848@gmail.com>"
+  ],
+  "description": "Just a Polymer test",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.0.0",
+    "iron-elements": "PolymerElements/iron-elements#~1.0.0",
+    "paper-elements": "PolymerElements/paper-elements#~1.0.1",
+    "more-routing": "PolymerLabs/more-routing#~1.0.0"
+  }
+}

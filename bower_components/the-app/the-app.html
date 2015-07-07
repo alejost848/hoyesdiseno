@@ -1,0 +1,66 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../custom-ripple/custom-ripple.html">
+<link rel="import" href="../puzzle-element/puzzle-element.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../iron-iconset-svg/iron-iconset-svg.html">
+
+
+<dom-module id="the-app">
+
+  <style>
+
+  </style>
+
+  <template>
+    <div id="card">
+    <custom-ripple id="ripple"></custom-ripple>
+    <div class="layout horizontal center-center" id="container">
+      <puzzle-element id="1" icon="puzzle-icons:h"></puzzle-element>
+      <puzzle-element id="2" icon="puzzle-icons:o"></puzzle-element>
+      <puzzle-element id="3" icon="puzzle-icons:y"></puzzle-element>
+      <puzzle-element id="4" icon="puzzle-icons:e"></puzzle-element>
+      <puzzle-element id="5" icon="puzzle-icons:s"></puzzle-element>
+      <puzzle-element id="6" icon="puzzle-icons:d"></puzzle-element>
+      <puzzle-element id="7" icon="puzzle-icons:i"></puzzle-element>
+      <puzzle-element id="8" icon="puzzle-icons:s"></puzzle-element>
+    </div>  
+
+    <div id="logo">
+      <div class="horizontal layout center-justified">
+          <paper-icon-button id="id_logo" icon="puzzle-icons:logo" title="Hoy es Diseño" class="small"></paper-icon-button>
+        </div>  
+      </div>      
+    </div>  
+  </template>
+
+</dom-module>
+
+<script>
+
+(function() {
+
+  Polymer({
+
+    is: 'the-app',
+
+    hostAttributes: {
+      role: 'listitem'
+    }
+
+  });
+
+})();
+
+</script>
