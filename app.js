@@ -166,8 +166,6 @@ $( "#event_bg" ).height(available_height);
 
 if(screen.width<=850){	
 	toggleDrawer();
-	var d = document.getElementById("location_info");
-	d.className += ' end';
 
 	available_height = $(window).height();
 
@@ -176,8 +174,18 @@ if(screen.width<=850){
 	$( "#event_bg" ).height(available_height);
 
 	$( "#event_info" ).removeClass("flex-3");	
-	$( "#right_images" ).height(available_height);
+	//$( "#right_images" ).height(available_height);
 }
+
+if($(window).width()<=850){
+	available_width = $(window).width();
+	available_height = $(window).height();
+	$( "#event_info" ).removeClass("flex-3");
+	$( "#event_bg" ).width(event_bg_width);
+	$( "#event_bg" ).height(available_height);	
+}
+
+
 
 $(window).resize(function() {
 
@@ -188,10 +196,10 @@ $(window).resize(function() {
 
 		$( "#event_bg" ).width(event_bg_width);
 		$( "#event_bg" ).height(available_height);
-		$( "#sidebar" ).height(available_height);
+		//$( "#sidebar" ).height(available_height);
 
 		$( "#event_info" ).removeClass("flex-3");	
-		$( "#right_images" ).height(available_height);
+		//$( "#right_images" ).height(available_height);
 	}else{
 		footer_height = 136;
 
@@ -204,6 +212,11 @@ $(window).resize(function() {
 		$( "#event_bg" ).height(available_height);
 
 		$( "#event_info" ).addClass("flex-3");
-		$( "#right_images" ).height(available_height);
 	}
 });
+
+
+   if($(window).height()/$(window).width() == 1.775){
+        var drawer_panel = document.getElementById("drawerPanel");
+		drawer_panel.setAttribute( "right-drawer", "true" );
+    }

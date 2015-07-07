@@ -1,7 +1,6 @@
 <style is="custom-style">
 	html{
 		background-color: #272430;
-		color: white;
 	}
 
 	body {
@@ -365,10 +364,21 @@
 		opacity: 0.95;
 	}	
 
+	#logo_top{
+		position: absolute;
+		--iron-icon-height: 70px;
+   		--iron-icon-width: 70px;
+   		right: 0;
+   		margin-right: 20px;
+   		z-index: 4;
 
-	@media (max-width: 1400px) {
+   		display: none;
+	}
+
+	@media (max-width: 1500px) {
 		.parrafo{
-			font-size: 20px;			
+			font-size: 18px;
+			line-height: 22px;		
 		}
 
 		paper-material {
@@ -378,10 +388,6 @@
 	}
 
 	@media (max-width: 1200px) {
-		.parrafo{
-			font-size: 18px;
-			line-height: 22px;
-		}
 
 		paper-material {
 			padding: 20px;
@@ -445,10 +451,12 @@
 
 		.description_container{
 			width: 95%;
+			margin-top: 100px;
 		}
 
 		.agenda_container{
 			width: 95%;
+			margin-top: 80px;
 		}
 
 
@@ -462,6 +470,7 @@
 
 		#footer{
 			bottom: 0;
+			display: none;
 		}
 
 		.parrafo{
@@ -476,7 +485,7 @@
 		}
 
 		.schedule_items{
-			height: 200px;
+			height: 100%;
 		}
 
 		#ver_fotos_wrapper{
@@ -495,6 +504,27 @@
 			text-transform: uppercase;
 		}
 
+		#logo_top{
+			display: inline;
+		}
+	}
 
+	@media screen and (device-aspect-ratio: 40/71) {
+
+		#logo_top{
+	   		left: 0;
+	   		margin-left: 20px;
+	   		display: inline;
+		}
+
+		#hamburger_icon{
+			position: absolute;
+			right: 0;
+		}
+
+		.toolbar-tools.paper-toolbar paper-icon-button[icon=menu] {
+		  margin-right: 8px;
+		  margin-top: 14px;
+		}
 	}
 </style>
