@@ -214,9 +214,11 @@
 	}
 
 	.agenda_container{	
-		width: 65%;			
+		width: 65%;		
+		position: relative;	
 		margin: 0 auto;	
-		margin-top: 15%;
+		top: 15%;
+		height: 85%;
 	}
 
 
@@ -474,8 +476,8 @@
 		}
 
 		.parrafo{
-			font-size: 14px;
-			line-height: 18px;
+			font-size: 17px;
+			line-height: 20px;
 			padding-bottom: 20px;
 		}
 
@@ -509,22 +511,28 @@
 		}
 	}
 
-	@media screen and (device-aspect-ratio: 40/71) {
 
-		#logo_top{
-	   		left: 0;
-	   		margin-left: 20px;
-	   		display: inline;
-		}
-
-		#hamburger_icon{
-			position: absolute;
-			right: 0;
-		}
-
-		.toolbar-tools.paper-toolbar paper-icon-button[icon=menu] {
-		  margin-right: 8px;
-		  margin-top: 14px;
+	@media (max-width: 400px) {
+		.parrafo{
+			font-size: 14px;
+			line-height: 18px;
 		}
 	}
+
+
+	@media (max-height: 860px) {
+		.agenda_container{	
+			top: 5%;
+			height: 95%;
+		}
+	}
+
+	@media (max-height: 768px) {
+		.agenda_container{	
+			top: 0%;
+			height: 100%;
+		}
+	}
+
+
 </style>

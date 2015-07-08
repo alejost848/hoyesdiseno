@@ -39,9 +39,9 @@
 	<paper-drawer-panel id="drawerPanel" force-narrow disable-swipe responsiveWidth="850">
 		<paper-header-panel mode="scroll" main>
 			<paper-toolbar id="app_toolbar">
-				<paper-icon-button id="hamburger_icon" icon="menu" paper-drawer-toggle></paper-icon-button>				
+				<paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>				
 			</paper-toolbar>
-
+			
 			<a href="#!/"><iron-icon icon="puzzle-icons:logo" id="logo_top"></iron-icon></a>
 				
 			<more-route-selector>
@@ -65,7 +65,7 @@
 				 	</section>
 
 				 	<section route="evento">		 	
-						<div class="layout horizontal">
+						<div id="evento_container" class="layout horizontal center">
 							<div id="event_info" class="flex-3">
 								<div id="event_bg">
 									<iron-image class="bg_img" sizing="cover" preload fade src="http://lorempixel.com/1920/1080" placeholder="pholder3.gif"></iron-image>
@@ -174,7 +174,6 @@
 				 	<section route="registro"></section>
 				</iron-pages>
 			</more-route-selector>	
-			
 
 			<div id="loadingCard" class="layout vertical center-center">
 				<div id="logoHED"></div>

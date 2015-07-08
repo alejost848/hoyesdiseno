@@ -166,45 +166,38 @@ $( "#event_bg" ).height(available_height);
 
 if(screen.width<=850){	
 	toggleDrawer();
-
+	available_width = $(window).width();
 	available_height = $(window).height();
-
-	event_bg_width = available_width;
-	$( "#event_bg" ).width(event_bg_width);
+	$( "#event_bg" ).width(available_width);
 	$( "#event_bg" ).height(available_height);
+	$( "#event_info" ).removeClass("flex-3");
 
-	$( "#event_info" ).removeClass("flex-3");	
-	//$( "#right_images" ).height(available_height);
+	$( "#evento_container" ).removeClass("center");
 }
 
 if($(window).width()<=850){
 	available_width = $(window).width();
-	available_height = $(window).height();
-	$( "#event_info" ).removeClass("flex-3");
-	$( "#event_bg" ).width(event_bg_width);
+	available_height = $(window).height();	
+	$( "#event_bg" ).width(available_width);
 	$( "#event_bg" ).height(available_height);	
+	$( "#event_info" ).removeClass("flex-3");
+
+	$( "#evento_container" ).removeClass("center");
 }
 
-
-
 $(window).resize(function() {
-
 	if($(window).width()<=850){
+		available_width = $(window).width();
 		available_height = $(window).height();
-		available_width = $(window).width();	
-		event_bg_width = available_width;
-
-		$( "#event_bg" ).width(event_bg_width);
+		$( "#event_bg" ).width(available_width);
 		$( "#event_bg" ).height(available_height);
-		//$( "#sidebar" ).height(available_height);
-
 		$( "#event_info" ).removeClass("flex-3");	
-		//$( "#right_images" ).height(available_height);
+
+		$( "#evento_container" ).removeClass("center");
 	}else{
 		footer_height = 136;
-
+		available_width = $(window).width();
 		available_height = $(window).height()-footer_height;
-		available_width = $(window).width();	
 		event_bg_width = available_width*0.75;
 
 		$( "#sidebar" ).height(available_height);
@@ -212,11 +205,8 @@ $(window).resize(function() {
 		$( "#event_bg" ).height(available_height);
 
 		$( "#event_info" ).addClass("flex-3");
+		$( "#right_images" ).height(available_height);
+
+		$( "#evento_container" ).addClass("center");
 	}
 });
-
-
-   if($(window).height()/$(window).width() == 1.775){
-        var drawer_panel = document.getElementById("drawerPanel");
-		drawer_panel.setAttribute( "right-drawer", "true" );
-    }
