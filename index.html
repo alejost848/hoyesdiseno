@@ -48,20 +48,30 @@
 				<iron-pages>
 				 	<section route="inicio">	
 				 		<custom-ripple id="ripple_bg"></custom-ripple>									
-						<paper-progress min="1" max="9"></paper-progress>						
-						<div class="section_container layout horizontal center">
-							<puzzle-element id="1" icon="puzzle-icons:h"></puzzle-element>
-							<puzzle-element id="2" icon="puzzle-icons:o"></puzzle-element>
-							<puzzle-element id="3" icon="puzzle-icons:y"></puzzle-element>
-							<puzzle-element id="4" icon="puzzle-icons:e"></puzzle-element>
-							<puzzle-element id="5" icon="puzzle-icons:s"></puzzle-element>
-							<puzzle-element id="6" icon="puzzle-icons:d"></puzzle-element>
-							<puzzle-element id="7" icon="puzzle-icons:i"></puzzle-element>
-							<puzzle-element id="8" icon="puzzle-icons:s"></puzzle-element>
-							<puzzle-element id="9" icon="puzzle-icons:e"></puzzle-element>
-							<puzzle-element id="10" icon="puzzle-icons:ñ"></puzzle-element>
-							<puzzle-element id="11" icon="puzzle-icons:o"></puzzle-element>
-						</div>		
+						<paper-progress min="1" max="9"></paper-progress>	
+						<div class="section_container layout horizontal center-center">					
+							<div id="element_rows" class="layout horizontal center">
+								<div class="test layout horizontal center-center">
+									<puzzle-element class="fix_thing" id="1" icon="puzzle-icons:h"></puzzle-element>
+									<puzzle-element id="2" icon="puzzle-icons:o"></puzzle-element>
+									<puzzle-element id="3" icon="puzzle-icons:y"></puzzle-element>
+								</div>
+								<div class="test layout horizontal center-center">
+									<puzzle-element class="fix_thing" id="4" icon="puzzle-icons:e"></puzzle-element>
+									<puzzle-element id="5" icon="puzzle-icons:s"></puzzle-element>
+									<puzzle-element id="6" icon="puzzle-icons:d"></puzzle-element>
+								</div>
+								<div class="test layout horizontal center-center">
+									<puzzle-element class="fix_thing" id="7" icon="puzzle-icons:i"></puzzle-element>
+									<puzzle-element id="8" icon="puzzle-icons:s"></puzzle-element>
+									<puzzle-element id="9" icon="puzzle-icons:e"></puzzle-element>
+								</div>
+								<div class="test layout horizontal center-center">
+									<puzzle-element class="fix_thing" id="10" icon="puzzle-icons:ñ"></puzzle-element>
+									<puzzle-element id="11" icon="puzzle-icons:o"></puzzle-element>
+								</div>
+							</div>	
+						</div>	
 				 	</section>
 
 				 	<section route="evento">		 	
@@ -176,7 +186,7 @@
 			</more-route-selector>	
 
 			<div id="loadingCard" class="layout vertical center-center">
-				<div id="logoHED"></div>
+				<iron-image id="logoHED" class="full_width" preload fade src="logo.png"></iron-image>
 			</div>		
 			
 			<footer-hed></footer-hed>

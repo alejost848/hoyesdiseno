@@ -138,8 +138,9 @@ function progressCount(){
 }
 
 /*Toggles the drawer panel when in a different section than home*/
-function toggleDrawer (argument){
-	var drawer_panel = document.getElementById("drawerPanel");
+var drawer_panel = document.getElementById("drawerPanel");
+
+function toggleDrawer (argument){	
 	drawer_panel.removeAttribute( "disable-swipe" );
 }	
 
@@ -173,6 +174,8 @@ if(screen.width<=850){
 	$( "#event_info" ).removeClass("flex-3");
 
 	$( "#evento_container" ).removeClass("center");
+	$( "#element_rows" ).removeClass("horizontal");
+	$( "#element_rows" ).addClass("vertical");
 }
 
 if($(window).width()<=850){
@@ -183,6 +186,8 @@ if($(window).width()<=850){
 	$( "#event_info" ).removeClass("flex-3");
 
 	$( "#evento_container" ).removeClass("center");
+	$( "#element_rows" ).removeClass("horizontal");
+	$( "#element_rows" ).addClass("vertical");
 }
 
 $(window).resize(function() {
@@ -194,6 +199,8 @@ $(window).resize(function() {
 		$( "#event_info" ).removeClass("flex-3");	
 
 		$( "#evento_container" ).removeClass("center");
+		$( "#element_rows" ).removeClass("horizontal");
+		$( "#element_rows" ).addClass("vertical");
 	}else{
 		footer_height = 136;
 		available_width = $(window).width();
@@ -208,5 +215,12 @@ $(window).resize(function() {
 		$( "#right_images" ).height(available_height);
 
 		$( "#evento_container" ).addClass("center");
+		$( "#element_rows" ).removeClass("vertical");
+		$( "#element_rows" ).addClass("horizontal");
 	}
+});
+
+
+$("paper-item").click(function() {
+  drawer_panel.togglePanel();
 });

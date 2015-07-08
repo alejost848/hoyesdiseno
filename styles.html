@@ -16,8 +16,14 @@
 
 	puzzle-element {
 		color: #fff;
+		margin-left: -30px;
+		width: 130px;
+		height: 130px;
+	}
+
+
+	.fix_thing{
 		margin-left: -20px;
-		width: 100%;
 	}
 
 	#\31 {			
@@ -64,11 +70,7 @@
 		--puzzle-element-ink-color: #486f79;
 	}
 
-	puzzle-element:first-child {
-		margin-left: 0px;
-		width: 100%;
-	}
-
+	
 	puzzle-element::shadow #icon {
 		width: 100%;
 		height: 100%;
@@ -113,6 +115,12 @@
 	.section_container{
 		width: 80%;
 		height: 100%;
+		margin: 0 auto;
+	}
+
+	.test{
+		width: 100%;
+		height: 100%x;
 		margin: 0 auto;
 	}
 
@@ -371,7 +379,8 @@
 		--iron-icon-height: 70px;
    		--iron-icon-width: 70px;
    		right: 0;
-   		margin-right: 20px;
+   		margin-top: -5px;
+   		margin-right: 18px;
    		z-index: 4;
 
    		display: none;
@@ -387,12 +396,27 @@
 			padding: 32px;
 		}
 
+		puzzle-element {
+			width: 100px;
+			height: 100px;
+		}
+
+		.schedule_items{		
+			height: 240px;
+		}
+
+
 	}
 
 	@media (max-width: 1200px) {
 
 		paper-material {
 			padding: 20px;
+		}
+
+		puzzle-element {
+			width: 90px;
+			height: 90px;
 		}
 
 	}
@@ -402,11 +426,19 @@
 			font-size: 16px;
 			line-height: 20px;
 		}
+
+		puzzle-element {
+			width: 80px;
+			height: 80px;
+		}
 	}
 
 	@media (max-width: 850px) {
 		.section_container{
 			width: 100%;
+
+			position: relative;
+			margin-top: 20px;
 		}
 
 		puzzle-element.small::shadow #icon, paper-icon-button.small::shadow #icon {
@@ -509,13 +541,34 @@
 		#logo_top{
 			display: inline;
 		}
+
+		puzzle-element{
+			width: 90px;
+			height: 90px;
+		}
+
+		.test{
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
+		}
+
+		.fix_thing{
+			margin-left: 0px;
+		}
+
 	}
 
 
-	@media (max-width: 400px) {
+	@media (max-width: 370px) {
 		.parrafo{
 			font-size: 14px;
 			line-height: 18px;
+		}
+
+		puzzle-element{
+			width: 75px;
+			height: 75px;
 		}
 	}
 
@@ -532,7 +585,10 @@
 			top: 0%;
 			height: 100%;
 		}
-	}
 
+		.titulo{
+			margin: 25px 0px;
+		}
+	}
 
 </style>
