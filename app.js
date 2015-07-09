@@ -1,34 +1,34 @@
 //Load sounds
 var sound = new Howl({
-  src: ['madeon_samples/drum.1.3.mp3'],
+  src: ['madeon_samples/drum.1.1.mp3'],
   autoplay: false,
 });
 var sound2 = new Howl({
-  src: ['madeon_samples/sounds.1.1.mp3'],
+  src: ['madeon_samples/sounds.1.5.mp3'],
   autoplay: false,
 });
 var sound3 = new Howl({
-  src: ['madeon_samples/bass.1.3.mp3'],
+  src: ['madeon_samples/bass.1.8.mp3'],
   autoplay: false,
 });
 var sound4 = new Howl({
-  src: ['madeon_samples/drum.1.6.mp3'],
+  src: ['madeon_samples/drum.1.5.mp3'],
   autoplay: false,
 });
 var sound5 = new Howl({
-  src: ['madeon_samples/sounds.1.6.mp3'],
+  src: ['madeon_samples/sounds.1.7.mp3'],
   autoplay: false,
 });
 var sound6 = new Howl({
-  src: ['madeon_samples/bass.1.6.mp3'],
+  src: ['madeon_samples/bass.1.5.mp3'],
   autoplay: false,
 });
 var sound7 = new Howl({
-   src: ['madeon_samples/drum.1.8.mp3'],
+   src: ['madeon_samples/drum.1.4.mp3'],
   autoplay: false,
 });
 var sound8 = new Howl({
-  src: ['madeon_samples/sounds.1.8.mp3'],
+  src: ['madeon_samples/sounds.1.2.mp3'],
   autoplay: false,
 });
 
@@ -224,3 +224,6 @@ $(window).resize(function() {
 $("paper-item").click(function() {
   drawer_panel.togglePanel();
 });
+
+
+console.log( '%c  __                                \n /  |       ______________________  \n |  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n || ||  <--| ¿Necesitas ayuda?    | \n ||_/|     |______________________/ \n |___/                              \n                                    ', "background: #222; color: #bada55;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );
