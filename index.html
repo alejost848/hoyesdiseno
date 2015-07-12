@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-	<meta name="generator" content="Hoy es Diseño">
 	<title>Hoy es Diseño</title>
+	<meta name="description" content="Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.">
+	<meta name="generator" content="Hoy es Diseño">
+	<!-- No zooming! -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 	<!-- Chrome for Android theme color -->
@@ -27,12 +29,28 @@
 
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
 	<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-	<meta name="msapplication-TileColor" content="#3372DF">
+	<meta name="msapplication-TileColor" content="#fa3f7e">
 
+	<!-- Twitter card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@_hoyesdiseno">
+	<meta name="twitter:creator" content="@_hoyesdiseno">
+	<meta name="twitter:title" content="Hoy es Diseño">
+	<meta name="twitter:description" content="Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.">	
+	<meta name="twitter:image" content="">
+
+	<!-- Facebook card -->
+	<meta property="og:url" content="http://www.hoyesdiseno.com">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Hoy es Diseño">
+	<meta property="og:site_name" content="Hoy es Diseño">
+	<meta property="og:description" content="Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.">
+	<meta property="og:image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg">
+
+	<!-- Magic stuff -->
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 	<script src="howler.min.js"></script>
 	<script src="jquery.min.js"></script>
-
 	<link rel="import" href="elements.html">
 </head>
 <body unresolved>	
@@ -51,22 +69,22 @@
 						<paper-progress min="1" max="9"></paper-progress>	
 						<div class="section_container layout horizontal center-center">					
 							<div id="element_rows" class="layout horizontal center">
-								<div class="test layout horizontal center-center">
+								<div class="full_width layout horizontal center-center">
 									<puzzle-element class="fix_thing" id="1" icon="puzzle-icons:h"></puzzle-element>
 									<puzzle-element id="2" icon="puzzle-icons:o"></puzzle-element>
 									<puzzle-element id="3" icon="puzzle-icons:y"></puzzle-element>
 								</div>
-								<div class="test layout horizontal center-center">
+								<div class="full_width layout horizontal center-center">
 									<puzzle-element class="fix_thing" id="4" icon="puzzle-icons:e"></puzzle-element>
 									<puzzle-element id="5" icon="puzzle-icons:s"></puzzle-element>
 									<puzzle-element id="6" icon="puzzle-icons:d"></puzzle-element>
 								</div>
-								<div class="test layout horizontal center-center">
+								<div class="full_width layout horizontal center-center">
 									<puzzle-element class="fix_thing" id="7" icon="puzzle-icons:i"></puzzle-element>
 									<puzzle-element id="8" icon="puzzle-icons:s"></puzzle-element>
 									<puzzle-element id="9" icon="puzzle-icons:e"></puzzle-element>
 								</div>
-								<div class="test layout horizontal center-center">
+								<div class="full_width layout horizontal center-center">
 									<puzzle-element class="fix_thing" id="10" icon="puzzle-icons:ñ"></puzzle-element>
 									<puzzle-element id="11" icon="puzzle-icons:o"></puzzle-element>
 								</div>
@@ -78,7 +96,7 @@
 						<div id="evento_container" class="layout horizontal center">
 							<div id="event_info" class="flex-3">
 								<div id="event_bg">
-									<iron-image class="bg_img" sizing="cover" preload fade src="http://lorempixel.com/1920/1080" placeholder="pholder3.gif"></iron-image>
+									<iron-image class="bg_img" sizing="cover" preload fade src="http://lorempixel.com/1920/1080" style="background-color: #272430;"></iron-image>
 									<div class="overlay"></div>
 								</div>
 								<div class="description_container">
@@ -103,19 +121,21 @@
 								
 							<div id="right_images" class="flex">
 								<div id="sidebar">
-							 		<div class="more_pictures">
-							 			<iron-image class="full_width" sizing="cover" preload fade src="http://lorempixel.com/600/600" placeholder="pholder.gif"></iron-image>
-							 			<div class="overlay"></div>
-							 		</div>
-							
-							 		<div class="more_pictures">
-							 			<iron-image class="full_width" sizing="cover" preload fade src="http://lorempixel.com/600/601" placeholder="pholder2.gif"></iron-image>	
-							 			<div id="view_pics_button" class="layout vertical">
-											<iron-icon id="pictures_icon" icon="image:photo-library"></iron-icon>											
-											<div id="more_pics_text">Ver fotos de la edición anterior</div>
-										</div>	
-										<div id="view_pics_overlay" class="overlay"></div>	
-							 		</div>
+									<template is="dom-bind" id="app3">
+								 		<div class="more_pictures">
+								 			<iron-image class="full_width" sizing="cover" preload fade src="http://lorempixel.com/600/600" placeholder="{{pholder1}}"></iron-image>
+								 			<div class="overlay"></div>
+								 		</div>
+								
+								 		<div class="more_pictures">
+								 			<iron-image class="full_width" sizing="cover" preload fade src="http://lorempixel.com/600/601" style="background-color: #1f1d25;"></iron-image>	
+								 			<div id="view_pics_button" class="layout vertical">		
+												<iron-icon id="pictures_icon" icon="image:photo-library"></iron-icon>
+												<div id="more_pics_text">Ver fotos de la edición anterior</div>	
+											</div>	
+											<div id="view_pics_overlay" class="overlay"></div>	
+								 		</div>
+								 	</template>
 						 		</div>
 							</div>
 						</div>
@@ -129,40 +149,44 @@
 							 		<paper-tabs class="schedule_tabs" noink attr-for-selected="day" selected="{{selected_day}}">
 										<paper-tab day="1">DÍA 1</paper-tab>
 										<paper-tab day="2">DÍA 2</paper-tab>					
-									</paper-tabs>
-								
+									</paper-tabs>								
 
 									<div class="divider"></div>
 									<iron-pages attr-for-selected="day" selected="{{selected_day}}">
-										<div day="1">	
+										<div day="1">
 											<paper-material class="agenda_box" elevation="1">	
 												<div class="day_title paper-font-headline">Octubre 22</div>
 												<div class="schedule_items">
-													<schedule-item icon="content-paste" time="7:30 AM - 8:30 AM">Inscripciones</schedule-item>
-													<schedule-item icon="schedule" time="8:30 AM - 9:00 AM">Apertura</schedule-item>
-													<schedule-item icon="" time="9:00 AM - 10:30 AM" streaming>Conferencia 1</schedule-item>
-													<schedule-item icon="" time="11:00 AM - 12:30 AM" streaming>Conferencia 2</schedule-item>
-													<schedule-item icon="schedule" time="12:30 AM - 2:00 PM">Almuerzo</schedule-item>
-													<schedule-item icon="" time="2:00 PM - 3:30 PM" streaming>Conferencia 3</schedule-item>
-													<schedule-item icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming>Taller 1</schedule-item>
-													<schedule-item icon="" time="4:00 PM - 6:00 PM" streaming>Taller 2</schedule-item>
-													<schedule-item icon="" time="4:00 PM - 6:00 PM" streaming>Taller 3</schedule-item>
+													<schedule-item onclick="openDialog(this)" icon="content-paste" title="Inscripciones" time="7:30 AM - 8:30 AM" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+													tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+													quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+													consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+													cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+													proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></schedule-item>
+													<schedule-item onclick="openDialog(this)" icon="schedule" title="Apertura" time="8:30 AM - 9:00 AM"></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Conferencia 1" time="9:00 AM - 10:30 AM" streaming></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Conferencia 2" time="11:00 AM - 12:30 AM" streaming></schedule-item>
+													<schedule-item onclick="openDialog(this)" icon="schedule" title="Almuerzo" time="12:30 AM - 2:00 PM"></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Conferencia 3" time="2:00 PM - 3:30 PM" streaming></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Taller 1" icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Taller 2" icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Taller 3" icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming></schedule-item>
 												</div>
-										 	</paper-material>
+										 	</paper-material>									
 										</div>
 										<div day="2">
 											<paper-material class="agenda_box" elevation="1">
 												<div class="day_title paper-font-headline">Octubre 23</div>
 												<div class="schedule_items">
-													<schedule-item icon="content-paste" time="7:30 AM - 8:30 AM">Inscripciones</schedule-item>
-													<schedule-item icon="schedule" time="8:30 AM - 9:00 AM">Introducción</schedule-item>
-													<schedule-item icon="" time="9:00 AM - 10:30 AM" streaming>Conferencia 4</schedule-item>
-													<schedule-item icon="" time="11:00 AM - 12:30 AM" streaming>Conferencia 5</schedule-item>
-													<schedule-item icon="schedule" time="12:30 AM - 2:00 PM">Almuerzo</schedule-item>
-													<schedule-item icon="" time="2:00 PM - 3:30 PM" streaming>Conferencia 6</schedule-item>
-													<schedule-item icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming>Taller 4</schedule-item>
-													<schedule-item icon="" time="4:00 PM - 6:00 PM" streaming>Taller 5</schedule-item>
-													<schedule-item icon="" time="4:00 PM - 6:00 PM" streaming>Taller 6</schedule-item>
+													<schedule-item onclick="openDialog(this)" icon="content-paste" title="Inscripciones" time="7:30 AM - 8:30 AM" content="Content 1"></schedule-item>
+													<schedule-item onclick="openDialog(this)" icon="schedule" title="Introducción" time="8:30 AM - 9:00 AM"></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Conferencia 4" time="9:00 AM - 10:30 AM" streaming></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Conferencia 5" time="11:00 AM - 12:30 AM" streaming></schedule-item>
+													<schedule-item onclick="openDialog(this)" icon="schedule" title="Almuerzo" time="12:30 AM - 2:00 PM"></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Conferencia 6" time="2:00 PM - 3:30 PM" streaming></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Taller 4" icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Taller 5" time="4:00 PM - 6:00 PM" streaming></schedule-item>
+													<schedule-item onclick="openDialog(this)" title="Taller 6" time="4:00 PM - 6:00 PM" streaming></schedule-item>
 												</div>		 	 
 										 	</paper-material>
 										</div>
@@ -176,12 +200,18 @@
 							<div class="agenda_container">
 								<h1 class="titulo paper-font-display2">Contacto</h1>	
 					 			<paper-material class="agenda_box" elevation="1">							
-									<paper-input label="label"></paper-input>	
+									<div>En proceso</div>
 							 	</paper-material>
 					 		</div>
 					 	</div>
 				 	</section>
-				 	<section route="registro"></section>
+				 	<section route="envivo">
+					 	<div class="section_container layout horizontal center-center">
+						 	<div class="full_width layout horizontal center-center">
+					 			<div class="titulo">Todavía la estoy pensando</div>
+				 			</div>
+				 		</div>
+				 	</section>
 				</iron-pages>
 			</more-route-selector>	
 
@@ -189,7 +219,31 @@
 				<iron-image id="logoHED" class="full_width" preload fade src="logo.png"></iron-image>
 			</div>		
 			
-			<footer-hed></footer-hed>
+		    <div id="footer" class="horizontal layout center">            
+		        <div id="left_info_wrapper" class="horizontal layout center">
+		            <a href="#!/">
+		              <paper-icon-button route="inicio" icon="puzzle-icons:logo" title="Hoy es Diseño" class="small"></paper-icon-button>
+		            </a>
+		            <div id="spacer"></div>
+		            <div class="flex"></div>
+		            <div id="location_info" class="left_text vertical layout">
+		              <div id="dateHome">Octubre 22 - 23, 2015</div>
+		              <div id="placeHome">Universidad Icesi</div>   
+		            </div>          
+		        </div>
+		        <div class="flex"></div>
+		        <div id="sections" class="horizontal layout center">
+					<more-route-selector> 
+						<paper-tabs noink>		
+							<paper-tab route="envivo">EN VIVO</paper-tab>					
+							<paper-tab route="evento">EVENTO</paper-tab>							
+							<paper-tab route="agenda">AGENDA</paper-tab>
+							<paper-tab route="contacto">CONTACTO</paper-tab>            
+						</paper-tabs>
+					</more-route-selector> 
+					<paper-button onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button>
+		        </div>          
+		    </div>   
 
 		</paper-header-panel>
 
@@ -207,11 +261,18 @@
 					<paper-item route="evento">Evento</paper-item>
 					<paper-item route="agenda">Agenda</paper-item>
 					<paper-item route="contacto">Contacto</paper-item>
-					<paper-item route="registro">Inscribirse</paper-item>
 				</paper-menu>
 			</more-route-selector>
+			<paper-button id="signup_button_mobile" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button>
+			
 		</paper-header-panel>
-	</paper-drawer-panel>	
+	</paper-drawer-panel>
+
+	<template is="dom-bind" id="app2">
+		<dialog-hed id="dialog_schedule" title="{{dialogTitle}}" time="{{dialogTime}}" content="{{dialogContent}}"></dialog-hed>
+	</template>
+
+	<dialog-signup id="dialog_signup"></dialog-signup>
 
 	<!-- <the-app></the-app> -->   
 	<script src="app.js"></script>

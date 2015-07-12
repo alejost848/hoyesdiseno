@@ -1,4 +1,9 @@
 <style is="custom-style">
+
+	*{
+	    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	}
+	
 	html{
 		background-color: #272430;
 	}
@@ -86,16 +91,6 @@
 		-webkit-transition: background-color 1s ease;
 	}
 
-	puzzle-element.small, paper-icon-button.small {
-		color: #fff;
-		--puzzle-element-ink-color: #03EDFF;
-	}
-
-	puzzle-element.small::shadow #icon, paper-icon-button.small::shadow #icon {
-		width: 100px;
-		height: 100px;
-	}
-
 	.medium {
 		--iron-icon-height: 120px;
 		--iron-icon-width: 120px;
@@ -106,21 +101,10 @@
 		top:20px;
 	}
 
-	#footer{
-		position: absolute;
-		width: 100%;
-		bottom: 10px;
-	}
 
 	.section_container{
 		width: 80%;
 		height: 100%;
-		margin: 0 auto;
-	}
-
-	.test{
-		width: 100%;
-		height: 100%x;
 		margin: 0 auto;
 	}
 
@@ -162,54 +146,6 @@
 		animation: playh 4.5s steps(89) infinite; 		    
 	}
 
-	#left_info_wrapper{
-		position: relative;			
-		left: 7%;
-	}
-
-	#dateHome{
-		color:white;
-		font-weight: 400;
-		font-size: 18px;
-	}
-
-	#placeHome{
-		color:white;
-		opacity: 0.6;
-		font-weight: 300;
-		font-size: 16px;
-	}
-
-	#spacer{
-		width: 15px;
-	}
-
-	#sections{
-		position: relative;	
-		right: 7%;
-		color: white;
-		font-size: 15px;
-		font-weight: 400;
-	}
-
-	paper-tabs{
-		--paper-tabs-selection-bar-color: #fa3f7e;
-	}
-
-	paper-button {
-		margin-bottom: 24px;
-	}
-
-	paper-button[raised].colorful {
-		background: #fa3f7e;
-		color: #fff;
-		margin-top: 4px;
-		margin-left: 15px;
-	}
-
-	paper-tab {
-		flex: none;
-	}
 
 	@keyframes playh {
 		0% { background-position:   0%; }
@@ -284,15 +220,20 @@
 		position: relative;
 		width: 100%;
 		height: 50%;
+		text-align: center;
 	}
 
 	#view_pics_button{
 		position: absolute;
-	    left:50%;
-	    top:25%;	
-	    margin: 50px 0 0 -90px;
-	    cursor: pointer;
+		top:50%;
+		left:50%;
+		width: 180px;
+		height: 124px;
+		cursor: pointer;
 	    z-index: 2;
+
+		-webkit-transform: translate(-50%, -50%);  
+    	transform: translate(-50%, -50%);  	  
 	}
 
 	#pictures_icon{
@@ -304,6 +245,7 @@
 	}
 
 	#more_pics_text{
+		margin: 0 auto;
 		width: 180px;
 		margin-top: 20px;
 		text-align: center;
@@ -352,6 +294,11 @@
 		overflow: scroll;
 	}
 
+	schedule-item::shadow .schedule_item:hover{
+		background-color: #eee;
+		cursor: pointer;
+	}
+
 	#ver_fotos_wrapper{
 		display: none;
 	}
@@ -385,6 +332,67 @@
 
    		display: none;
 	}
+
+	paper-tabs{
+      --paper-tabs-selection-bar-color: #fa3f7e;
+    }
+
+    paper-tab {
+      flex: none;
+    }
+
+    #footer{
+      position: absolute;
+      width: 100%;
+      bottom: 10px;
+    }
+
+    #left_info_wrapper{
+      position: relative;     
+      left: 7%;
+    }
+
+    puzzle-element.small, paper-icon-button.small {
+      color: #fff;
+      --puzzle-element-ink-color: #000000;
+    }
+
+    puzzle-element.small::shadow #icon, paper-icon-button.small::shadow #icon {
+      width: 100px;
+      height: 100px;
+    }
+
+    #spacer{
+      width: 15px;
+    }
+
+    #sections{
+      position: relative; 
+      right: 7%;
+      color: white;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    paper-button[raised].colorful {
+      background: #fa3f7e;
+      color: #fff;
+      margin-left: 15px;
+    }
+
+    #dateHome{
+      color:white;
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    #placeHome{
+      color:white;
+      opacity: 0.6;
+      font-weight: 300;
+      font-size: 16px;
+    }   
+
 
 	@media (max-width: 1500px) {
 		.parrafo{
@@ -443,11 +451,6 @@
 			top: 25px;
 		}
 
-		puzzle-element.small::shadow #icon, paper-icon-button.small::shadow #icon {
-			width: 75px;
-			height: 75px;
-		}
-
 		#drawer{
 			display: inline;
 		}
@@ -456,28 +459,9 @@
 			display: inline;
 		}
 
-		#sections{
-			display: none;
-
-		}
-
-		#left_info_wrapper{
-			width: 100%;
-			padding: 0px 10px;
-			left: 0%;
-		}
-
 		.left_text{
 			position: relative;
 			right: 0;
-		}
-
-		#dateHome{
-			font-size: 14px;
-		}
-
-		#placeHome{
-			font-size: 12px;
 		}
 
 		#logoHED {	    	
@@ -501,12 +485,7 @@
 		}
 
 		.titulo{
-			display: none;
-		}
-
-		#footer{
-			bottom: 0;
-			display: none;
+			font-size: 35px;
 		}
 
 		.parrafo{
@@ -550,14 +529,36 @@
 			margin-left: -20px;
 		}
 
-		.test{
-			width: 100%;
-			height: 100%;
-			margin: 0 auto;
-		}
-
 		.fix_thing{
 			margin-left: 0px;
+		}
+
+		puzzle-element.small::shadow #icon, paper-icon-button.small::shadow #icon {
+			width: 75px;
+			height: 75px;
+		}
+
+		#left_info_wrapper{
+			width: 100%;
+			padding: 0px 10px;
+			left: 0%;
+		}
+
+		#footer{
+			bottom: 0;
+			display: none;
+		}
+
+		#sections{
+			display: none;
+		}
+
+		#dateHome{
+			font-size: 14px;
+		}
+
+		#placeHome{
+			font-size: 12px;
 		}
 
 	}

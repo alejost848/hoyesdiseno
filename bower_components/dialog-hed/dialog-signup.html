@@ -1,0 +1,156 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE
+The complete set of authors may be found at http://polymer.github.io/AUTHORS
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+
+<dom-module id="dialog-signup">
+  <style>
+    /*Default typography styles*/
+    .paper-font-display4 {@apply(--paper-font-display4);}
+    .paper-font-display3 {@apply(--paper-font-display3);}
+    .paper-font-display2 {@apply(--paper-font-display2);}
+    .paper-font-display1 {@apply(--paper-font-display1);}
+    .paper-font-headline {@apply(--paper-font-headline);}
+    .paper-font-title {@apply(--paper-font-title);}
+    .paper-font-subhead {@apply(--paper-font-subhead);}
+    .paper-font-body2 {@apply(--paper-font-body2);}
+    .paper-font-body1 {@apply(--paper-font-body1);}
+    .paper-font-caption {@apply(--paper-font-caption);}
+    .paper-font-menu {@apply(--paper-font-menu);}
+    .paper-font-button {@apply(--paper-font-button);}
+    
+    #picture{
+      width: 100%;
+      height: 350px;
+      margin: 0;
+      padding: 0;
+    }
+
+    #signup_dialog{
+      width: 30%;
+    }
+
+    #inputs_container{        
+      padding: 10px 65px;  
+    }
+
+    #signup_toolbar{
+      margin: 0;
+      padding: 0;
+      background-color: #37314a;
+    }
+
+    paper-input{
+      --paper-input-container-focus-color: #fa3f7e;
+      margin-top: 10px;
+    }
+
+    paper-input:first-child{
+      margin-top: 0px;
+    }
+
+    #title{
+      margin-left: 50px;
+      font-weight: 300;
+    }
+
+    paper-button {
+      background: #fa3f7e;
+      color: #fff;
+      margin: 0;
+    }
+
+    #send_container{      
+      margin-top: 40px;
+    }
+
+    paper-checkbox{
+      --paper-checkbox-checked-color: #fa3f7e;
+      --paper-checkbox-checked-ink-color: #fa3f7e;
+      --paper-checkbox-unchecked-color: #272430;
+      --paper-checkbox-unchecked-ink-color: #272430;
+
+      --paper-checkbox-label-color: #606060;
+    }
+
+    paper-checkbox::shadow #checkboxLabel{
+      width: 60%;
+      font-size: 13px;
+      line-height: 14px;
+    }
+
+    @media (max-width: 1400px) {
+      #signup_dialog{
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 850px) {
+      #signup_dialog{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #inputs_container{        
+        padding: 10px 30px;  
+      }
+
+      #title{
+        margin-left: 15px;
+      }
+
+    }
+
+  </style>
+  <template>
+    <paper-dialog id="signup_dialog" entry-animation="slide-up-animation" exit-animation="fade-out-animation" with-backdrop>
+      <paper-toolbar id="signup_toolbar" class="tall">
+        <paper-icon-button icon="arrow-back" dialog-dismiss></paper-icon-button>
+        <div id="title" class="paper-font-display1 bottom">Inscribirse</div>
+      </paper-toolbar>
+      <div id="inputs_container">
+        <paper-input label="Nombres"></paper-input>
+        <paper-input label="Apellidos"></paper-input>
+        <paper-input label="Documento de identidad"></paper-input>
+        <paper-input label="Correo electrónico"></paper-input>
+        <div id="send_container" class="horizontal layout center">
+          <paper-checkbox>Acepto los términos y condiciones</paper-checkbox>
+          <div class="flex"></div>
+          <paper-button raised class="colorful">Enviar</paper-button>
+        </div>
+      </div>
+    </paper-dialog>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'dialog-signup',
+
+    openDialog: function() {
+      var dialog = document.getElementById("signup_dialog");
+      if (dialog) {
+        dialog.open();
+      }
+    }
+  });
+</script>

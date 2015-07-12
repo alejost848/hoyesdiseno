@@ -13,8 +13,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-icons/av-icons.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 
-<dom-module id="schedule-item">
+<dom-module id="dialog-map">
   <style>
     /*Default typography styles*/
     .paper-font-display4 {@apply(--paper-font-display4);}
@@ -29,119 +33,78 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     .paper-font-caption {@apply(--paper-font-caption);}
     .paper-font-menu {@apply(--paper-font-menu);}
     .paper-font-button {@apply(--paper-font-button);}
-
-    .schedule_item{
-      padding: 18px 30px;
-    }
-
-    .schedule_time{
-      width: 140px;
-      margin-right: 5%;
-      color: #606060;   
-    }
-
-    .schedule_icon{
-      margin-right: 20px;
-      color: #404040;
-    }
-
-    .streaming_icon{
-      color: #808080;
-    }
-
-    .streaming_icon{
-       display: none;
-    }
-
-    :host[streaming] .streaming_icon{
-       display: inline;
-    }
-
-    :host{
-      position: static;
-    }
-
-
-
-    .full_width{
+    
+    #picture{
       width: 100%;
       height: 350px;
       margin: 0;
       padding: 0;
     }
 
-    #animated{
-      position: fixed;
-      width: 60%;
-      he
-      margin: 0 auto;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
+    #dialog{
+      width: 40%;
     }
 
     #close_dialog{
       position: absolute;
-      top: -4px;
-      left: 2px;
-      z-index: 3;
+      padding: 0;
+      left: 20px;
+      z-index: 2;
+    }
+
+    .day_title{
+      padding: 10px 25px;
+      margin: 0px;
+    }
+
+    h4{
+      padding: 0px 25px;
+      margin: 0px;
+      color: #656565;
     }
 
     @media (max-width: 850px) {
-      .schedule_item{
-        padding: 8px 6px;
-      }
-
-      .schedule_time{
-        width: 100px;
-        margin-right: 5%;
-        @apply(--paper-font-caption);
-      }
-
-      .schedule_text{
-        @apply(--paper-font-body1);
-      }
-
-      .schedule_icon{
-        width: 15px;
-        height: 15px;
+      #dialog{
+        width: 100%;
+        margin: 0;
       }
 
     }
 
   </style>
   <template>
-    <div class="schedule_item layout horizontal center">
-      <iron-icon class="schedule_icon" icon="[[icon]]"></iron-icon> 
-      <div class="schedule_time paper-font-body1">[[time]]</div>    
-      <div class="schedule_text paper-font-subhead">[[title]]</div>
-      <div class="flex"></div>
-      <iron-icon title="Streaming" class="streaming_icon" icon="av:videocam"></iron-icon> 
-    </div>
+    <paper-dialog id="dialog" entry-animation="slide-up-animation" exit-animation="fade-out-animation" with-backdrop>
+      <paper-icon-button id="close_dialog" icon="arrow-back" dialog-dismiss></paper-icon-button>
+      <iron-image id="picture" sizing="cover" preload fade src="http://lorempixel.com/600/600"></iron-image>
+      <h3 class="day_title paper-font-headline">[[title]]</h3>
+      <h4 class="paper-font-subhead">[[time]]</h4>
+      <div>[[content]]</div>
+    </paper-dialog>
   </template>
 </dom-module>
 <script>
   Polymer({
-    is: 'schedule-item',
+    is: 'dialog-map',
 
     properties: {
+
+      content: {
+        type: String
+      },
 
       time: {
         type: String
       },
 
-      icon: {
-        type: String
-      },
-
       title: {
         type: String
-      },
+      }
+    },
 
-      streaming: {
-        type: Boolean,
-        value: false
+    openDialog: function() {
+      var dialog = document.getElementById("dialog");
+      if (dialog) {
+        dialog.open();
       }
     }
   });
