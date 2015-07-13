@@ -266,11 +266,9 @@ function signup (){
 
  window.addEventListener('WebComponentsReady', function(e) {
     $("#app_wrapper").css("display", "inline");
-    setTimeout(function(){	
-	    var video_width = $("#video_wrapper").width();
-		var video_height = video_width*0.5625;
-		$("#live_video").height(video_height);
-	},300);
+    var video_width = (($(window).width()*0.55)-40)*0.666666666666;
+	var video_height = video_width*0.5625;
+	$("#live_video").height(video_height);
 });
 
 
