@@ -53,8 +53,9 @@
 	<script src="jquery.min.js"></script>
 	<link rel="import" href="elements.html">
 </head>
-<body unresolved>	
-	<paper-drawer-panel id="drawerPanel" force-narrow disable-swipe responsiveWidth="850">
+<body>
+<div id="app_wrapper" style="display:none">
+	<paper-drawer-panel id="drawerPanel" force-narrow disable-swipe responsiveWidth="850" unresolved>
 		<paper-header-panel mode="scroll" main>
 			<paper-toolbar id="app_toolbar">
 				<paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>				
@@ -206,18 +207,62 @@
 					 	</div>
 				 	</section>
 				 	<section route="envivo">
-					 	<div class="section_container layout horizontal center-center">
-						 	<div class="full_width layout horizontal center-center">
-					 			<div class="titulo">Todavía la estoy pensando</div>
-				 			</div>
-				 		</div>
+				 		<div class="description_container layout horizontal center-center">
+						 	<div class="flex-2" >
+						 		<h1 class="titulo paper-font-display2">En vivo</h1>	
+						 		<paper-material class="agenda_box" elevation="1">	
+							 		<google-youtube video-id="kPhbqLRDGpI" width="100%" height="320px" rel="0" autoplay="1" showinfo="0">
+									</google-youtube>
+									<h3 class="paper-font-headline">Conferencia 1</h3>
+	     							<h4 class="paper-font-subhead">Nathan Drake</h4>
+	     							<h5 class="paper-font-body2">9:00 AM - 10:30 AM</h5>
+	     						</paper-material>
+
+	     						<h2 class="titulo paper-font-display1">Talleres de hoy</h2>	
+								<div class="layout horizontal">
+		     						<paper-material class="agenda_box" elevation="1">
+										<h3 class="paper-font-headline">Taller 1</h3>
+		     							<h4 class="paper-font-subhead">Nathan Drake</h4>
+		     							<h5 class="paper-font-body2">4:00 PM - 6:00 PM</h5>
+		     						</paper-material>
+		     						<paper-material class="agenda_box" elevation="1">
+										<h3 class="paper-font-headline">Taller 2</h3>
+		     							<h4 class="paper-font-subhead">Crash Bandicoot</h4>
+		     							<h5 class="paper-font-body2">4:00 PM - 6:00 PM</h5>
+		     						</paper-material>
+		     						<paper-material class="agenda_box" elevation="1">
+										<h3 class="paper-font-headline">Taller 3</h3>
+		     							<h4 class="paper-font-subhead">Jak and Daxter</h4>
+		     							<h5 class="paper-font-body2">4:00 PM - 6:00 PM</h5>
+		     						</paper-material>
+	     						</div>
+					 		</div>
+					 		<div class="flex" >
+					 			<div class="layout vertical">
+					 				<h3 class="paper-font-headline">A continuación</h3>
+					 				<paper-material class="agenda_box" elevation="1">
+					 					<h3 class="paper-font-headline">Conferencia 2</h3>
+		     							<h4 class="paper-font-subhead">Crash Bandicoot</h4>
+		     							<h5 class="paper-font-body2">10:30 AM - 12:00 PM</h5>
+	     							</paper-material>
+
+	     							<h3 class="paper-font-headline">Más tarde</h3>
+					 				<paper-material class="agenda_box" elevation="1">
+					 					<h3 class="paper-font-headline">Taller 1</h3>
+		     							<h4 class="paper-font-subhead">Nathan Drake</h4>
+		     							<h5 class="paper-font-body2">4:00 PM - 6:00 PM</h5>
+	     							</paper-material>
+
+	     							<paper-tabs noink selected="0">
+	     							  <paper-tab>Facebook</paper-tab>
+	     							  <paper-tab>Twitter</paper-tab>
+	     							</paper-tabs>
+					 			</div>
+					 		</div>
+					 	</div>				 		
 				 	</section>
 				</iron-pages>
 			</more-route-selector>	
-
-			<div id="loadingCard" class="layout vertical center-center">
-				<iron-image id="logoHED" class="full_width" preload fade src="logo.png"></iron-image>
-			</div>		
 			
 		    <div id="footer" class="horizontal layout center">            
 		        <div id="left_info_wrapper" class="horizontal layout center">
@@ -276,5 +321,11 @@
 
 	<!-- <the-app></the-app> -->   
 	<script src="app.js"></script>
+</div>
+
+<div id="loadingCard" class="layout vertical center-center">
+	<iron-image id="logoHED" class="full_width" preload fade src="logo.png"></iron-image>
+</div>	
+
 </body>
 </html>

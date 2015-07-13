@@ -148,12 +148,6 @@ var app = document.querySelector("#app");
 app.selected_day = "1";
 
 
-window.onload=function(){	
-    setTimeout(function(){
-        $('#loadingCard').fadeOut(1000);
-	},400);
-};
-
 var footer_height = 136;
 var available_height = $(window).height()-footer_height;
 var available_width = $(window).width();
@@ -259,5 +253,10 @@ function signup (){
 	dialogSignup.openDialog();
 }
 
+
+ window.addEventListener('WebComponentsReady', function(e) {
+    $("#app_wrapper").css("display", "inline");
+    $('#loadingCard').fadeOut(1000);
+});
 
 //console.log( '%c  __        ______________________  \n /  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n ||_/|  <--| ¿Necesitas ayuda?    | \n |___/     |______________________/ \n                                    ', "color: #272430;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );

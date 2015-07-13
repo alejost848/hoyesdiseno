@@ -13,6 +13,7 @@
 		background-color: rgba(20, 20, 20, 0.2);
 	}
 
+
 	h2, h3, h4, h5, h6 {
 		margin: 0;
 		padding: 0;
@@ -133,10 +134,12 @@
 	#loadingCard{
 		position: absolute;
 		top: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
 		background-color: #272430;
 		z-index: 5;
+		overflow: hidden;
 	}
 
 	#logoHED {	    	
@@ -277,7 +280,7 @@
 	.day_title{
 		padding: 32px;
 		color: #212121;
-		border-bottom: 1px solid #EEE;
+		border-bottom: 1px solid #ddd;
 	}
 
 	.agenda_box{
@@ -393,6 +396,9 @@
       font-size: 16px;
     }   
 
+    body[unresolved] {
+	    display: none;
+	}
 
 	@media (max-width: 1500px) {
 		.parrafo{
