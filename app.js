@@ -148,6 +148,11 @@ var app = document.querySelector("#app");
 app.selected_day = "1";
 
 
+window.onload=function(){	   
+    $('#loadingCard').fadeOut(1000);
+	
+};
+
 var footer_height = 136;
 var available_height = $(window).height()-footer_height;
 var available_width = $(window).width();
@@ -212,7 +217,12 @@ $(window).resize(function() {
 		$( "#element_rows" ).removeClass("vertical");
 		$( "#element_rows" ).addClass("horizontal");
 	}
+
+	var video_width = $("#video_wrapper").width();
+	var video_height = video_width*0.5625;
+	$("#live_video").height(video_height);
 });
+
 
 
 $("paper-item").click(function() {
@@ -256,7 +266,20 @@ function signup (){
 
  window.addEventListener('WebComponentsReady', function(e) {
     $("#app_wrapper").css("display", "inline");
-    $('#loadingCard').fadeOut(1000);
+    setTimeout(function(){	
+	    var video_width = $("#video_wrapper").width();
+		var video_height = video_width*0.5625;
+		$("#live_video").height(video_height);
+	},300);
 });
+
+
+
+//Progress of the conference
+var app4 = document.querySelector("#app4");
+ setInterval(function() {	
+	var currentValue = app4.currentTime/app4.duration;
+	$("#conference_progress").attr("value", currentValue*100);
+}, 100);
 
 //console.log( '%c  __        ______________________  \n /  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n ||_/|  <--| ¿Necesitas ayuda?    | \n |___/     |______________________/ \n                                    ', "color: #272430;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );

@@ -69,18 +69,18 @@
 				 		<custom-ripple id="ripple_bg"></custom-ripple>									
 						<paper-progress min="1" max="9"></paper-progress>	
 						<div class="section_container layout horizontal center-center">					
-							<div id="element_rows" class="layout horizontal center">
-								<div class="full_width layout horizontal center-center">
+							<div id="element_rows" class="layout horizontal">
+								<div class="full_width layout horizontal">
 									<puzzle-element class="fix_thing" id="1" icon="puzzle-icons:h"></puzzle-element>
 									<puzzle-element id="2" icon="puzzle-icons:o"></puzzle-element>
 									<puzzle-element id="3" icon="puzzle-icons:y"></puzzle-element>
 								</div>
-								<div class="full_width layout horizontal center-center">
+								<div class="full_width layout horizontal">
 									<puzzle-element class="fix_thing" id="4" icon="puzzle-icons:e"></puzzle-element>
 									<puzzle-element id="5" icon="puzzle-icons:s"></puzzle-element>
 									<puzzle-element id="6" icon="puzzle-icons:d"></puzzle-element>
 								</div>
-								<div class="full_width layout horizontal center-center">
+								<div class="full_width layout horizontal">
 									<puzzle-element class="fix_thing" id="7" icon="puzzle-icons:i"></puzzle-element>
 									<puzzle-element id="8" icon="puzzle-icons:s"></puzzle-element>
 									<puzzle-element id="9" icon="puzzle-icons:e"></puzzle-element>
@@ -207,58 +207,87 @@
 					 	</div>
 				 	</section>
 				 	<section route="envivo">
-				 		<div class="description_container layout horizontal center-center">
-						 	<div class="flex-2" >
-						 		<h1 class="titulo paper-font-display2">En vivo</h1>	
-						 		<paper-material class="agenda_box" elevation="1">	
-							 		<google-youtube video-id="kPhbqLRDGpI" width="100%" height="320px" rel="0" autoplay="1" showinfo="0">
-									</google-youtube>
-									<h3 class="paper-font-headline">Conferencia 1</h3>
-	     							<h4 class="paper-font-subhead">Nathan Drake</h4>
-	     							<h5 class="paper-font-body2">9:00 AM - 10:30 AM</h5>
-	     						</paper-material>
+				 		<div class="envivo_container">
+				 			<h1 class="titulo paper-font-display2">En vivo</h1>	
+				 			<div class="layout horizontal">
+							 	<div class="flex-2">
+							 		<paper-material id="video_wrapper" class="agenda_box" elevation="1">
+							 			<template is="dom-bind" id="app4">
+									 		<google-youtube id="live_video" video-id="kPhbqLRDGpI" width="100%" height="100%" rel="0" autoplay="1" showinfo="0" currenttime="{{currentTime}}" duration="{{duration}}">
+											</google-youtube>
+											<paper-progress id="conference_progress"></paper-progress>
+										</template>
+										<div id="envivo_info" class="layout horizontal">
+											<div class="layout vertical">
+												<h3 class="paper-font-headline">Conferencia 1</h3>
+				     							<h4 class="paper-font-subhead">Nathan Drake</h4>
+				     						</div>
+				     						<div class="flex"></div>
+				     						<div class="layout horizontal end">
+		     									<h5 class="paper-font-subhead">9:00 AM - 10:30 AM</h5>
+		     								</div>
+		     							</div>
+		     						</paper-material>
 
-	     						<h2 class="titulo paper-font-display1">Talleres de hoy</h2>	
-								<div class="layout horizontal">
-		     						<paper-material class="agenda_box" elevation="1">
-										<h3 class="paper-font-headline">Taller 1</h3>
-		     							<h4 class="paper-font-subhead">Nathan Drake</h4>
-		     							<h5 class="paper-font-body2">4:00 PM - 6:00 PM</h5>
-		     						</paper-material>
-		     						<paper-material class="agenda_box" elevation="1">
-										<h3 class="paper-font-headline">Taller 2</h3>
-		     							<h4 class="paper-font-subhead">Crash Bandicoot</h4>
-		     							<h5 class="paper-font-body2">4:00 PM - 6:00 PM</h5>
-		     						</paper-material>
-		     						<paper-material class="agenda_box" elevation="1">
-										<h3 class="paper-font-headline">Taller 3</h3>
-		     							<h4 class="paper-font-subhead">Jak and Daxter</h4>
-		     							<h5 class="paper-font-body2">4:00 PM - 6:00 PM</h5>
-		     						</paper-material>
-	     						</div>
-					 		</div>
-					 		<div class="flex" >
-					 			<div class="layout vertical">
-					 				<h3 class="paper-font-headline">A continuación</h3>
-					 				<paper-material class="agenda_box" elevation="1">
-					 					<h3 class="paper-font-headline">Conferencia 2</h3>
-		     							<h4 class="paper-font-subhead">Crash Bandicoot</h4>
-		     							<h5 class="paper-font-body2">10:30 AM - 12:00 PM</h5>
+		     						<div id="title_workshops">
+			     						<h2 class="title_spacer paper-font-title">Talleres de hoy</h2>	
+										<div class="layout horizontal">
+				     						<paper-material class="workshop_box" elevation="1">
+												<h3 class="paper-font-title">Taller 1</h3>
+				     							<h4 class="paper-font-subhead">Nathan Drake</h4>
+				     							<h5 class="paper-font-caption">4:00 PM - 6:00 PM</h5>
+				     						</paper-material>
+				     						<paper-material class="workshop_box" elevation="1">
+												<h3 class="paper-font-title">Taller 2</h3>
+				     							<h4 class="paper-font-subhead">Crash Bandicoot</h4>
+				     							<h5 class="paper-font-caption">4:00 PM - 6:00 PM</h5>
+				     						</paper-material>
+				     						<paper-material class="workshop_box" elevation="1">
+												<h3 class="paper-font-title">Taller 3</h3>
+				     							<h4 class="paper-font-subhead">Jak and Daxter</h4>
+				     							<h5 class="paper-font-caption">4:00 PM - 6:00 PM</h5>
+				     						</paper-material>
+			     						</div>
+			     					</div>
+						 		</div>
+						 		<div id="live_coming_up" class="flex">
+					 				<h3 class="title_spacer paper-font-title">A continuación</h3>
+					 				<paper-material class="coming_up_box" elevation="1">
+					 					<div class="layout horizontal">
+					 						<div class="layout vertical">
+							 					<h3 class="paper-font-title">Conferencia 2</h3>
+				     							<h4 class="paper-font-subhead">Crash Bandicoot</h4>
+				     						</div>
+				     						<div class="flex"></div>
+				     						<div class="layout horizontal end">
+			     								<h5 class="paper-font-caption">10:30 AM - 12:00 PM</h5>
+			     							</div>
+			     						</div>
 	     							</paper-material>
 
-	     							<h3 class="paper-font-headline">Más tarde</h3>
-					 				<paper-material class="agenda_box" elevation="1">
-					 					<h3 class="paper-font-headline">Taller 1</h3>
-		     							<h4 class="paper-font-subhead">Nathan Drake</h4>
-		     							<h5 class="paper-font-body2">4:00 PM - 6:00 PM</h5>
+	     							<h3 class="title_spacer paper-font-title">Más tarde</h3>
+					 				<paper-material class="coming_up_box" elevation="1">
+					 					<div class="layout horizontal">
+					 						<div class="layout vertical">
+						 						<h3 class="paper-font-title">Taller 1</h3>
+			     								<h4 class="paper-font-subhead">Nathan Drake</h4>
+			     							</div>
+			     							<div class="flex"></div>
+			     							<div class="layout horizontal end">
+			     								<h5 class="paper-font-caption">4:00 PM - 6:00 PM</h5>
+			     							</div>
+			     						</div>
 	     							</paper-material>
 
 	     							<paper-tabs noink selected="0">
 	     							  <paper-tab>Facebook</paper-tab>
 	     							  <paper-tab>Twitter</paper-tab>
 	     							</paper-tabs>
-					 			</div>
-					 		</div>
+	     							<paper-material elevation="1">
+	     							  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque soluta maxime perspiciatis eveniet, alias odio necessitatibus quia sequi dolores placeat neque dignissimos eos, totam amet, nisi sit hic illum. Reiciendis!
+	     							</paper-material>
+						 		</div>
+						 	</div>
 					 	</div>				 		
 				 	</section>
 				</iron-pages>
@@ -285,9 +314,9 @@
 							<paper-tab route="agenda">AGENDA</paper-tab>
 							<paper-tab route="contacto">CONTACTO</paper-tab>            
 						</paper-tabs>
-					</more-route-selector> 
-					<paper-button onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button>
-		        </div>          
+					</more-route-selector>
+					<paper-button id="signup_button" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button>
+		        </div>
 		    </div>   
 
 		</paper-header-panel>
@@ -323,14 +352,7 @@
 	<script src="app.js"></script>
 </div>
 
-<div id="loadingCard" class="layout vertical center-center" style="position: absolute,
-		top: 0,
-		left: 0,
-		width: 100%,
-		height: 100%,
-		background-color: #272430,
-		z-index: 5,
-		overflow: hidden">
+<div id="loadingCard" class="layout vertical center-center">
 	<iron-image id="logoHED" class="full_width" preload fade src="logo.png"></iron-image>
 </div>	
 

@@ -112,7 +112,7 @@
 	paper-progress {
 		position: absolute;			
 		width: 100%;
-		--paper-progress-active-color: #7365f1;
+		--paper-progress-active-color: #fa3f7e;
 	}
 
 	#app_toolbar{
@@ -164,11 +164,15 @@
 		width: 65%;		
 		position: relative;	
 		margin: 0 auto;	
-		top: 15%;
-		height: 85%;
+		margin-top: 15%;
 	}
 
-
+	.envivo_container{	
+		width: 55%;		
+		position: relative;	
+		margin: 0 auto;	
+		margin-top: 5%;
+	}
 
 	paper-material{
 		display: inline-block;
@@ -297,11 +301,6 @@
 		overflow: scroll;
 	}
 
-	schedule-item::shadow .schedule_item:hover{
-		background-color: #eee;
-		cursor: pointer;
-	}
-
 	#ver_fotos_wrapper{
 		display: none;
 	}
@@ -342,6 +341,7 @@
 
     paper-tab {
       flex: none;
+      color: white;
     }
 
     #footer{
@@ -396,9 +396,42 @@
       font-size: 16px;
     }   
 
-    body[unresolved] {
-	    display: none;
+	#envivo_info{
+		padding: 20px;
 	}
+
+	#live_coming_up{
+		padding-left: 40px;
+	}
+
+	.coming_up_box{
+		width: 100%;
+		padding: 15px 20px;
+		margin-bottom: 20px;
+	}
+
+	.title_spacer{
+		margin-bottom: 10px;
+		color:white;
+		font-weight: 300;
+	}
+
+	#title_workshops{
+		margin-top: 20px;		
+		font-weight: 300;
+	}
+
+	.workshop_box{
+		width: 100%;
+		padding: 10px;
+		margin-right: 10px; 
+	}
+
+	.workshop_box:last-child{
+		margin-right: 0px; 
+	}
+
+
 
 	@media (max-width: 1500px) {
 		.parrafo{
@@ -511,7 +544,7 @@
 
 		#ver_fotos_wrapper{
 			display: inline;
-			border-top: 1px solid #EEE;
+			border-top: 1px solid #ddd;
 		}	
 
 		#ver_fotos{
@@ -567,6 +600,10 @@
 			font-size: 12px;
 		}
 
+		#signup_button{
+			font-size: 10px;
+		}
+
 	}
 
 
@@ -585,15 +622,13 @@
 
 	@media (max-height: 860px) {
 		.agenda_container{	
-			top: 5%;
-			height: 95%;
+			margin-top: 5%;
 		}
 	}
 
 	@media (max-height: 768px) {
 		.agenda_container{	
-			top: 0%;
-			height: 100%;
+			margin-top: 0%;
 		}
 
 		.titulo{
