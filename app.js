@@ -266,10 +266,11 @@ function signup (){
 
  window.addEventListener('WebComponentsReady', function(e) {
     $("#app_wrapper").css("display", "inline");
-    var video_width = (($(window).width()*0.55)-40)*0.666666666666;
-	var video_height = video_width*0.5625;
-	$("#live_video").height(video_height);
-});
+  });
+
+ function tsts (){
+ 	console.log('asdfsdfsadf');
+ }
 
 
 
