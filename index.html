@@ -41,7 +41,7 @@
 
 	<!-- Facebook card -->
 	<meta property="og:url" content="http://alejost848.github.io/hoyesdiseno">
-	<meta property="og:type" content="website">
+	<meta property="og:type" content="article">
 	<meta property="og:title" content="Hoy es Diseño">
 	<meta property="og:site_name" content="Hoy es Diseño">
 	<meta property="og:description" content="Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.">
@@ -196,6 +196,7 @@
 							 </div>		
 						</div>
 				 	</section>
+
 				 	<section route="contacto">
 					 	<div class="section_container layout horizontal">
 							<div class="agenda_container">
@@ -206,85 +207,90 @@
 					 		</div>
 					 	</div>
 				 	</section>
+
 				 	<section route="envivo">
 				 		<div class="envivo_container">
 				 			<h1 class="titulo paper-font-display2">En vivo</h1>	
-				 			<div class="layout horizontal">
+				 			<div id="envivo_wrapper" class="layout horizontal">
 							 	<div class="flex-2">
 							 		<paper-material id="video_wrapper" class="agenda_box" elevation="1">
 							 			<template is="dom-bind" id="app4">
-									 		<google-youtube id="live_video" video-id="kPhbqLRDGpI" fluid rel="0" autoplay="1" showinfo="0" currenttime="{{currentTime}}" duration="{{duration}}">
+									 		<google-youtube id="live_video" video-id="kPhbqLRDGpI" fluid autoplay="0" rel="0" showinfo="0" currenttime="{{currentTime}}" duration="{{duration}}">
 											</google-youtube>
 											<paper-progress id="conference_progress"></paper-progress>
 										</template>
 										<div id="envivo_info" class="layout horizontal">
 											<div class="layout vertical">
-												<h3 class="paper-font-headline">Conferencia 1</h3>
-				     							<h4 class="paper-font-subhead">Nathan Drake</h4>
+												<h3 id="now_playing" class="paper-font-headline">Conferencia 1</h3>
+				     							<h4 id="now_playing_artist" class="paper-font-subhead">Nathan Drake</h4>
 				     						</div>
 				     						<div class="flex"></div>
 				     						<div class="layout horizontal end">
-		     									<h5 class="paper-font-subhead">9:00 AM - 10:30 AM</h5>
+		     									<h5 id="now_playing_time" class="workshop_time paper-font-subhead">9:00 AM - 10:30 AM</h5>
 		     								</div>
 		     							</div>
 		     						</paper-material>
 
-		     						<div id="title_workshops">
-			     						<h2 class="title_spacer paper-font-title">Talleres de hoy</h2>	
-										<div class="layout horizontal">
-				     						<paper-material class="workshop_box" elevation="1">
-												<h3 class="paper-font-title">Taller 1</h3>
-				     							<h4 class="paper-font-subhead">Nathan Drake</h4>
-				     							<h5 class="paper-font-caption">4:00 PM - 6:00 PM</h5>
-				     						</paper-material>
-				     						<paper-material class="workshop_box" elevation="1">
-												<h3 class="paper-font-title">Taller 2</h3>
-				     							<h4 class="paper-font-subhead">Crash Bandicoot</h4>
-				     							<h5 class="paper-font-caption">4:00 PM - 6:00 PM</h5>
-				     						</paper-material>
-				     						<paper-material class="workshop_box" elevation="1">
-												<h3 class="paper-font-title">Taller 3</h3>
-				     							<h4 class="paper-font-subhead">Jak and Daxter</h4>
-				     							<h5 class="paper-font-caption">4:00 PM - 6:00 PM</h5>
-				     						</paper-material>
-			     						</div>
+		     						<div id="coming_up" class="layout horizontal">
+		     							<div class="flex">				     					
+											<div class="layout horizontal">											<paper-material id="coming_up_box" elevation="1">
+													<h2 class="title_spacer paper-font-title">A continuación</h2>
+								 					<div class="layout vertical workshop_box">
+									 					<h3 class="activity_title paper-font-title">Conferencia 2</h3>
+						     							<h4 class="activity_artist paper-font-subhead">Crash Bandicoot</h4>
+					     								<h5 class="workshop_time paper-font-caption">10:30 AM - 12:00 PM</h5>
+					     							</div>		     						
+				     							</paper-material>					     					
+				     						</div>
+				     					</div>
+
+				     					<div class="flex">				     							
+											<div class="layout horizontal">
+					     						<paper-material id="coming_next_box" elevation="1">
+					     							<h2 class="title_spacer paper-font-title">Más tarde</h2>
+								 					<div class="layout vertical workshop_box">
+									 					<h3 class="activity_title paper-font-title">Conferencia 3</h3>
+						     							<h4 class="activity_artist paper-font-subhead">Crash Bandicoot</h4>
+					     								<h5 class="workshop_time paper-font-caption">10:30 AM - 12:00 PM</h5>
+					     							</div>		     						
+				     							</paper-material>
+				     						</div>
+				     					</div>
 			     					</div>
 						 		</div>
-						 		<div id="live_coming_up" class="flex">
-					 				<h3 class="title_spacer paper-font-title">A continuación</h3>
-					 				<paper-material class="coming_up_box" elevation="1">
-					 					<div class="layout horizontal">
+						 		<div id="title_workshops" class="flex">					 				
+					 				<paper-material id="workshop_wrapper" elevation="1">
+					 					<h3 class="title_spacer paper-font-title">Talleres de hoy</h3>
+					 					<div class="layout horizontal workshop_box">
 					 						<div class="layout vertical">
-							 					<h3 class="paper-font-title">Conferencia 2</h3>
-				     							<h4 class="paper-font-subhead">Crash Bandicoot</h4>
+							 					<h3 class="activity_title paper-font-title">Taller 1</h3>
+				     							<h4 class="activity_artist paper-font-subhead">Nathan Drake</h4>
 				     						</div>
 				     						<div class="flex"></div>
 				     						<div class="layout horizontal end">
-			     								<h5 class="paper-font-caption">10:30 AM - 12:00 PM</h5>
+			     								<h5 class="workshop_time paper-font-caption">4:00 PM - 6:00 PM</h5>
 			     							</div>
 			     						</div>
-	     							</paper-material>
-
-	     							<h3 class="title_spacer paper-font-title">Más tarde</h3>
-					 				<paper-material class="coming_up_box" elevation="1">
-					 					<div class="layout horizontal">
+					 					<div class="layout horizontal workshop_box">
 					 						<div class="layout vertical">
-						 						<h3 class="paper-font-title">Taller 1</h3>
-			     								<h4 class="paper-font-subhead">Nathan Drake</h4>
-			     							</div>
-			     							<div class="flex"></div>
-			     							<div class="layout horizontal end">
-			     								<h5 class="paper-font-caption">4:00 PM - 6:00 PM</h5>
+							 					<h3 class="activity_title paper-font-title">Taller 2</h3>
+				     							<h4 class="activity_artist paper-font-subhead">Nathan Drake</h4>
+				     						</div>
+				     						<div class="flex"></div>
+				     						<div class="layout horizontal end">
+			     								<h5 class="workshop_time paper-font-caption">4:00 PM - 6:00 PM</h5>
 			     							</div>
 			     						</div>
-	     							</paper-material>
-
-	     							<paper-tabs noink selected="0">
-	     							  <paper-tab>Facebook</paper-tab>
-	     							  <paper-tab>Twitter</paper-tab>
-	     							</paper-tabs>
-	     							<paper-material elevation="1">
-	     							  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque soluta maxime perspiciatis eveniet, alias odio necessitatibus quia sequi dolores placeat neque dignissimos eos, totam amet, nisi sit hic illum. Reiciendis!
+					 					<div class="layout horizontal workshop_box">
+					 						<div class="layout vertical">
+							 					<h3 class="activity_title paper-font-title">Taller 3</h3>
+				     							<h4 class="activity_artist paper-font-subhead">Nathan Drake</h4>
+				     						</div>
+				     						<div class="flex"></div>
+				     						<div class="layout horizontal end">
+			     								<h5 class="workshop_time paper-font-caption">4:00 PM - 6:00 PM</h5>
+			     							</div>
+			     						</div>
 	     							</paper-material>
 						 		</div>
 						 	</div>
@@ -332,6 +338,7 @@
 			<more-route-selector>
 				<paper-menu>
 					<paper-item route="inicio">Inicio</paper-item>
+					<paper-item route="envivo">En vivo</paper-item>
 					<paper-item route="evento">Evento</paper-item>
 					<paper-item route="agenda">Agenda</paper-item>
 					<paper-item route="contacto">Contacto</paper-item>
