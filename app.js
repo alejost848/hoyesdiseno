@@ -174,7 +174,6 @@ if(screen.width<=850){
 
 	$( "#evento_container" ).removeClass("center");
 	$( "#element_rows" ).removeClass("horizontal");
-	$( "#element_rows" ).addClass("vertical");
 
 	$( "#envivo_wrapper" ).removeClass("horizontal");
 	$( "#envivo_wrapper" ).addClass("vertical");
@@ -189,7 +188,6 @@ if($(window).width()<=850){
 
 	$( "#evento_container" ).removeClass("center");
 	$( "#element_rows" ).removeClass("horizontal");
-	$( "#element_rows" ).addClass("vertical");
 
 	$( "#envivo_wrapper" ).removeClass("horizontal");
 	$( "#envivo_wrapper" ).addClass("vertical");
@@ -205,7 +203,6 @@ $(window).resize(function() {
 
 		$( "#evento_container" ).removeClass("center");
 		$( "#element_rows" ).removeClass("horizontal");
-		$( "#element_rows" ).addClass("vertical");
 
 		$( "#envivo_wrapper" ).removeClass("horizontal");
 		$( "#envivo_wrapper" ).addClass("vertical");
@@ -276,12 +273,6 @@ function signup (){
     $("#app_wrapper").css("display", "inline");
 
   });
-
- function tsts (){
- 	console.log('asdfsdfsadf');
- }
-
-
 
 //Progress of the conference
 var app4 = document.querySelector("#app4");
