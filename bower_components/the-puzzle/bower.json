@@ -1,0 +1,16 @@
+{
+  "name": "button-test",
+  "version": "0.0.0",
+  "authors": [
+    "alejost848 <alejost848@gmail.com>"
+  ],
+  "main": "button-test.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

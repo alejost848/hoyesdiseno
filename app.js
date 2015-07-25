@@ -1,141 +1,42 @@
-//Load sounds
-var sound = new Howl({
-  src: ['madeon_samples/drum.1.1.mp3'],
-  autoplay: false,
-});
-var sound2 = new Howl({
-  src: ['madeon_samples/sounds.1.5.mp3'],
-  autoplay: false,
-});
-var sound3 = new Howl({
-  src: ['madeon_samples/bass.1.8.mp3'],
-  autoplay: false,
-});
-var sound4 = new Howl({
-  src: ['madeon_samples/drum.1.5.mp3'],
-  autoplay: false,
-});
-var sound5 = new Howl({
-  src: ['madeon_samples/sounds.1.7.mp3'],
-  autoplay: false,
-});
-var sound6 = new Howl({
-  src: ['madeon_samples/bass.1.5.mp3'],
-  autoplay: false,
-});
-var sound7 = new Howl({
-   src: ['madeon_samples/drum.1.4.mp3'],
-  autoplay: false,
-});
-var sound8 = new Howl({
-  src: ['madeon_samples/sounds.1.2.mp3'],
-  autoplay: false,
-});
-
-var active1, active2, active3, active4, active5, active6, active7, active8, active9, active10, active11;
-
 var frequency = 4370;
-var myInterval = 0;
-var progressInterval = 0;
 var firstTrigger = true;
-
-
-$("puzzle-element").on("mousedown", function (event) {
-	var idSelected = this.id;
-
-	if(idSelected=="1"){
-		active1=!active1;		 
-	}
-	if(idSelected=="2"){
-		active2=!active2;		
-	}
-	if(idSelected=="3"){
-		active3=!active3;		
-	}
-	if(idSelected=="4"){ 
-		active4=!active4;			
-	}
-	if(idSelected=="5"){
-		active5=!active5;
-	}
-	if(idSelected=="6"){		
-		active6=!active6;
-	}
-	if(idSelected=="7"){
-		active7=!active7;
-	}
-	if(idSelected=="8"){
-		active8=!active8;
-	}
-	if(idSelected=="9"){
-		active9=!active9;
-	}
-	if(idSelected=="10"){
-		active10=!active10;
-	}
-	if(idSelected=="11"){
-		active11=!active11;
-	}
-
-	//Triggers the first sample and avoids clicking the background to start playing
-	if(firstTrigger){
-		playSounds();
-		progressCount();
-		firstTrigger=false;
-	}	
-});
-
+var progressInterval;
 var progress = document.querySelector('paper-progress');
 
-function playSounds(){
-    if(active1){
-		sound.stop();
-		sound.play();
-	}
-	if(active2){		
-		sound2.stop();
-		sound2.play();
-	}
-	if(active3){		
-		sound3.stop();
-		sound3.play();
-	}
-	if(active4){		
-		sound4.stop();
-		sound4.play();
-	}
-	if(active5){		
-		sound5.stop();
-		sound5.play();
-	}
-	if(active6){		
-		sound6.stop();
-		sound6.play();
-	}
-	if(active7){		
-		sound7.stop();
-		sound7.play();
-	}
-	if(active8){		
-		sound8.stop();
-		sound8.play();
-	}
+window.addEventListener('WebComponentsReady', function(e) {
+    $("the-icon").on("tap", function (event) {
+		if(firstTrigger){
+			playSounds();
+			progressCount();
+			firstTrigger = false;
+		}
+	});
+});
 
-	if(myInterval > 0) clearInterval(myInterval);
-	myInterval = setInterval("playSounds()", frequency);	
+
+
+function playSounds(id){
+	var elements = document.getElementsByTagName("the-icon");
+	for (var i=0; i<elements.length; i++) {
+	   if(elements[i].active){
+	   	elements[i].playSample();
+	   }
+	}
 }
 
-
 function progressCount(){
-	progress.value += 1;
-			
 	if(progress.value==9){
 		progress.value = progress.min;
 	}
-		
-	if(progressInterval > 0) clearInterval(progressInterval);
-	progressInterval = setInterval("progressCount()", frequency/8);
+	if(progress.value==progress.min){
+		if(!firstTrigger){
+			playSounds();
+		}
+	}	
+	progressInterval = setTimeout(progressCount, frequency/8);
+	progress.value += 1;	
 }
+
 
 /*Toggles the drawer panel when in a different section than home*/
 var drawer_panel = document.getElementById("drawerPanel");
@@ -268,11 +169,6 @@ function signup (){
 	dialogSignup.openDialog();
 }
 
-
- window.addEventListener('WebComponentsReady', function(e) {
-    $("#app_wrapper").css("display", "inline");
-
-  });
 
 //Progress of the conference
 var app4 = document.querySelector("#app4");

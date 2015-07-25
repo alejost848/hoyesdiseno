@@ -1,0 +1,154 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-behaviors/paper-button-behavior.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+
+<script src="howler.min.js"></script>
+
+<dom-module id="the-icon">
+
+  <style>
+   :host {
+      display: inline-block;
+      position: relative;
+      color: #fff;
+      margin: 0px -15px;
+      width: 130px;
+      height: 130px;
+      cursor: pointer;
+      padding: 8px;
+    }
+    :host #ink {
+      opacity: 0.6;
+    }
+
+    #icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 1500px) {  
+      :host {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    @media (max-width: 1200px) {
+      :host {
+        width: 90px;
+        height: 90px;
+      }
+    }
+    @media (max-width: 850px) {
+      :host {
+        width: 90px;
+        height: 90px;
+        margin: 0px -12px;
+      }
+    }
+    @media (max-width: 370px) {
+      :host {
+        width: 75px;
+        height: 75px;
+      }
+    }
+  </style>
+
+  <template>
+    <paper-ripple id="ink" class="circle" center></paper-ripple>
+    <iron-icon id="icon" icon="[[icon]]"></iron-icon>   
+  </template>
+
+  <script>
+
+    var sound = new Howl({
+      src: ['madeon_samples/drum.1.1.mp3'],
+      autoplay: false,
+    });
+    var sound2 = new Howl({
+      src: ['madeon_samples/sounds.1.5.mp3'],
+      autoplay: false,
+    });
+    var sound3 = new Howl({
+      src: ['madeon_samples/bass.1.8.mp3'],
+      autoplay: false,
+    });
+    var sound4 = new Howl({
+      src: ['madeon_samples/drum.1.5.mp3'],
+      autoplay: false,
+    });
+    var sound5 = new Howl({
+      src: ['madeon_samples/sounds.1.7.mp3'],
+      autoplay: false,
+    });
+    var sound6 = new Howl({
+      src: ['madeon_samples/bass.1.5.mp3'],
+      autoplay: false,
+    });
+
+    var songList = [];
+    songList.push(sound,sound2,sound3,sound4,sound5,sound6);
+  
+    Polymer({
+
+      is: 'the-icon',
+
+      listeners: {
+        'tap': 'regularTap'
+      },
+
+      properties: {
+        icon: {
+          type: String
+        },
+        identifier: {
+          type: String
+        },
+        active: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+      attached:function() {
+        switch(this.identifier){
+          case "0":
+          case "1":
+          case "2":
+            this.$.ink.style.color = '#7365f1';
+          break;
+          case "3":
+          case "4":
+          case "5":
+            this.$.ink.style.color = '#206573';
+          break;
+          case "6":
+          case "7":
+          case "8":
+            this.$.ink.style.color = '#204469';
+          break;
+          case "9":
+          case "10":
+            this.$.ink.style.color = '#486f79';
+          break;
+       }
+      },
+
+      regularTap: function() {
+        this.$.ink.downAction();
+        this.$.ink.holdDown=!this.$.ink.holdDown;
+        this.active=this.$.ink.holdDown;
+      },
+
+      playSample: function() {
+        songList[this.identifier].stop();
+        songList[this.identifier].play();      
+      }
+
+    });
+
+  </script>
+
+</dom-module>

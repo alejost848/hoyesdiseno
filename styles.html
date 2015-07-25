@@ -20,68 +20,6 @@
 		font-weight: normal;
 	}
 
-	puzzle-element {
-		color: #fff;
-		margin-left: -30px;
-		width: 130px;
-		height: 130px;
-	}
-
-
-	.fix_thing{
-		margin-left: -20px;
-	}
-
-	#\31 {			
-		--puzzle-element-ink-color: #7365f1;
-	}
-
-	#\32 {			
-		--puzzle-element-ink-color: #7365f1;
-	}
-
-	#\33 {			
-		--puzzle-element-ink-color: #7365f1;
-	}
-
-	#\34 {			
-		--puzzle-element-ink-color: #206573;
-	}
-
-	#\35 {			
-		--puzzle-element-ink-color: #206573;
-	}
-
-	#\36 {			
-		--puzzle-element-ink-color: #206573;
-	}
-
-	#\37 {			
-		--puzzle-element-ink-color: #204469;
-	}
-
-	#\38 {			
-		--puzzle-element-ink-color: #204469;
-	}
-
-	#\39 {			
-		--puzzle-element-ink-color: #204469;
-	}
-
-	#\31\30 {			
-		--puzzle-element-ink-color: #486f79;
-	}
-
-	#\31\31 {			
-		--puzzle-element-ink-color: #486f79;
-	}
-
-	
-	puzzle-element::shadow #icon {
-		width: 100%;
-		height: 100%;
-	}
-
 	section{
 		position: absolute;
 		display: inline-block;
@@ -358,12 +296,11 @@
       left: 7%;
     }
 
-    puzzle-element.small, paper-icon-button.small {
+    paper-icon-button.small {
       color: #fff;
-      --puzzle-element-ink-color: #000000;
     }
 
-    puzzle-element.small::shadow #icon, paper-icon-button.small::shadow #icon {
+   	paper-icon-button.small::shadow #icon {
       width: 100px;
       height: 100px;
     }
@@ -460,11 +397,6 @@
 			padding: 32px;
 		}
 
-		puzzle-element {
-			width: 100px;
-			height: 100px;
-		}
-
 		.schedule_items{		
 			height: 240px;
 		}
@@ -515,22 +447,12 @@
 			padding: 20px;
 		}
 
-		puzzle-element {
-			width: 90px;
-			height: 90px;
-		}
-
 	}
 
 	@media (max-width: 1000px) {
 		.parrafo{
 			font-size: 16px;
 			line-height: 20px;
-		}
-
-		puzzle-element {
-			width: 80px;
-			height: 80px;
 		}
 	}
 
@@ -616,17 +538,7 @@
 			display: inline;
 		}
 
-		puzzle-element{
-			width: 90px;
-			height: 90px;
-			margin-left: -20px;
-		}
-
-		.fix_thing{
-			margin-left: 0px;
-		}
-
-		puzzle-element.small::shadow #icon, paper-icon-button.small::shadow #icon {
+		paper-icon-button.small::shadow #icon {
 			width: 75px;
 			height: 75px;
 		}
@@ -679,11 +591,6 @@
 		.parrafo{
 			font-size: 14px;
 			line-height: 18px;
-		}
-
-		puzzle-element{
-			width: 75px;
-			height: 75px;
 		}
 	}
 

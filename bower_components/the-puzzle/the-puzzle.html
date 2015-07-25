@@ -1,0 +1,131 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-behaviors/paper-button-behavior.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="the-icon.html">
+
+<script src="../../jquery.min.js"></script>
+
+<dom-module id="the-puzzle">
+
+  <style>
+    .section_container{
+      width: 80%;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 850px) {
+      .section_container{
+        width: 100%;      
+      }
+
+      #element_rows{
+        margin-top: 25px;
+      }
+    }
+  </style>
+
+  <template>
+    <div class="section_container layout horizontal center-center">         
+      <div id="element_rows" class="layout horizontal">
+        <div class="layout horizontal">
+          <template is="dom-repeat" items="{{puzzleRow1}}">
+            <the-icon identifier="{{item.id}}" icon="{{item.icon}}"></the-icon>
+          </template>
+        </div>
+        <div class="layout horizontal">
+          <template is="dom-repeat" items="{{puzzleRow2}}">
+            <the-icon identifier="{{item.id}}" icon="{{item.icon}}"></the-icon>
+          </template>
+        </div>
+        <div class="layout horizontal">
+          <template is="dom-repeat" items="{{puzzleRow3}}">
+            <the-icon identifier="{{item.id}}" icon="{{item.icon}}"></the-icon>
+          </template>
+        </div>
+        <div class="layout horizontal center-center">
+          <template is="dom-repeat" items="{{puzzleRow4}}">
+            <the-icon identifier="{{item.id}}" icon="{{item.icon}}"></the-icon>
+          </template>
+        </div>
+      </div>  
+    </div>
+  </template>
+
+  <script>
+  
+    Polymer({
+
+      is: 'the-puzzle',
+
+      properties: {
+        icon: {
+          type: String
+        },
+        identifier: {
+          type: String
+        },
+        active: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+      attached: function(){
+        var puzzleArray = [
+          {id: '0', icon: 'puzzle-icons:f1'},
+          {id: '1', icon: 'puzzle-icons:79'},
+          {id: '2', icon: 'puzzle-icons:64'},          
+          {id: '3', icon: 'puzzle-icons:6f'},
+          {id: '4', icon: 'puzzle-icons:6f'},
+          {id: '5', icon: 'puzzle-icons:73'},
+          {id: '6', icon: 'puzzle-icons:65'},
+          {id: '7', icon: 'puzzle-icons:68'},
+          {id: '8', icon: 'puzzle-icons:65'},
+          {id: '9', icon: 'puzzle-icons:69'},          
+          {id: '10', icon: 'puzzle-icons:73'}
+        ];
+
+        this.shuffle(puzzleArray);
+
+        var puzzleRow1 = [
+          puzzleArray[0],
+          puzzleArray[1],
+          puzzleArray[2]
+        ];  
+        this.puzzleRow1 = puzzleRow1;
+
+        var puzzleRow2 = [
+          puzzleArray[3],
+          puzzleArray[4],
+          puzzleArray[5]
+        ];  
+        this.puzzleRow2 = puzzleRow2;
+
+        var puzzleRow3 = [
+          puzzleArray[6],
+          puzzleArray[7],
+          puzzleArray[8]
+        ];  
+        this.puzzleRow3 = puzzleRow3;
+
+        var puzzleRow4 = [
+          puzzleArray[9],
+          puzzleArray[10]
+        ];  
+        this.puzzleRow4 = puzzleRow4;
+      },
+
+      shuffle: function(o) {
+        for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+        return o;
+      }
+
+    });
+
+  </script>
+
+</dom-module>
