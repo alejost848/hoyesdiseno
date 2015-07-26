@@ -3,40 +3,55 @@ var firstTrigger = true;
 var progressInterval;
 var progress = document.querySelector('paper-progress');
 
+var elements;
+
+var secretSequence = "731652910804";
+var userSequence = [];
+
 window.addEventListener('WebComponentsReady', function(e) {
+	elements = document.getElementsByTagName("the-icon");
     $("the-icon").on("tap", function (event) {
 		if(firstTrigger){
-			playSounds();
-			progressCount();
 			firstTrigger = false;
+			progressCount();			
+		}
+		if(this.active){
+			userSequence.push(this.identifier);			
+		}else{
+			var index = userSequence.indexOf(this.identifier);
+			if (index > -1) {
+			    userSequence.splice(index, 1);
+			}
+		}
+		if(userSequence.join('') === secretSequence){
+		    alert("YOU'RE WINNER");
 		}
 	});
 });
-
-
-
-function playSounds(id){
-	var elements = document.getElementsByTagName("the-icon");
-	for (var i=0; i<elements.length; i++) {
-	   if(elements[i].active){
-	   	elements[i].playSample();
-	   }
-	}
-}
 
 function progressCount(){
 	if(progress.value==9){
 		progress.value = progress.min;
 	}
-	if(progress.value==progress.min){
-		if(!firstTrigger){
-			playSounds();
+	var activeButtons = 0;
+	if(progress.value==progress.min){	
+		for (var i=0; i<elements.length; i++) {			
+			if(elements[i].active){
+				elements[i].playSample();
+				activeButtons++;
+			}
 		}
+		if(activeButtons==0){			
+			clearTimeout(progressInterval);
+			firstTrigger = true;
+		}
+	}
+	
+	if(!firstTrigger){
+		progressInterval = setTimeout(progressCount, frequency/8);
+		progress.value += 1;
 	}	
-	progressInterval = setTimeout(progressCount, frequency/8);
-	progress.value += 1;	
 }
-
 
 /*Toggles the drawer panel when in a different section than home*/
 var drawer_panel = document.getElementById("drawerPanel");
@@ -48,10 +63,8 @@ function toggleDrawer (argument){
 var app = document.querySelector("#app");
 app.selected_day = "1";
 
-
 window.onload=function(){	   
-    $('#loadingCard').fadeOut(1000);
-	
+    $('#loadingCard').fadeOut(1000);	
 };
 
 var footer_height = 136;
@@ -63,7 +76,6 @@ $( "#right_images" ).height(available_height);
 $( "#sidebar" ).height(available_height);
 $( "#event_bg" ).width(event_bg_width);
 $( "#event_bg" ).height(available_height);
-
 
 if(screen.width<=850){	
 	toggleDrawer();
@@ -129,8 +141,6 @@ $(window).resize(function() {
 	}
 });
 
-
-
 $("paper-item").click(function() {
   drawer_panel.togglePanel();
 });
@@ -154,8 +164,7 @@ function openDialog (element){
  	app.dialogContent = itemContent;
 
  	var dialogFrame = document.getElementById("dialog_schedule");
- 	dialogFrame.openDialog();
- 	
+ 	dialogFrame.openDialog(); 	
 }
 
 $("#signup_button").click(function() {
