@@ -8,15 +8,20 @@ var elements;
 var secretSequence = "731652910804";
 var userSequence = [];
 
+var urlString = "?s=";
+
 window.addEventListener('WebComponentsReady', function(e) {
 	elements = document.getElementsByTagName("the-icon");
     $("the-icon").on("tap", function (event) {
 		if(firstTrigger){
 			firstTrigger = false;
-			progressCount();			
+			progressCount();
+			//window.history.pushState("", "", urlString);		
 		}
 		if(this.active){
-			userSequence.push(this.identifier);			
+			userSequence.push(this.identifier);
+			urlString = urlString + this.identifier;
+			//window.history.pushState("", "", urlString);				
 		}else{
 			var index = userSequence.indexOf(this.identifier);
 			if (index > -1) {
@@ -26,6 +31,10 @@ window.addEventListener('WebComponentsReady', function(e) {
 		if(userSequence.join('') === secretSequence){
 		    alert("YOU'RE WINNER");
 		}
+
+		console.log(location.search);
+		//console.log(window.location.hash);
+		//window.history.pushState("", "", '?s=22');
 	});
 });
 
@@ -50,7 +59,7 @@ function progressCount(){
 	if(!firstTrigger){
 		progressInterval = setTimeout(progressCount, frequency/8);
 		progress.value += 1;
-	}	
+	}
 }
 
 /*Toggles the drawer panel when in a different section than home*/
@@ -166,12 +175,6 @@ function openDialog (element){
  	var dialogFrame = document.getElementById("dialog_schedule");
  	dialogFrame.openDialog(); 	
 }
-
-$("#signup_button").click(function() {
-	console.log('whatever');
-  $("#dialog_signup").openDialog();
-});
-
 
 function signup (){
 	var dialogSignup = document.getElementById("dialog_signup");
