@@ -1,23 +1,36 @@
 <style is="custom-style">
 
+	:root {
+	  --main-bg-color: #12121a;
+	  --accent-color: #fa3f7e;
+	}
+
 	*{
 	    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 	}
 	
 	html{
-		background-color: #272430;
+		background-color: var(--main-bg-color);
 	}
 
 	body {
 		font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		background-color: rgba(20, 20, 20, 0.2);
+		background-color: var(--main-bg-color);
 	}
-
 
 	h2, h3, h4, h5, h6 {
 		margin: 0;
 		padding: 0;
 		font-weight: normal;
+	}
+
+	.no_decoration{
+		text-decoration: none;
+		color: var(--main-bg-color); 
+	}
+
+	#icon_view_agenda{
+		color: var(--accent-color);
 	}
 
 	section{
@@ -30,27 +43,40 @@
 		-webkit-transition: background-color 1s ease;
 	}
 
-	.medium {
+	#logo_drawer{
+		position: relative;
+		top:20px;
 		--iron-icon-height: 120px;
 		--iron-icon-width: 120px;
 	}
 
-	#logo_drawer{
-		position: relative;
-		top:20px;
+	#splash_logo{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 
+	#bg_splash{
+		z-index: -9;
+	}
 
 	.section_container{
-		width: 80%;
-		height: 100%;
+		width: 52%;
+		margin: 0 auto;
+		margin-top: 100px;
+	}
+
+	.section_container:nth-child(2){
+		width: 65%;
 		margin: 0 auto;
 	}
 
 	paper-progress {
 		position: absolute;			
 		width: 100%;
-		--paper-progress-active-color: #fa3f7e;
+		--paper-progress-active-color: var(--accent-color);
 	}
 
 	#app_toolbar{
@@ -61,12 +87,12 @@
 		display: none;
 	}
 
-	#drawer_toolbar{
-		background-color: #fa3f7e;
-	}
-
 	#drawer{
 		display: none;
+	}
+
+	#drawer_toolbar{
+		background-color: var(--accent-color);
 	}
 
 	#loadingCard{
@@ -75,7 +101,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: #272430;
+		background-color: var(--main-bg-color);
 		z-index: 5;
 		overflow: hidden;
 	}
@@ -87,36 +113,20 @@
 		animation: playh 4.5s steps(89) infinite; 		    
 	}
 
-
 	@keyframes playh {
-		0% { background-position:   0%; }
+		0% { background-position: 0%; }
 		100% { background-position: 100%; }
-	}
-
-	.description_container{
-		width: 65%;
-		margin: 0 auto;	
-	}
-
-	.agenda_container{	
-		width: 65%;		
-		margin: 0 auto;	
-		margin-top: 100px;
-	}
-
-	.envivo_container{	
-		width: 55%;		
-		position: relative;	
-		margin: 0 auto;	
-		margin-top: 50px;
 	}
 
 	paper-material{
 		display: inline-block;
 		background: white;
-		box-sizing: border-box;		
-		padding: 40px;
+		box-sizing: border-box;
 		border-radius: 2px;
+	}
+
+	#event_description{			
+		padding: 40px;
 	}
 
 	/*Default typography styles*/
@@ -142,24 +152,20 @@
 		color: #5C5C5C;
 	}
 
-	#sidebar{
-		height: 100%;
-		width: 100%;
-	}
-
 	#event_bg{
 		position: absolute;
 		top: 0;
 		z-index: -1;
 	}
 
-	.bg_img{		
+	.bg_img{	
+		position: absolute;	
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
 		width: 100%;
 		height: 100%;
-		background-color: gray;
+		background-color: var(--main-bg-color);
 	}
 
 	.more_pictures{
@@ -171,8 +177,8 @@
 
 	#view_pics_button{
 		position: absolute;
-		top:50%;
-		left:50%;
+		top: 50%;
+		left: 50%;
 		width: 180px;
 		height: 124px;
 		cursor: pointer;
@@ -207,7 +213,7 @@
 
 	.overlay {
 	    position:absolute;
-	    background-color:#23212a;
+	    background-color: var(--main-bg-color);
 	    opacity: 0.6;
 	    top:0;
 	    left: 0;
@@ -231,15 +237,6 @@
 		width: 100%;
 	}
 
-	.schedule_tabs{
-		color: white;
-	}
-
-	.schedule_items{		
-		height: 300px;
-		overflow: scroll;
-	}
-
 	#ver_fotos_wrapper{
 		display: none;
 	}
@@ -254,7 +251,7 @@
 	}
 
 	#view_pics_button:hover #pictures_icon{
-		color: #fa3f7e;	
+		color: var(--accent-color);	
 		transition: color 0.75s ease;
 	}
 
@@ -275,7 +272,7 @@
 	}
 
 	paper-tabs{
-      --paper-tabs-selection-bar-color: #fa3f7e;
+      --paper-tabs-selection-bar-color: var(--accent-color);
     }
 
     paper-tab {    
@@ -286,7 +283,7 @@
     }
 
     #footer{
-      position: absolute;
+      position: fixed;
       width: 100%;
       bottom: 10px;
     }
@@ -296,40 +293,35 @@
       left: 7%;
     }
 
-    paper-icon-button.small {
+   	.small::shadow #icon {
+      width: 100px;
+      height: 100px;
       color: #fff;
     }
 
-   	paper-icon-button.small::shadow #icon {
-      width: 100px;
-      height: 100px;
-    }
-
-    #spacer{
+    .spacer{
       width: 15px;
     }
 
     #sections{
       position: relative; 
       right: 7%;
-      color: white;
       font-size: 15px;
-      font-weight: 400;
     }
 
-    paper-button[raised].colorful {
-      background: #fa3f7e;
+    .colorful {
+      background-color: var(--accent-color);
       color: #fff;
       margin-left: 15px;
     }
 
-    #dateHome{
+    .dateHome{
       color:white;
       font-weight: 400;
       font-size: 18px;
     }
 
-    #placeHome{
+    .placeHome{
       color:white;
       opacity: 0.6;
       font-weight: 300;
@@ -340,52 +332,55 @@
 		padding: 20px;
 	}
 
-	#coming_up{
-		margin-top: 10px;
-		font-weight: 300;
-	}
-
 	.workshop_box{
 		padding: 10px 20px;
 		border-bottom: 1px solid #ddd;
-	}
-
-	.workshop_box:last-child{
-		border-bottom: 0;
 	}
 
 	.workshop_time{
 		color: #555;
 	}
 
-	#workshop_wrapper{
-		padding: 0;
-		width: 90%;
-	}
-
 	.title_spacer{
-		color: #444;
-		font-weight: 300;
-		border-bottom: 1px solid #ddd;
-		padding: 12px 18px;
+		color: var(--accent-color);
 	}
 
-	#title_workshops{
-		padding-left: 18px;
-		font-weight: 300;
-	}
-
-	#coming_up_box{
-		width: 100%;
-		margin-right: 10px; 
+	.next_box{
+		width: 250px;
 		padding: 0;
 	}
 
-	#coming_next_box{
-		width: 100%;
-		padding: 0;
+	#spinner{
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 150px;
+		margin: 0 auto;
+		width: 50px;
+		height: 50px;
+
+		--paper-spinner-layer-1-color: #3ffa8e;
+		--paper-spinner-layer-2-color: #3fe2fa;
+		--paper-spinner-layer-3-color: var(--accent-color);
+		--paper-spinner-layer-4-color: #fad03f;		
 	}
 
+	#playground_btn{
+		--paper-fab-background: var(--accent-color);
+		color: white;
+		position: absolute;
+		left: 0;
+	    right: 0;
+	    margin: 0 auto;
+	    margin-top: 50px;
+	    width: 158px;
+	}
+
+	@media (max-width: 1700px) {
+		.next_box{
+			width: 200px;
+		}
+	}
 
 	@media (max-width: 1500px) {
 		.parrafo{
@@ -393,12 +388,8 @@
 			line-height: 22px;		
 		}
 
-		paper-material {
+		#event_description {
 			padding: 32px;
-		}
-
-		.schedule_items{		
-			height: 240px;
 		}
 
 		#now_playing{
@@ -418,11 +409,6 @@
 			padding: 15px;
 		}
 
-		.title_spacer{
-			padding: 8px 12px;
-			font-size: 18px;
-		}
-
 		.workshop_box{
 			padding: 8px 12px;
 		}
@@ -435,15 +421,18 @@
 			font-size: 14px;
 		}
 
-		#coming_up{
-			margin-top: 8px;
-		}
+		.next_box{
+			width: 150px;
+		}		
 
+		.section_container{
+			width: 60%;
+			margin-top: 30px;
+		}
 	}
 
 	@media (max-width: 1200px) {
-
-		paper-material {
+		#event_description {
 			padding: 20px;
 		}
 
@@ -458,11 +447,18 @@
 
 	@media (max-width: 850px) {
 		.section_container{
-			width: 100%;			
+			width: 95%;
+			margin-top: 100px;		
 		}
 
-		#element_rows{
-			margin-top: 25px;
+		#spinner{
+			width: 35px;
+			height: 35px;
+		}
+
+		.section_container:nth-child(2){
+			width: 95%;	
+			margin-top: 100px;	
 		}
 
 		#drawer{
@@ -482,17 +478,6 @@
 			-webkit-transform: scale(0.6);
 			transform: scale(0.6);
 		}
-
-		.description_container{
-			width: 95%;
-			margin-top: 75px;
-		}
-
-		.agenda_container{
-			width: 95%;
-			margin-top: 75px;
-		}
-
 
 		#sidebar{
 			display: none;
@@ -514,18 +499,13 @@
 			font-size: 20px;
 		}
 
-		.schedule_items{
-			height: 100%;
-		}
-
 		#ver_fotos_wrapper{
 			display: inline;
 			border-top: 1px solid #ddd;
 		}	
 
 		#ver_fotos{
-			color: #fa3f7e;
-			
+			color: var(--accent-color);			
 		}
 
 		#more_pics_text_mobile{
@@ -538,7 +518,7 @@
 			display: inline;
 		}
 
-		paper-icon-button.small::shadow #icon {
+		.small::shadow #icon {
 			width: 75px;
 			height: 75px;
 		}
@@ -558,11 +538,11 @@
 			display: none;
 		}
 
-		#dateHome{
+		.dateHome{
 			font-size: 14px;
 		}
 
-		#placeHome{
+		.placeHome{
 			font-size: 12px;
 		}
 
@@ -570,22 +550,10 @@
 			font-size: 10px;
 		}
 
-		#title_workshops{
-			padding-left: 0px;
-			margin-top: 10px;
-		}
-
-		.envivo_container{
-			width: 95%;
-			margin-top: 75px;
-		}
-
-		#workshop_wrapper{
+		.next_box{
 			width: 100%;
 		}
-
 	}
-
 
 	@media (max-width: 370px) {
 		.parrafo{
@@ -594,21 +562,10 @@
 		}
 	}
 
-
 	@media (max-height: 670px) and (min-width:1200px) {
-		.agenda_container{			
-			margin-top: 30px;
-		}
-
-		.envivo_container{
-			margin-top: 0px;
-		}
-
 		.titulo{
 			font-size: 35px;
 			margin: 0;
 		}
 	}
-
-
 </style>

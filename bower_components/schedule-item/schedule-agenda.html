@@ -1,0 +1,80 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="schedule-item.html">
+
+<dom-module id="schedule-agenda">
+  <style>
+    .schedule_items{    
+      height: 300px;
+      overflow: scroll;
+    }
+
+    @media (max-width: 1500px) {
+      .schedule_items{    
+        height: 240px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .schedule_items{
+        height: 100%;
+      }
+    }
+  </style>
+
+  <template>
+    <div class="schedule_items">
+      <template is="dom-repeat" items="{{agendaItems}}">
+        <schedule-item onclick="openDialog(this)" icon="{{item.icon}}" title="{{item.title}}" time="{{item.time}}" content="{{item.content}}" streaming="{{item.streaming}}"></schedule-item>
+      </template>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'schedule-agenda',
+
+      properties: {
+        day: {
+          type: String
+        }
+      },
+
+      attached: function(){
+        if(this.day=="1"){
+           var agendaItems = [
+            {icon: 'content-paste', title: 'Inscripciones', time: '7:30 AM - 8:30 AM', content: '', streaming:'false'},
+            {icon: 'schedule', title: 'Inauguración', time: '8:30 AM - 9:00 AM', content: '', streaming:'false'},
+            {icon: '', title: 'Conferencia 1', time: '9:00 AM - 10:30 AM', content: '', streaming:'true'},
+            {icon: '', title: 'Conferencia 2', time: '11:00 AM - 12:30 AM', content: '', streaming:'true'},
+            {icon: 'schedule', title: 'Almuerzo', time: '12:30 AM - 2:00 PM', content: '', streaming:'false'},
+            {icon: '', title: 'Conferencia 3', time: '2:00 PM - 3:30 PM', content: '', streaming:'true'},
+            {icon: 'hardware:desktop-mac', title: 'Taller 1', time: '4:00 PM - 6:00 PM', content: '', streaming:'true'},
+            {icon: 'hardware:desktop-mac', title: 'Taller 2', time: '4:00 PM - 6:00 PM', content: '', streaming:'true'},
+            {icon: 'hardware:desktop-mac', title: 'Taller 3', time: '4:00 PM - 6:00 PM', content: '', streaming:'true'}
+          ];
+        }
+
+        if(this.day=="2"){
+          var agendaItems = [
+            {icon: 'content-paste', title: 'Inscripciones', time: '7:30 AM - 8:30 AM', content: '', streaming:'false'},
+            {icon: 'schedule', title: 'Entrada', time: '8:30 AM - 9:00 AM', content: '', streaming:'false'},
+            {icon: '', title: 'Conferencia 4', time: '9:00 AM - 10:30 AM', content: '', streaming:'true'},
+            {icon: '', title: 'Conferencia 5', time: '11:00 AM - 12:30 AM', content: '', streaming:'true'},
+            {icon: 'schedule', title: 'Almuerzo', time: '12:30 AM - 2:00 PM', content: '', streaming:'false'},
+            {icon: '', title: 'Conferencia 6', time: '2:00 PM - 3:30 PM', content: '', streaming:'true'},
+            {icon: 'hardware:desktop-mac', title: 'Taller 4', time: '4:00 PM - 6:00 PM', content: '', streaming:'true'},
+            {icon: 'hardware:desktop-mac', title: 'Taller 5', time: '4:00 PM - 6:00 PM', content: '', streaming:'true'},
+            {icon: 'hardware:desktop-mac', title: 'Taller 6', time: '4:00 PM - 6:00 PM', content: '', streaming:'true'}
+          ];
+        }
+
+        this.agendaItems = agendaItems;
+      }
+
+    });
+  </script>
+</dom-module>

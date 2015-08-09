@@ -17,6 +17,7 @@
     "polymer": "Polymer/polymer#1.0.0",
     "iron-elements": "PolymerElements/iron-elements#~1.0.0",
     "paper-elements": "PolymerElements/paper-elements#~1.0.1",
-    "more-routing": "PolymerLabs/more-routing#~1.0.0"
+    "more-routing": "PolymerLabs/more-routing#~1.0.0",
+    "platinum-sw": "PolymerElements/platinum-sw#~1.2.0"
   }
 }

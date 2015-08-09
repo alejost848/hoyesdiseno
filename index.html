@@ -59,25 +59,93 @@
 			</paper-toolbar>
 			
 			<a href="#!/"><iron-icon icon="puzzle-icons:logo" id="logo_top"></iron-icon></a>
-				
+			<iron-image id="bg_splash" src="bg3.png" class="bg_img" preload fade sizing="cover"></iron-image>
+			
 			<more-route-selector>
 				<iron-pages>
-				 	<section route="inicio">	
-				 		<custom-ripple id="ripple_bg"></custom-ripple>									
+				 	<section route="inicio">
+				 		<div id="splash_logo" class="layout vertical center-center">
+				 			<iron-image src="logo_splash.png" preload fade></iron-image>
+				 			<paper-button id="playground_btn" onclick="goLink('#!/play')" class="colorful">
+			 					<div class="layout horizontal center-center">
+				 					<iron-icon icon="av:games"></iron-icon>
+				 					<div class="spacer"></div>
+				 					<div>PLAYGROUND</div>
+			 					</div>
+				 			</paper-button>
+				 		</div>
+
+				 	</section>
+
+				 	<section route="playground">
+				 		<custom-ripple></custom-ripple>									
 						<paper-progress min="1" max="9"></paper-progress>	
 						<the-puzzle></the-puzzle>
+				 	</section>
+
+				 	<section route="envivo">
+				 		<div class="section_container">
+				 			<h1 class="titulo paper-font-display2">En vivo</h1>	
+				 			<div id="envivo_wrapper" class="layout horizontal">							 	
+						 		<paper-material id="video_wrapper" class="agenda_box flex" elevation="1">
+						 			<template is="dom-bind" id="app4">
+								 		<google-youtube id="live_video" video-id="kPhbqLRDGpI" fluid autoplay="0" rel="0" showinfo="0" currenttime="{{currentTime}}" duration="{{duration}}">
+										</google-youtube>
+										<paper-progress id="conference_progress"></paper-progress>
+									</template>
+									<div id="envivo_info" class="layout horizontal">
+										<div class="layout vertical">
+											<h3 id="now_playing" class="paper-font-headline">Conferencia 1</h3>
+			     							<h4 id="now_playing_artist" class="paper-font-subhead">Gabe Newell</h4>
+			     						</div>
+			     						<div class="flex"></div>
+			     						<div class="layout horizontal end">
+	     									<h5 id="now_playing_time" class="workshop_time paper-font-subhead">9:00 AM - 10:30 AM</h5>
+	     								</div>
+	     							</div>
+	     						</paper-material>
+
+	     						<div class="spacer"></div>
+	     						<div class="divider"></div>	
+						 		
+						 		<div class="layout vertical">
+						 			<paper-material class="next_box" elevation="1">	
+										<div class="layout vertical workshop_box">
+											<h2 class="title_spacer paper-font-caption">A continuación</h2>	
+						 					<h3 class="activity_title paper-font-title">Conferencia 2</h3>
+			     							<h4 class="activity_artist paper-font-subhead">Hideo Kojima</h4>
+		     								<h5 class="workshop_time paper-font-caption">10:30 AM</h5>
+		     							</div>     					
+		     							<div class="layout vertical workshop_box">
+		     								<h2 class="title_spacer paper-font-caption">Más tarde</h2>
+						 					<h3 class="activity_title paper-font-title">Conferencia 3</h3>
+			     							<h4 class="activity_artist paper-font-subhead">Naughty Dog</h4>
+		     								<h5 class="workshop_time paper-font-caption">2:00 PM</h5>
+		     							</div>
+						 				
+						 				<a class="no_decoration" href="#!/agenda">
+						 					<div class="layout horizontal workshop_box">
+												<h3 class="activity_title paper-font-subhead">Ver agenda</h3>
+												<div class="flex"></div>
+							 					<iron-icon id="icon_view_agenda" icon="arrow-forward"></iron-icon>
+			     							</div>
+			     						</a>
+	     							</paper-material>							 		
+							 	</div>							 	
+						 	</div>
+						 </div>				 		
 				 	</section>
 
 				 	<section route="evento">		 	
 						<div id="evento_container" class="layout horizontal center">
 							<div id="event_info" class="flex-3">
 								<div id="event_bg">
-									<iron-image class="bg_img" sizing="cover" preload fade src="http://lorempixel.com/1920/1080" style="background-color: #272430;"></iron-image>
+									<iron-image class="bg_img" sizing="cover" preload fade src="http://lorempixel.com/1920/1080"></iron-image>
 									<div class="overlay"></div>
 								</div>
-								<div class="description_container">
+								<div class="section_container">
 							 		<h1 class="titulo paper-font-display2">Evento</h1>			 		
-									<paper-material elevation="1">
+									<paper-material id="event_description" elevation="1">
 										<div class="parrafo paper-font-headline">
 										Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.
 										<br>
@@ -116,161 +184,44 @@
 							</div>
 						</div>
 				 	</section>
+
 				 	<section route="agenda"> 	
-						<div class="section_container layout horizontal">
-							<div class="agenda_container">
-						 		<h1 class="titulo paper-font-display2">Agenda</h1>	
+						<div class="section_container">
+					 		<h1 class="titulo paper-font-display2">Agenda</h1>
+				 			<template is="dom-bind" id="app">
+						 		<paper-tabs noink attr-for-selected="day" selected="{{selected_day}}">
+									<paper-tab day="1">DÍA 1</paper-tab>
+									<paper-tab day="2">DÍA 2</paper-tab>					
+								</paper-tabs>							
 
-					 			<template is="dom-bind" id="app">
-							 		<paper-tabs class="schedule_tabs" noink attr-for-selected="day" selected="{{selected_day}}">
-										<paper-tab day="1">DÍA 1</paper-tab>
-										<paper-tab day="2">DÍA 2</paper-tab>					
-									</paper-tabs>								
+								<div class="divider"></div>
 
-									<div class="divider"></div>
-									<iron-pages attr-for-selected="day" selected="{{selected_day}}">
-										<div day="1">
-											<paper-material class="agenda_box" elevation="1">	
-												<div class="day_title paper-font-headline">Octubre 22</div>
-												<div class="schedule_items">
-													<schedule-item onclick="openDialog(this)" icon="content-paste" title="Inscripciones" time="7:30 AM - 8:30 AM" content="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-													tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-													quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-													consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-													cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-													proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></schedule-item>
-													<schedule-item onclick="openDialog(this)" icon="schedule" title="Apertura" time="8:30 AM - 9:00 AM"></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Conferencia 1" time="9:00 AM - 10:30 AM" streaming></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Conferencia 2" time="11:00 AM - 12:30 AM" streaming></schedule-item>
-													<schedule-item onclick="openDialog(this)" icon="schedule" title="Almuerzo" time="12:30 AM - 2:00 PM"></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Conferencia 3" time="2:00 PM - 3:30 PM" streaming></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Taller 1" icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Taller 2" icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Taller 3" icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming></schedule-item>
-												</div>
-										 	</paper-material>									
-										</div>
-										<div day="2">
-											<paper-material class="agenda_box" elevation="1">
-												<div class="day_title paper-font-headline">Octubre 23</div>
-												<div class="schedule_items">
-													<schedule-item onclick="openDialog(this)" icon="content-paste" title="Inscripciones" time="7:30 AM - 8:30 AM" content="Content 1"></schedule-item>
-													<schedule-item onclick="openDialog(this)" icon="schedule" title="Introducción" time="8:30 AM - 9:00 AM"></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Conferencia 4" time="9:00 AM - 10:30 AM" streaming></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Conferencia 5" time="11:00 AM - 12:30 AM" streaming></schedule-item>
-													<schedule-item onclick="openDialog(this)" icon="schedule" title="Almuerzo" time="12:30 AM - 2:00 PM"></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Conferencia 6" time="2:00 PM - 3:30 PM" streaming></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Taller 4" icon="hardware:desktop-mac" time="4:00 PM - 6:00 PM" streaming></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Taller 5" time="4:00 PM - 6:00 PM" streaming></schedule-item>
-													<schedule-item onclick="openDialog(this)" title="Taller 6" time="4:00 PM - 6:00 PM" streaming></schedule-item>
-												</div>		 	 
-										 	</paper-material>
-										</div>
-									</iron-pages>
-								</template>
-							 </div>		
+								<iron-pages attr-for-selected="day" selected="{{selected_day}}">
+									<div day="1">
+										<paper-material class="agenda_box" elevation="1">	
+											<div class="day_title paper-font-headline">Octubre 15</div>
+											<schedule-agenda day="1"></schedule-agenda>
+									 	</paper-material>									
+									</div>
+									<div day="2">
+										<paper-material class="agenda_box" elevation="1">
+											<div class="day_title paper-font-headline">Octubre 16</div>
+											<schedule-agenda day="2"></schedule-agenda>	 
+									 	</paper-material>
+									</div>
+								</iron-pages>
+							</template>
 						</div>
 				 	</section>
 
 				 	<section route="contacto">
-					 	<div class="section_container layout horizontal">
-							<div class="agenda_container">
-								<h1 class="titulo paper-font-display2">Contacto</h1>	
-					 			<paper-material class="agenda_box" elevation="1">							
-									<div>En proceso</div>
-							 	</paper-material>
-					 		</div>
+					 	<div class="section_container">							
+							<h1 class="titulo paper-font-display2">Contacto</h1>	
+				 			<paper-material class="agenda_box" elevation="1">							
+								<div>En proceso</div>
+						 	</paper-material>					 		
 					 	</div>
-				 	</section>
-
-				 	<section route="envivo">
-				 		<div class="envivo_container">
-				 			<h1 class="titulo paper-font-display2">En vivo</h1>	
-				 			<div id="envivo_wrapper" class="layout horizontal">
-							 	<div class="flex-2">
-							 		<paper-material id="video_wrapper" class="agenda_box" elevation="1">
-							 			<template is="dom-bind" id="app4">
-									 		<google-youtube id="live_video" video-id="kPhbqLRDGpI" fluid autoplay="0" rel="0" showinfo="0" currenttime="{{currentTime}}" duration="{{duration}}">
-											</google-youtube>
-											<paper-progress id="conference_progress"></paper-progress>
-										</template>
-										<div id="envivo_info" class="layout horizontal">
-											<div class="layout vertical">
-												<h3 id="now_playing" class="paper-font-headline">Conferencia 1</h3>
-				     							<h4 id="now_playing_artist" class="paper-font-subhead">Gabe Newell</h4>
-				     						</div>
-				     						<div class="flex"></div>
-				     						<div class="layout horizontal end">
-		     									<h5 id="now_playing_time" class="workshop_time paper-font-subhead">9:00 AM - 10:30 AM</h5>
-		     								</div>
-		     							</div>
-		     						</paper-material>
-
-		     						<div id="coming_up" class="layout horizontal">
-		     							<div class="flex">				     					
-											<div class="layout horizontal">											<paper-material id="coming_up_box" elevation="1">
-													<h2 class="title_spacer paper-font-title">A continuación</h2>
-								 					<div class="layout vertical workshop_box">
-									 					<h3 class="activity_title paper-font-title">Conferencia 2</h3>
-						     							<h4 class="activity_artist paper-font-subhead">Hideo Kojima</h4>
-					     								<h5 class="workshop_time paper-font-caption">10:30 AM - 12:00 PM</h5>
-					     							</div>		     						
-				     							</paper-material>					     					
-				     						</div>
-				     					</div>
-
-				     					<div class="flex">				     							
-											<div class="layout horizontal">
-					     						<paper-material id="coming_next_box" elevation="1">
-					     							<h2 class="title_spacer paper-font-title">Más tarde</h2>
-								 					<div class="layout vertical workshop_box">
-									 					<h3 class="activity_title paper-font-title">Conferencia 3</h3>
-						     							<h4 class="activity_artist paper-font-subhead">Naughty Dog</h4>
-					     								<h5 class="workshop_time paper-font-caption">10:30 AM - 12:00 PM</h5>
-					     							</div>		     						
-				     							</paper-material>
-				     						</div>
-				     					</div>
-			     					</div>
-						 		</div>
-						 		<div id="title_workshops" class="flex">					 				
-					 				<paper-material id="workshop_wrapper" elevation="1">
-					 					<h3 class="title_spacer paper-font-title">Talleres de hoy</h3>
-					 					<div class="layout horizontal workshop_box">
-					 						<div class="layout vertical">
-							 					<h3 class="activity_title paper-font-title">Taller 1</h3>
-				     							<h4 class="activity_artist paper-font-subhead">Naughty Dog</h4>
-				     						</div>
-				     						<div class="flex"></div>
-				     						<div class="layout horizontal end">
-			     								<h5 class="workshop_time paper-font-caption">4:00 PM - 6:00 PM</h5>
-			     							</div>
-			     						</div>
-					 					<div class="layout horizontal workshop_box">
-					 						<div class="layout vertical">
-							 					<h3 class="activity_title paper-font-title">Taller 2</h3>
-				     							<h4 class="activity_artist paper-font-subhead">Shigeru Miyamoto</h4>
-				     						</div>
-				     						<div class="flex"></div>
-				     						<div class="layout horizontal end">
-			     								<h5 class="workshop_time paper-font-caption">4:00 PM - 6:00 PM</h5>
-			     							</div>
-			     						</div>
-					 					<div class="layout horizontal workshop_box">
-					 						<div class="layout vertical">
-							 					<h3 class="activity_title paper-font-title">Taller 3</h3>
-				     							<h4 class="activity_artist paper-font-subhead">Hideo Kojima</h4>
-				     						</div>
-				     						<div class="flex"></div>
-				     						<div class="layout horizontal end">
-			     								<h5 class="workshop_time paper-font-caption">4:00 PM - 6:00 PM</h5>
-			     							</div>
-			     						</div>
-	     							</paper-material>
-						 		</div>
-						 	</div>
-					 	</div>				 		
-				 	</section>
+				 	</section>				 	
 				</iron-pages>
 			</more-route-selector>	
 			
@@ -279,18 +230,18 @@
 		            <a href="#!/">
 		              <paper-icon-button route="inicio" icon="puzzle-icons:logo" title="Hoy es Diseño" class="small"></paper-icon-button>
 		            </a>
-		            <div id="spacer"></div>
+		            <div class="spacer"></div>
 		            <div class="flex"></div>
 		            <div id="location_info" class="left_text vertical layout">
-		              <div id="dateHome">Octubre 22 - 23, 2015</div>
-		              <div id="placeHome">Universidad Icesi</div>   
+		              <div class="dateHome">Octubre 15 - 16, 2015</div>
+		              <div class="placeHome">Universidad Icesi</div>   
 		            </div>          
 		        </div>
 		        <div class="flex"></div>
 		        <div id="sections" class="horizontal layout center">
 					<more-route-selector> 
-						<paper-tabs noink>		
-							<paper-tab route="envivo">EN VIVO</paper-tab>					
+						<paper-tabs noink>
+							<paper-tab route="envivo">EN VIVO</paper-tab>			
 							<paper-tab route="evento">EVENTO</paper-tab>							
 							<paper-tab route="agenda">AGENDA</paper-tab>
 							<paper-tab route="contacto">CONTACTO</paper-tab>            
@@ -302,12 +253,12 @@
 
 		</paper-header-panel>
 
-		<paper-header-panel drawer id="drawer">
+		<paper-header-panel drawer mode="scroll" id="drawer">
 			<paper-toolbar id="drawer_toolbar" class="tall">
-				<iron-icon id="logo_drawer" icon="puzzle-icons:logo" title="Hoy es Diseño" class="medium"></iron-icon>
+				<iron-icon id="logo_drawer" icon="puzzle-icons:logo" title="Hoy es Diseño"></iron-icon>
 				<div class="left_text vertical layout bottom">
-		    		<div id="dateHome">Octubre 22 - 23, 2015</div>
-		    		<div id="placeHome">Universidad Icesi</div>		
+		    		<div class="dateHome">Octubre 15 - 16, 2015</div>
+		    		<div class="placeHome">Universidad Icesi</div>		
 	    		</div>	
 			</paper-toolbar>
 			<more-route-selector>
@@ -328,13 +279,25 @@
 		<dialog-hed id="dialog_schedule" title="{{dialogTitle}}" time="{{dialogTime}}" content="{{dialogContent}}"></dialog-hed>
 	</template>
 
-	<dialog-signup id="dialog_signup"></dialog-signup>
-
-	<script src="app.js"></script>
+	<dialog-signup id="dialog_signup"></dialog-signup>	
 
 	<div id="loadingCard" class="layout vertical center-center">
-		<iron-image id="logoHED" class="full_width" preload fade src="logo.png"></iron-image>
-	</div>	
+		<iron-image id="logoHED" class="full_width" preload fade></iron-image>
+		<paper-spinner id="spinner" active></paper-spinner>
+	</div>
+
+	<paper-toast id="caching-complete"
+                 duration="12000"
+                 text="Esta app funcionará offline">
+    </paper-toast>
+
+	<template is="dom-bind" id="app5">
+		<platinum-sw-register auto-register on-service-worker-installed="displayInstalledToast">
+		  <platinum-sw-cache></platinum-sw-cache>
+		</platinum-sw-register>
+	</template>
+
+	<script src="app.js"></script>
 
 </body>
 </html>
