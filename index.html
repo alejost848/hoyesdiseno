@@ -44,7 +44,7 @@
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="http://alejost848.github.io/hoyesdiseno/">
 	<meta property="og:description" content="Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.">
-	<meta property="og:image" content="http://alejost848.github.io/hoyesdiseno/fb-cover.png">
+	<meta property="og:image" content="images/fb-cover.png">
 
 	<!-- Magic stuff -->
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
@@ -59,13 +59,13 @@
 			</paper-toolbar>
 			
 			<a href="#!/"><iron-icon icon="puzzle-icons:logo" id="logo_top"></iron-icon></a>
-			<iron-image id="bg_splash" src="bg3.png" class="bg_img" preload fade sizing="cover"></iron-image>
+			<iron-image id="bg_splash" src="images/bg.png" class="bg_img" preload fade sizing="cover"></iron-image>
 			
 			<more-route-selector>
 				<iron-pages>
 				 	<section route="inicio">
 				 		<div id="splash_logo" class="layout vertical center-center">
-				 			<iron-image src="logo_splash.png" preload fade></iron-image>
+				 			<iron-image src="images/logo_splash.png" preload fade></iron-image>
 				 			<paper-button id="playground_btn" onclick="goLink('#!/play')" class="colorful">
 			 					<div class="layout horizontal center-center">
 				 					<iron-icon icon="av:games"></iron-icon>
@@ -78,7 +78,7 @@
 				 	</section>
 
 				 	<section route="playground">
-				 		<custom-ripple></custom-ripple>									
+				 		<custom-ripple></custom-ripple>								
 						<paper-progress min="1" max="9"></paper-progress>	
 						<the-puzzle></the-puzzle>
 				 	</section>
@@ -140,7 +140,7 @@
 						<div id="evento_container" class="layout horizontal center">
 							<div id="event_info" class="flex-3">
 								<div id="event_bg">
-									<iron-image class="bg_img" sizing="cover" preload fade src="http://lorempixel.com/1920/1080"></iron-image>
+									<iron-image class="bg_img" sizing="cover" preload fade src="images/pic2.jpg"></iron-image>
 									<div class="overlay"></div>
 								</div>
 								<div class="section_container">
@@ -167,12 +167,12 @@
 								<div id="sidebar">
 									<template is="dom-bind" id="app3">
 								 		<div class="more_pictures">
-								 			<iron-image class="full_width" sizing="cover" placeholder="{{pholder1}}" preload fade src="http://lorempixel.com/600/600"></iron-image>
+								 			<iron-image class="full_width" sizing="cover" placeholder="{{pholder1}}" preload fade src="images/pic1.jpg"></iron-image>
 								 			<div class="overlay"></div>
 								 		</div>
 								
 								 		<div class="more_pictures">
-								 			<iron-image class="full_width" sizing="cover" style="background-color: #1f1d25;" preload fade src="http://lorempixel.com/601/601"></iron-image>	
+								 			<iron-image class="full_width" sizing="cover" style="background-color: #1f1d25;" preload fade src="images/pic3.jpg"></iron-image>	
 								 			<div id="view_pics_button" class="layout vertical">		
 												<iron-icon id="pictures_icon" icon="image:photo-library"></iron-icon>
 												<div id="more_pics_text">Ver fotos de la edición anterior</div>	
