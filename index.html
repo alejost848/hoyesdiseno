@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Hoy es Diseño</title>
+
 	<!-- Magic stuff -->
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 	<script src="jquery.min.js"></script>
@@ -10,6 +11,7 @@
 	
 	<meta name="description" content="Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.">
 	<meta name="generator" content="Hoy es Diseño">
+
 	<!-- No zooming! -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
@@ -62,7 +64,7 @@
 	<paper-drawer-panel id="drawerPanel" force-narrow disable-swipe responsiveWidth="850" unresolved>
 		<paper-header-panel mode="scroll" main>
 			<paper-toolbar id="app_toolbar">
-				<paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>				
+				<paper-icon-button icon="menu" id="menu_button" paper-drawer-toggle></paper-icon-button>
 			</paper-toolbar>
 			
 			<a href="#!/"><iron-icon icon="puzzle-icons:logo" id="logo_top"></iron-icon></a>
@@ -81,13 +83,24 @@
 			 					</div>
 				 			</paper-button>
 				 		</div>
-
 				 	</section>
 
 				 	<section route="playground">
 				 		<custom-ripple></custom-ripple>								
-						<paper-progress min="1" max="9"></paper-progress>	
+						<paper-progress min="1" max="9"></paper-progress>
+						<paper-toolbar id="playground_toolbar">
+							<paper-icon-button icon="arrow-back" id="back_arrow" onclick="goLink('#!/')"></paper-icon-button>
+						</paper-toolbar>
 						<the-puzzle></the-puzzle>
+						<div id="playground_buttons_top" class="layout vertical">
+							<paper-fab mini icon="info-outline" onclick="playgroundInfo()"></paper-fab>
+							<div class="divider"></div>
+							<paper-fab mini icon="social:share"></paper-fab>
+						</div>
+						<div id="playground_buttons_bottom" class="layout vertical">
+							<paper-fab mini icon="av:stop" onclick="stopSamples()"></paper-fab>
+						</div>
+						
 				 	</section>
 
 				 	<section route="envivo">
@@ -202,6 +215,7 @@
 								</paper-tabs>							
 
 								<div class="divider"></div>
+								<div class="divider"></div>
 
 								<iron-pages attr-for-selected="day" selected="{{selected_day}}">
 									<div day="1">
@@ -233,12 +247,8 @@
 			</more-route-selector>	
 			
 		    <div id="footer" class="horizontal layout center">            
-		        <div id="left_info_wrapper" class="horizontal layout center">
-		            <a href="#!/">
-		              <paper-icon-button route="inicio" icon="puzzle-icons:logo" title="Hoy es Diseño" class="small"></paper-icon-button>
-		            </a>
-		            <div class="spacer"></div>
-		            <div class="flex"></div>
+		        <div id="left_info_wrapper" class="horizontal layout center-center">		           
+		            <paper-icon-button route="inicio" icon="puzzle-icons:logo" title="Hoy es Diseño" class="small" onclick="goLink('#!/')"></paper-icon-button>		            
 		            <div id="location_info" class="left_text vertical layout">
 		              <div class="dateHome">Octubre 15 - 16, 2015</div>
 		              <div class="placeHome">Universidad Icesi</div>   
@@ -286,7 +296,9 @@
 		<dialog-hed id="dialog_schedule" title="{{dialogTitle}}" time="{{dialogTime}}" content="{{dialogContent}}"></dialog-hed>
 	</template>
 
-	<dialog-signup id="dialog_signup"></dialog-signup>		
+	<dialog-signup id="dialog_signup"></dialog-signup>
+	
+	<dialog-playground id="dialog_playground"></dialog-playground>
 
 	<paper-toast id="caching-complete"
                  duration="12000"

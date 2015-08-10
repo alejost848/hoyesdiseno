@@ -84,7 +84,14 @@
       	right: 0;
       	left: 0;
 		background-color: transparent;
-		display: none;
+		display: none;		
+	}
+
+	#playground_toolbar{
+		position: absolute;
+      	right: 0;
+      	left: 0;
+		background-color: transparent;	
 	}
 
 	#drawer{
@@ -223,7 +230,7 @@
 	}
 
 	.divider{
-	    height:25px;
+	    height: 10px;
 	}
 
 	.day_title{
@@ -291,6 +298,10 @@
     #left_info_wrapper{
       position: relative;     
       left: 7%;
+    }
+
+    .small{
+    	margin-right: 10px;
     }
 
    	.small::shadow #icon {
@@ -374,6 +385,19 @@
 	    margin: 0 auto;
 	    margin-top: 50px;
 	    width: 158px;
+	}
+
+	#playground_buttons_top{
+		position: absolute;
+		right: 35px;
+		top: 35px;
+	}
+
+	#playground_buttons_bottom{
+		position: absolute;
+		right: 35px;
+		bottom: 35px;
+		display: none;
 	}
 
 	@media (max-width: 1700px) {
@@ -471,7 +495,7 @@
 
 		.left_text{
 			position: relative;
-			right: 0;
+			text-align: center;			
 		}
 
 		#logoHED {	    	
@@ -518,19 +542,19 @@
 			display: inline;
 		}
 
-		.small::shadow #icon {
-			width: 75px;
-			height: 75px;
+		.small{
+			display: none;
 		}
 
 		#left_info_wrapper{
 			width: 100%;
-			padding: 0px 10px;
-			left: 0%;
+			padding: 0;
+			left: 0;
+			right: 0;
 		}
 
 		#footer{
-			bottom: 0;
+			bottom: 40px;
 			display: none;
 		}
 
@@ -543,7 +567,7 @@
 		}
 
 		.placeHome{
-			font-size: 12px;
+			font-size: 14px;
 		}
 
 		#signup_button{
@@ -552,6 +576,10 @@
 
 		.next_box{
 			width: 100%;
+		}
+
+		#playground_buttons_top{
+			top: 70px;
 		}
 	}
 

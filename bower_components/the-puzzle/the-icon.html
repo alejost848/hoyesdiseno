@@ -175,6 +175,11 @@
         this.active=this.$.ink.holdDown;
       },
 
+      stopSound: function() {
+        songList[this.identifier].stop();
+        this.$.ink.holdDown=false;
+      },
+
       playSample: function() {
         songList[this.identifier].stop();
         songList[this.identifier].play();      
