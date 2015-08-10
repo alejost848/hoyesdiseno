@@ -3,6 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Hoy es Diseño</title>
+	<!-- Magic stuff -->
+	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="jquery.min.js"></script>
+	<link rel="import" href="elements.html">
+	
 	<meta name="description" content="Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.">
 	<meta name="generator" content="Hoy es Diseño">
 	<!-- No zooming! -->
@@ -45,13 +50,15 @@
 	<meta property="og:url" content="http://alejost848.github.io/hoyesdiseno/">
 	<meta property="og:description" content="Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.">
 	<meta property="og:image" content="images/fb-cover.png">
-
-	<!-- Magic stuff -->
-	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<script src="jquery.min.js"></script>
-	<link rel="import" href="elements.html">
+	
 </head>
 <body unresolved>
+
+	<div id="loadingCard" class="layout vertical center-center">
+		<iron-image id="logoHED" class="full_width" preload fade></iron-image>
+		<paper-spinner id="spinner" active></paper-spinner>
+	</div>
+
 	<paper-drawer-panel id="drawerPanel" force-narrow disable-swipe responsiveWidth="850" unresolved>
 		<paper-header-panel mode="scroll" main>
 			<paper-toolbar id="app_toolbar">
@@ -279,12 +286,7 @@
 		<dialog-hed id="dialog_schedule" title="{{dialogTitle}}" time="{{dialogTime}}" content="{{dialogContent}}"></dialog-hed>
 	</template>
 
-	<dialog-signup id="dialog_signup"></dialog-signup>	
-
-	<div id="loadingCard" class="layout vertical center-center">
-		<iron-image id="logoHED" class="full_width" preload fade></iron-image>
-		<paper-spinner id="spinner" active></paper-spinner>
-	</div>
+	<dialog-signup id="dialog_signup"></dialog-signup>		
 
 	<paper-toast id="caching-complete"
                  duration="12000"
