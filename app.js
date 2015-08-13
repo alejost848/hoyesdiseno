@@ -91,18 +91,33 @@ window.onload=function(){
 
 checkHash();
 
+
 $(window).on('hashchange', function(e){
    checkHash();
 });
 
 function checkHash (){
 	var currentHash = window.location.hash;
-	if (currentHash=="#!/play") {
-		$('#footer').css( "display", "none");
-		$('#menu_button').css( "display", "none");
+	
+	if($(window).width()<=850){
+		if ( currentHash==""||currentHash=="#!/" ) {	
+			$('#footer').css( "display", "flex");		
+		}else{
+			$('#footer').css( "display", "none");
+			if (currentHash=="#!/play") {			
+				$('#menu_button').css( "display", "none");
+			}else{
+				$('#menu_button').css( "display", "inline");
+			}
+		}
 	}else{
-		$('#footer').css( "display", "flex");
-		$('#menu_button').css( "display", "inline");
+		if (currentHash=="#!/play") {
+			$('#footer').css( "display", "none");
+			$('#menu_button').css( "display", "none");
+		}else{
+			$('#footer').css( "display", "flex");
+			$('#menu_button').css( "display", "inline");
+		}
 	}
 }
 
@@ -186,6 +201,7 @@ $(window).resize(function() {
 		$( "#envivo_wrapper" ).removeClass("vertical");
 		$( "#envivo_wrapper" ).addClass("horizontal");		
 	}
+	checkHash();
 });
 
 $("paper-item").on("tap",function(){
