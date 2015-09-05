@@ -63,52 +63,44 @@
   <script>
 
     var sound = new Howl({
-      src: ['madeon_samples/drum.1.1.mp3'],
+      src: ['zawette_samples/bass.mp3'],
       autoplay: false,
     });
     var sound2 = new Howl({
-      src: ['madeon_samples/sounds.1.1.mp3'],
+      src: ['zawette_samples/hihats.mp3'],
       autoplay: false,
     });
     var sound3 = new Howl({
-      src: ['madeon_samples/bass.1.1.mp3'],
+      src: ['zawette_samples/kick.mp3'],
       autoplay: false,
     });
     var sound4 = new Howl({
-      src: ['madeon_samples/drum.1.2.mp3'],
+      src: ['zawette_samples/lead.mp3'],
       autoplay: false,
     });
     var sound5 = new Howl({
-      src: ['madeon_samples/sounds.1.2.mp3'],
+      src: ['zawette_samples/rhodes.mp3'],
       autoplay: false,
     });
     var sound6 = new Howl({
-      src: ['madeon_samples/bass.1.2.mp3'],
+      src: ['zawette_samples/saxo.mp3'],
       autoplay: false,
     });
     var sound7 = new Howl({
-      src: ['madeon_samples/drum.1.3.mp3'],
+      src: ['zawette_samples/st1.mp3'],
       autoplay: false,
     });
     var sound8 = new Howl({
-      src: ['madeon_samples/sounds.1.3.mp3'],
+      src: ['zawette_samples/st2.mp3'],
       autoplay: false,
     });
     var sound9 = new Howl({
-      src: ['madeon_samples/bass.1.3.mp3'],
-      autoplay: false,
-    });
-    var sound10 = new Howl({
-      src: ['madeon_samples/drum.1.4.mp3'],
-      autoplay: false,
-    });
-    var sound11 = new Howl({
-      src: ['madeon_samples/sounds.1.4.mp3'],
+      src: ['zawette_samples/sthit.mp3'],
       autoplay: false,
     });
 
     var songList = [];
-    songList.push(sound,sound2,sound3,sound4,sound5,sound6,sound7,sound8,sound9,sound10,sound11);
+    songList.push(sound,sound2,sound3,sound4,sound5,sound6,sound7,sound8,sound9);
   
     Polymer({
 
@@ -158,12 +150,6 @@
             this.$.ink.style.color = '#7365f1';
           break;
           case "8":
-            this.$.ink.style.color = '#204469';
-          break;
-          case "9":
-            this.$.ink.style.color = '#204469';
-          break;
-          case "10":
             this.$.ink.style.color = '#204469';
           break;
        }

@@ -1,4 +1,4 @@
-var frequency = 4370;
+var frequency = 7550;
 var firstTrigger = true;
 var progressInterval;
 var progress = document.querySelector('paper-progress');
@@ -40,7 +40,7 @@ window.addEventListener('WebComponentsReady', function(e) {
 });
 
 function progressCount(){
-	if(progress.value==9){
+	if(progress.value==17){
 		progress.value = progress.min;
 	}
 	var activeButtons = 0;
@@ -59,7 +59,7 @@ function progressCount(){
 	}
 	
 	if(!firstTrigger){
-		progressInterval = setTimeout(progressCount, frequency/8);
+		progressInterval = setTimeout(progressCount, frequency/16);
 		progress.value += 1;
 	}
 }
