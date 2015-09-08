@@ -12,7 +12,7 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 	<!-- Chrome for Android theme color -->
-	<meta id="bar" name="theme-color" content="#211f29">
+	<meta id="bar" name="theme-color" content="#FF1744">
 
 	<!-- Web Application Manifest -->
 	<link rel="manifest" href="manifest.json">
@@ -53,7 +53,7 @@
 	<link rel="import" href="elements.html">
 	
 </head>
-<body unresolved>
+<body unresolved class="fullbleed">
 
 	<div id="loadingCard" class="layout vertical center-center">
 		<iron-image id="logoHED" class="full_width" preload fade></iron-image>
@@ -74,13 +74,13 @@
 				 	<section route="inicio">
 				 		<div id="splash_logo" class="layout vertical center-center">
 				 			<iron-image src="images/logo_splash.png" preload fade></iron-image>
-				 			<paper-button id="playground_btn" onclick="goLink('#!/play')" class="colorful">
+				 			<!-- <paper-button id="playground_btn" onclick="goLink('#!/play')" class="colorful">
 			 					<div class="layout horizontal center-center">
 				 					<iron-icon icon="av:games"></iron-icon>
 				 					<div class="spacer"></div>
 				 					<div>PLAYGROUND</div>
 			 					</div>
-				 			</paper-button>
+				 			</paper-button> -->
 				 		</div>
 				 	</section>
 
@@ -172,7 +172,7 @@
 										El evento está enfocado principalmente a la comunidad del diseño, sin embargo, es una importante ventana para que empresarios y personas de diversas disciplinas amplíen su percepción y conocimiento del tema para construir una verdadera cultura de diseño en la región.
 										</div>											 	 
 								 	
-								 		<div id="ver_fotos_wrapper">
+								 		<div id="ver_fotos_wrapper" onclick="viewPictures()">
 										 	<div id="ver_fotos" class="horizontal layout center">
 										 		<iron-icon icon="image:photo-library"></iron-icon>
 										 		<div id="more_pics_text_mobile">Ver fotos de la edición anterior</div>
@@ -192,7 +192,7 @@
 								
 								 		<div class="more_pictures">
 								 			<iron-image class="full_width" sizing="cover" style="background-color: #1f1d25;" preload fade src="images/pic3.jpg"></iron-image>	
-								 			<div id="view_pics_button" class="layout vertical">		
+								 			<div id="view_pics_button" class="layout vertical" onclick="viewPictures()">		
 												<iron-icon id="pictures_icon" icon="image:photo-library"></iron-icon>
 												<div id="more_pics_text">Ver fotos de la edición anterior</div>	
 											</div>	
@@ -257,13 +257,14 @@
 		        <div id="sections" class="horizontal layout center">
 					<more-route-selector> 
 						<paper-tabs noink>
-							<paper-tab route="envivo">EN VIVO</paper-tab>			
-							<paper-tab route="evento">EVENTO</paper-tab>							
-							<paper-tab route="agenda">AGENDA</paper-tab>
+							<!-- <paper-tab route="envivo">EN VIVO</paper-tab> -->			
+							<paper-tab route="evento">EVENTO</paper-tab>		
+							<paper-tab route="patrocinadores">PATROCINADORES</paper-tab>						
+							<!-- <paper-tab route="agenda">AGENDA</paper-tab> -->
 							<paper-tab route="contacto">CONTACTO</paper-tab>            
 						</paper-tabs>
 					</more-route-selector>
-					<paper-button id="signup_button" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button>
+					<!-- <paper-button id="signup_button" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button> -->
 		        </div>
 		    </div>   
 
@@ -280,13 +281,14 @@
 			<more-route-selector>
 				<paper-menu>
 					<paper-item route="inicio">Inicio</paper-item>
-					<paper-item route="envivo">En vivo</paper-item>
+					<!-- <paper-item route="envivo">En vivo</paper-item> -->
 					<paper-item route="evento">Evento</paper-item>
-					<paper-item route="agenda">Agenda</paper-item>
+					<paper-item route="patrocinadores">Patrocinadores</paper-item>
+					<!-- <paper-item route="agenda">Agenda</paper-item> -->
 					<paper-item route="contacto">Contacto</paper-item>
 				</paper-menu>
 			</more-route-selector>
-			<paper-button id="signup_button_mobile" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button>
+			<!-- <paper-button id="signup_button_mobile" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button> -->
 			
 		</paper-header-panel>
 	</paper-drawer-panel>
@@ -298,6 +300,8 @@
 	<dialog-signup id="dialog_signup"></dialog-signup>
 
 	<dialog-playground id="dialog_playground"></dialog-playground>
+
+	<dialog-pictures id="dialog_pictures"></dialog-pictures>
 
 	<paper-toast id="caching-complete"
                  duration="12000"

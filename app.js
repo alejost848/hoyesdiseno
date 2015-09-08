@@ -226,7 +226,7 @@ function openDialog (element){
  	
  	app.dialogTitle = itemTitle;
  	app.dialogTime = itemTime;
- 	app.dialogContent = itemContent;
+ 	app.dialogContent = itemContent; 	
 
  	var dialogFrame = document.getElementById("dialog_schedule");
  	dialogFrame.openDialog(); 	
@@ -242,6 +242,10 @@ function playgroundInfo (){
 	dialogPlayground.openDialog();
 }
 
+function viewPictures (){
+	var dialogPictures = document.getElementById("dialog_pictures");
+	dialogPictures.openDialog();
+}
 
 //Progress of the conference
 var app4 = document.querySelector("#app4");
