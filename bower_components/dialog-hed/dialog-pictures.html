@@ -39,8 +39,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     
     #picture{
       width: 100%;
-      height: 768px;
-      margin-bottom: 40px;
+      height: 100%;
     }
 
     #pictures_dialog{
@@ -62,11 +61,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     #signup_toolbar{
       background-color: var(--accent-color);
     }
-
-    iron-list{
-      margin-top: 100px;
-    }
-
 
     .day_title{
       padding: 10px 25px;
@@ -104,7 +98,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="divider"></div>
           <div class="paper-font-subhead">Fotos Hoy es Diseño 2015-1</div>
         </paper-toolbar>
-        <div class="spacer"></div>
         <template is="dom-repeat" items="{{picsArray}}">
           <iron-image id="picture" sizing="none" preload fade src="[[item.src]]"></iron-image>
         </template>
