@@ -296,14 +296,14 @@ function deliverIt(event) {
 		}
 	})
 	.done(function(response) {
-		alert('¡Tu mensaje ha sido enviado!'); // show success message
+		document.querySelector('#msgSent').show(); // show success message
 		$("#name").val(''); // reset field after successful submission
 		$("#email").val(''); // reset field after successful submission
 		$("#msg").val(''); // reset field after successful submission
 		grecaptcha.reset(); // reset captcha after successful submission
 	})
 	.fail(function(response) {
-		alert('Hubo un error al enviar tu mensaje.');
+		document.querySelector('#msgNotSent').show(); // show fail message
 	});
 	return false; // prevent page refresh
 }
@@ -322,7 +322,7 @@ function validateCaptcha() {
 	var resp = grecaptcha.getResponse();
 
 	if(resp.length == 0) {
-		alert('Debes completar la verificación reCaptcha antes de enviar tu mensaje.');
+		document.querySelector('#msgNoCaptcha').show(); // show captcha validation error message
 		return false;
 	}
 
