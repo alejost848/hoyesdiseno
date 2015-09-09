@@ -235,13 +235,29 @@
 				 	</section>
 
 				 	<section route="contacto">
-					 	<div class="section_container">							
-							<h1 class="titulo paper-font-display2">Contacto</h1>	
-				 			<paper-material class="agenda_box" elevation="1">							
-								<div>En proceso</div>
-						 	</paper-material>					 		
+					 	<div class="section_container">
+							<h1 class="titulo paper-font-display2">Contacto</h1>
+							<paper-material class="agenda_box" elevation="1">
+								<div id="contactForm" class="horizontal-section">
+									<h4>Déjanos un mensaje, te responderemos lo más pronto posible.</h4>
+									<form is="iron-form" id="formPost" method="post" action="/">
+										<paper-input id="name" name="name" label="Tu Nombre" required error-message="¡Ingresa tu nombre!"></paper-input>
+										<paper-input id="email" name="email" label="Tu Correo" required error-message="¡Ingresa tu correo electrónico!"></paper-input>
+										<paper-input id="msg" name="msg" label="Tu Mensaje" required error-message="¡Ingresa tu mensaje!"></paper-input>
+										<!-- <paper-textarea  id="msg" name="msg" label="Tu Mensaje" rows="3" max-rows="4" required></paper-textarea> -->
+										<br>
+										<div id="contactCaptcha">
+											<re-captcha sitekey="6LdPXQwTAAAAAI6y_M2bUAshj3E6tSl4IbIO99lV"></re-captcha>
+										</div>
+										<br>
+										<div class="sendBtnBox">
+											<paper-button id="submit_button" raised onclick="clickHandler(event)" class="colorful">Enviar</paper-button>
+										</div>
+									</form>
+								</div>
+						 	</paper-material>
 					 	</div>
-				 	</section>				 	
+				 	</section>			 	
 				</iron-pages>
 			</more-route-selector>	
 			

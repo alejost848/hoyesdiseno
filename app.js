@@ -264,6 +264,72 @@ function goLink (argument){
 	window.location.href = argument;
 }
 
+document.getElementById('formPost').addEventListener('iron-form-submit', deliverIt);
+
+function deliverIt(event) {
+	console.log(JSON.stringify(event.detail));
+	
+	var email = $("#email").val(); // get email field value
+	var name = $("#name").val(); // get name field value
+	var msg = $("#msg").val(); // get message field value
+	$.ajax(
+	{
+		type: "POST",
+		url: "https://mandrillapp.com/api/1.0/messages/send.json",
+		data: {
+			'key': 'lyGXnxHjBHdaVdfDRypDFw',
+			'message': {
+				'from_email': email,
+				'from_name': name,
+				'headers': {
+					'Reply-To': email
+				},
+				'subject': 'Mensaje de hoyesdiseno.com',
+				'text': msg,
+				'to': [
+				{
+					'email': 'hoyesdisenomercadeo@gmail.com',
+					'name': 'Hoy es Diseño',
+					'type': 'to'
+				}]
+			}
+		}
+	})
+	.done(function(response) {
+		alert('¡Tu mensaje ha sido enviado!'); // show success message
+		$("#name").val(''); // reset field after successful submission
+		$("#email").val(''); // reset field after successful submission
+		$("#msg").val(''); // reset field after successful submission
+		grecaptcha.reset(); // reset captcha after successful submission
+	})
+	.fail(function(response) {
+		alert('Hubo un error al enviar tu mensaje.');
+	});
+	return false; // prevent page refresh
+}
+
+function clickHandler(event) {
+	document.getElementById('email').validate();
+	document.getElementById('name').validate();
+	document.getElementById('msg').validate();
+
+	if (document.getElementById('email').validate() && document.getElementById('name').validate() && document.getElementById('msg').validate() && validateCaptcha()) {
+		document.getElementById('formPost').submit();
+	}
+}
+
+function validateCaptcha() {
+	var resp = grecaptcha.getResponse();
+
+	if(resp.length == 0) {
+		alert('Debes completar la verificación reCaptcha antes de enviar tu mensaje.');
+		return false;
+	}
+
+	else {
+		return true; 
+	}
+}
 
 
 //console.log( '%c  __        ______________________  \n /  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n ||_/|  <--| ¿Necesitas ayuda?    | \n |___/     |______________________/ \n                                    ', "color: #272430;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );
