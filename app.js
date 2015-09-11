@@ -233,8 +233,8 @@ function openDialog (element){
 }
 
 function signup (){
-	var dialogSignup = document.getElementById("dialog_signup");
-	dialogSignup.openDialog();
+	var url = "https://www.icesi.edu.co/eventos/inscripcion.php?sched_conf_id=162&utm_source=Inscripci%C3%B3n%20HED&utm_medium=banner&utm_term=hoy%20es%20dise%C3%B1o&utm_content=Sitio%20HED&utm_campaign=Conversi%C3%B3n%20Sitio%20HED";
+	window.open(url, '_blank');
 }
 
 function playgroundInfo (){
