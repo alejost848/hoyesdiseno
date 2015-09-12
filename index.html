@@ -12,7 +12,7 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 	<!-- Chrome for Android theme color -->
-	<meta id="bar" name="theme-color" content="#FF1744">
+	<meta id="bar" name="theme-color" content="#161527">
 
 	<!-- Web Application Manifest -->
 	<link rel="manifest" href="manifest.json">
@@ -242,17 +242,16 @@
 					 	<div class="section_container">
 							<h1 class="titulo paper-font-display2">Contacto</h1>
 							<paper-material class="agenda_box" elevation="1">
-								<div id="contactForm" class="horizontal-section">
+								<div id="contactForm" class="layout vertical">
 									<h4>Déjanos un mensaje, te responderemos lo más pronto posible.</h4>
 									<form is="iron-form" id="formPost" method="post" action="/">
 										<paper-input id="name" name="name" label="Nombre" required error-message="¡Ingresa tu nombre!"></paper-input>
 										<paper-input id="email" name="email" label="Correo" required error-message="¡Ingresa tu correo electrónico!"></paper-input>
 										<paper-input id="msg" name="msg" label="Mensaje" required error-message="¡Ingresa tu mensaje!"></paper-input>
-										<br>
 										<div id="contactCaptcha">
 											<re-captcha sitekey="6LdPXQwTAAAAAI6y_M2bUAshj3E6tSl4IbIO99lV"></re-captcha>
 										</div>
-										<br>
+										<div class="divider"></div>
 										<div class="sendBtnBox">
 											<paper-button id="submit_button" raised onclick="clickHandler(event)" class="colorful">Enviar</paper-button>
 										</div>
@@ -292,7 +291,7 @@
 		<paper-header-panel drawer mode="scroll" id="drawer">
 			<paper-toolbar id="drawer_toolbar" class="tall">
 				<iron-icon id="logo_drawer" icon="puzzle-icons:logo" title="Hoy es Diseño"></iron-icon>
-				<div class="left_text vertical layout bottom">
+				<div class="left_text2 vertical layout bottom">
 		    		<div class="dateHome">Octubre 15 - 16, 2015</div>
 		    		<div class="placeHome">Universidad Icesi</div>		
 	    		</div>	
@@ -329,14 +328,13 @@
 	</paper-dialog>
 	</div>
 
-	<paper-toast id="caching-complete"
-                 duration="12000"
-                 text="Esta app funcionará offline">
-    </paper-toast>
+	<paper-toast id="caching-complete" duration="12000" text="Esta app funcionará offline"></paper-toast>
 
 	<paper-toast id="msgSent" duration="6000" text="¡Tu mensaje ha sido enviado!"></paper-toast>
 	<paper-toast id="msgNotSent" duration="8000" text="Ocurrió un error al enviar tu mensaje, revisa tu correo o inténtalo de nuevo más tarde."></paper-toast>
 	<paper-toast id="msgNoCaptcha" duration="8000" text="Debes completar la verificación reCaptcha antes de enviar tu mensaje."></paper-toast>
+
+	<platinum-https-redirect></platinum-https-redirect>
 
 	<template is="dom-bind" id="app5">
 		<platinum-sw-register auto-register on-service-worker-installed="displayInstalledToast">
