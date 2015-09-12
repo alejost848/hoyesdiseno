@@ -233,8 +233,8 @@ function openDialog (element){
 }
 
 function signup (){
-	var dialogSignup = document.getElementById("dialog_signup");
-	dialogSignup.openDialog();
+	var url = "https://www.icesi.edu.co/eventos/inscripcion.php?sched_conf_id=162&utm_source=Inscripci%C3%B3n%20HED&utm_medium=banner&utm_term=hoy%20es%20dise%C3%B1o&utm_content=Sitio%20HED&utm_campaign=Conversi%C3%B3n%20Sitio%20HED";
+	window.open(url, '_blank');
 }
 
 function playgroundInfo (){
@@ -264,6 +264,92 @@ function goLink (argument){
 	window.location.href = argument;
 }
 
+function clickHandlerVideo(e) {
+  var button = e.target;
+  while (!button.hasAttribute('data-dialog') && button !== document.body) {
+    button = button.parentElement;
+  }
+  if (!button.hasAttribute('data-dialog')) {
+    return;
+  }
+  var id = button.getAttribute('data-dialog');
+  var dialog = document.getElementById(id);
+  if (dialog) {
+    dialog.open();
+  }
+
+  var autoplay_video = document.querySelector("#home_video");
+  autoplay_video.setAttribute("autoplay", "1");
+  autoplay_video.play()
+  console.log('tes');
+}
+
+document.getElementById('formPost').addEventListener('iron-form-submit', deliverIt);
+
+function deliverIt(event) {
+	console.log(JSON.stringify(event.detail));
+	
+	var email = $("#email").val(); // get email field value
+	var name = $("#name").val(); // get name field value
+	var msg = $("#msg").val(); // get message field value
+	$.ajax(
+	{
+		type: "POST",
+		url: "https://mandrillapp.com/api/1.0/messages/send.json",
+		data: {
+			'key': 'lyGXnxHjBHdaVdfDRypDFw',
+			'message': {
+				'from_email': email,
+				'from_name': name,
+				'headers': {
+					'Reply-To': email
+				},
+				'subject': 'Mensaje de hoyesdiseno.com',
+				'text': msg,
+				'to': [
+				{
+					'email': 'hoyesdisenomercadeo@gmail.com',
+					'name': 'Hoy es Diseño',
+					'type': 'to'
+				}]
+			}
+		}
+	})
+	.done(function(response) {
+		document.querySelector('#msgSent').show(); // show success message
+		$("#name").val(''); // reset field after successful submission
+		$("#email").val(''); // reset field after successful submission
+		$("#msg").val(''); // reset field after successful submission
+		grecaptcha.reset(); // reset captcha after successful submission
+	})
+	.fail(function(response) {
+		document.querySelector('#msgNotSent').show(); // show fail message
+	});
+	return false; // prevent page refresh
+}
+
+function clickHandler(event) {
+	document.getElementById('email').validate();
+	document.getElementById('name').validate();
+	document.getElementById('msg').validate();
+
+	if (document.getElementById('email').validate() && document.getElementById('name').validate() && document.getElementById('msg').validate() && validateCaptcha()) {
+		document.getElementById('formPost').submit();
+	}
+}
+
+function validateCaptcha() {
+	var resp = grecaptcha.getResponse();
+
+	if(resp.length == 0) {
+		document.querySelector('#msgNoCaptcha').show(); // show captcha validation error message
+		return false;
+	}
+
+	else {
+		return true; 
+	}
+}
 
 
 //console.log( '%c  __        ______________________  \n /  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n ||_/|  <--| ¿Necesitas ayuda?    | \n |___/     |______________________/ \n                                    ', "color: #272430;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );

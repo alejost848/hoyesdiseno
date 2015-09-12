@@ -43,9 +43,9 @@
 	<!-- Facebook card -->	
 	<meta property="og:title" content="Hoy es Diseño">
 	<meta property="og:type" content="website">
-	<meta property="og:url" content="http://alejost848.github.io/hoyesdiseno/">
+	<meta property="og:url" content="http://www.hoyesdiseno.com">
 	<meta property="og:description" content="Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.">
-	<meta property="og:image" content="images/fb-cover.png">
+	<meta property="og:image" content="/images/fb-cover.jpg">
 
 	<!-- Magic stuff -->
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
@@ -68,12 +68,13 @@
 			
 			<a href="#!/"><iron-icon icon="puzzle-icons:logo" id="logo_top"></iron-icon></a>
 			<iron-image id="bg_splash" src="" class="bg_img" preload fade sizing="cover"></iron-image>
+		
 			
 			<more-route-selector>
 				<iron-pages>
 				 	<section route="inicio">
 				 		<div id="splash_logo" class="layout vertical center-center">
-				 			<iron-image src="images/logo_splash.png" preload fade></iron-image>
+				 			
 				 			<!-- <paper-button id="playground_btn" onclick="goLink('#!/play')" class="colorful">
 			 					<div class="layout horizontal center-center">
 				 					<iron-icon icon="av:games"></iron-icon>
@@ -81,6 +82,9 @@
 				 					<div>PLAYGROUND</div>
 			 					</div>
 				 			</paper-button> -->
+							<div class="layout horizontal center-center">
+								<paper-fab id="playVideo_btn" onclick="clickHandlerVideo(event)" icon="av:play-arrow" data-dialog="coolVideo"></paper-fab>
+							</div>
 				 		</div>
 				 	</section>
 
@@ -159,7 +163,7 @@
 						<div id="evento_container" class="layout horizontal center">
 							<div id="event_info" class="flex-3">
 								<div id="event_bg">
-									<iron-image class="bg_img" sizing="cover" preload fade src="images/pic2.jpg"></iron-image>
+									<iron-image class="bg_img" sizing="cover" preload fade src="images/hed20151/pic9.jpg"></iron-image>
 									<div class="overlay"></div>
 								</div>
 								<div class="section_container">
@@ -172,12 +176,12 @@
 										El evento está enfocado principalmente a la comunidad del diseño, sin embargo, es una importante ventana para que empresarios y personas de diversas disciplinas amplíen su percepción y conocimiento del tema para construir una verdadera cultura de diseño en la región.
 										</div>											 	 
 								 	
-								 		<div id="ver_fotos_wrapper" onclick="viewPictures()">
+								 		<!-- <div id="ver_fotos_wrapper" onclick="viewPictures()">
 										 	<div id="ver_fotos" class="horizontal layout center">
 										 		<iron-icon icon="image:photo-library"></iron-icon>
 										 		<div id="more_pics_text_mobile">Ver fotos de la edición anterior</div>
 										 	</div>
-										 </div>
+										 </div> -->
 								 	</paper-material>
 								 </div>	
 							 </div>		
@@ -186,17 +190,17 @@
 								<div id="sidebar">
 									<template is="dom-bind" id="app3">
 								 		<div class="more_pictures">
-								 			<iron-image class="full_width" sizing="cover" placeholder="{{pholder1}}" preload fade src="images/pic1.jpg"></iron-image>
+								 			<iron-image class="full_width" sizing="cover" placeholder="{{pholder1}}" preload fade src="images/hed20151/pic10.jpg"></iron-image>
 								 			<div class="overlay"></div>
 								 		</div>
 								
 								 		<div class="more_pictures">
-								 			<iron-image class="full_width" sizing="cover" style="background-color: #1f1d25;" preload fade src="images/pic3.jpg"></iron-image>	
+								 			<iron-image class="full_width" sizing="cover" style="background-color: #1f1d25;" preload fade src="images/hed20151/pic1.jpg"></iron-image>	
 								 			<div id="view_pics_button" class="layout vertical" onclick="viewPictures()">		
 												<iron-icon id="pictures_icon" icon="image:photo-library"></iron-icon>
 												<div id="more_pics_text">Ver fotos de la edición anterior</div>	
-											</div>	
-											<div id="view_pics_overlay" class="overlay"></div>	
+											</div>
+											<div id="view_pics_overlay" class="overlay"></div>
 								 		</div>
 								 	</template>
 						 		</div>
@@ -235,13 +239,28 @@
 				 	</section>
 
 				 	<section route="contacto">
-					 	<div class="section_container">							
-							<h1 class="titulo paper-font-display2">Contacto</h1>	
-				 			<paper-material class="agenda_box" elevation="1">							
-								<div>En proceso</div>
-						 	</paper-material>					 		
+					 	<div class="section_container">
+							<h1 class="titulo paper-font-display2">Contacto</h1>
+							<paper-material class="agenda_box" elevation="1">
+								<div id="contactForm" class="horizontal-section">
+									<h4>Déjanos un mensaje, te responderemos lo más pronto posible.</h4>
+									<form is="iron-form" id="formPost" method="post" action="/">
+										<paper-input id="name" name="name" label="Nombre" required error-message="¡Ingresa tu nombre!"></paper-input>
+										<paper-input id="email" name="email" label="Correo" required error-message="¡Ingresa tu correo electrónico!"></paper-input>
+										<paper-input id="msg" name="msg" label="Mensaje" required error-message="¡Ingresa tu mensaje!"></paper-input>
+										<br>
+										<div id="contactCaptcha">
+											<re-captcha sitekey="6LdPXQwTAAAAAI6y_M2bUAshj3E6tSl4IbIO99lV"></re-captcha>
+										</div>
+										<br>
+										<div class="sendBtnBox">
+											<paper-button id="submit_button" raised onclick="clickHandler(event)" class="colorful">Enviar</paper-button>
+										</div>
+									</form>
+								</div>
+						 	</paper-material>
 					 	</div>
-				 	</section>				 	
+				 	</section>			 	
 				</iron-pages>
 			</more-route-selector>	
 			
@@ -259,12 +278,12 @@
 						<paper-tabs noink>
 							<!-- <paper-tab route="envivo">EN VIVO</paper-tab> -->			
 							<paper-tab route="evento">EVENTO</paper-tab>		
-							<paper-tab route="patrocinadores">PATROCINADORES</paper-tab>						
+							<!-- <paper-tab route="patrocinadores">PATROCINADORES</paper-tab> -->						
 							<!-- <paper-tab route="agenda">AGENDA</paper-tab> -->
 							<paper-tab route="contacto">CONTACTO</paper-tab>            
 						</paper-tabs>
 					</more-route-selector>
-					<!-- <paper-button id="signup_button" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button> -->
+					<paper-button id="signup_button" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button>
 		        </div>
 		    </div>   
 
@@ -283,12 +302,12 @@
 					<paper-item route="inicio">Inicio</paper-item>
 					<!-- <paper-item route="envivo">En vivo</paper-item> -->
 					<paper-item route="evento">Evento</paper-item>
-					<paper-item route="patrocinadores">Patrocinadores</paper-item>
+					<!-- <paper-item route="patrocinadores">Patrocinadores</paper-item> -->
 					<!-- <paper-item route="agenda">Agenda</paper-item> -->
 					<paper-item route="contacto">Contacto</paper-item>
 				</paper-menu>
 			</more-route-selector>
-			<!-- <paper-button id="signup_button_mobile" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button> -->
+			<paper-button id="signup_button_mobile" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button>
 			
 		</paper-header-panel>
 	</paper-drawer-panel>
@@ -303,10 +322,21 @@
 
 	<dialog-pictures id="dialog_pictures"></dialog-pictures>
 
+	<div class="layout horizontal center-center">
+	<paper-dialog id="coolVideo" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+		<google-youtube id="home_video" video-id="ZQxIiliu9XQ" fluid rel="0" showinfo="0">
+		</google-youtube>
+	</paper-dialog>
+	</div>
+
 	<paper-toast id="caching-complete"
                  duration="12000"
                  text="Esta app funcionará offline">
     </paper-toast>
+
+	<paper-toast id="msgSent" duration="6000" text="¡Tu mensaje ha sido enviado!"></paper-toast>
+	<paper-toast id="msgNotSent" duration="8000" text="Ocurrió un error al enviar tu mensaje, revisa tu correo o inténtalo de nuevo más tarde."></paper-toast>
+	<paper-toast id="msgNoCaptcha" duration="8000" text="Debes completar la verificación reCaptcha antes de enviar tu mensaje."></paper-toast>
 
 	<template is="dom-bind" id="app5">
 		<platinum-sw-register auto-register on-service-worker-installed="displayInstalledToast">
@@ -315,6 +345,17 @@
 	</template>
 
 	<script src="app.js"></script>
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-67370117-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
 
 </body>
 </html>
