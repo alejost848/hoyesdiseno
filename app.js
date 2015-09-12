@@ -279,7 +279,6 @@ function clickHandlerVideo(e) {
   }
 
   var autoplay_video = document.querySelector("#home_video");
-  autoplay_video.setAttribute("autoplay", "1");
   autoplay_video.play()
   console.log('tes');
 }
