@@ -40,6 +40,21 @@
       height: 100%;
     }
 
+    .blink {
+      animation: blink 1s steps(5, start) infinite;
+      -webkit-animation: blink 1s steps(5, start) infinite;
+    }
+    @keyframes blink {
+      0%   {opacity: 0.5;}
+      50%  {opacity: 1.0;}
+      100% {opacity: 0.5;}
+    }
+    @-webkit-keyframes blink {
+      0%   {opacity: 0.5;}
+      50%  {opacity: 1.0;}
+      100% {opacity: 0.5;}
+    }
+
     @media (max-width: 1500px) {  
       :host {
         width: 100px;
@@ -68,7 +83,7 @@
   </style>
 
   <template>
-    <paper-ripple id="ink" recenters></paper-ripple>
+    <paper-ripple class="" id="ink" recenters></paper-ripple>
     <iron-icon id="icon" icon="[[icon]]"></iron-icon>
   </template>
 
@@ -126,7 +141,7 @@
         icon: {
           type: String
         },
-        identifier: {
+        id: {
           type: String
         },
         active: {
@@ -134,6 +149,18 @@
           value: false
         },
         unlocked: {
+          type: Boolean,
+          value: false
+        },
+        onHold: {
+          type: Boolean,
+          value: false
+        },
+        playing: {
+          type: Boolean,
+          value: false
+        },
+        paused: {
           type: Boolean,
           value: false
         }
@@ -145,34 +172,64 @@
         this._updateColors();
 
         if(!this.unlocked){
-          this.$.ink.style.color = '#242424';
+          this.$.ink.style.color = "rgba(0,0,0,0.1)";
         }
       },
 
-      regularTap: function() {
+      regularTap: function() {        
         if(this.unlocked){
+          this.onHold = true;
+          this.$.ink.classList.toggle('blink', true);
           this.$.ink.downAction();
-          this.$.ink.holdDown=!this.$.ink.holdDown;
-          this.active=this.$.ink.holdDown;
+          this.$.ink.holdDown=true;
+          this.active=!this.active;
+        }
+      },
+
+      pauseSound: function() {
+        if(this.unlocked){
+          songList[this.id].fade(1.0, 0.0, 500);
+          this.async(function() {
+            songList[this.id].pause();
+          },600)
         }
       },
 
       stopSound: function() {
         if(this.unlocked){
-          songList[this.identifier].stop();
+          songList[this.id].stop();
+          this.onHold = false;
           this.$.ink.holdDown=false;
         }
       },
 
-      playSample: function() {
+      playSample: function() {    
+        this.playing = true;    
         if(this.unlocked){
-          songList[this.identifier].stop();
-          songList[this.identifier].play(); 
+          songList[this.id].volume(1.0);
+          if(this.active){
+            this.onHold = false;
+            this.$.ink.classList.toggle('blink', false);
+          }else{
+            this.onHold = true;
+            this.$.ink.classList.toggle('blink', true);
+          }
+          
+          songList[this.id].stop();
+          songList[this.id].play();
+        }     
+      },
+
+      stopBlinking: function() {        
+        if(this.unlocked){
+          this.$.ink.classList.toggle('blink', false);
+          this.$.ink.holdDown = false;
+          this.onHold = true;
         }     
       },
 
       _updateColors: function() {
-        switch(this.identifier){
+        switch(this.id){
           case "0":
             this.$.ink.style.color = '#b10022';
           break;

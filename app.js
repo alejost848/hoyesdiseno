@@ -43,16 +43,48 @@ window.addEventListener('WebComponentsReady', function(e) {
 	});
 });
 
+var away = false;
+
+document.addEventListener('visibilitychange', function(event) {	
+	if (!document.hidden) {
+		if(away){
+			for (var i=0; i<elements.length; i++) {
+				if(elements[i].paused){			
+					elements[i].playSample();
+					elements[i].paused = false;
+				}
+			}
+			progressInterval = setTimeout(progressCount, frequency/16);
+			away = false;
+		}
+	} else {
+		away = true;
+		for (var i=0; i<elements.length; i++) {		
+			if(elements[i].playing){	
+				elements[i].pauseSound();
+				elements[i].paused = true;
+			}
+		}
+		setTimeout(function(){ clearTimeout(progressInterval); }, 600);
+	}
+});
+
+
+
 function progressCount(){
 	if(progress.value==17){
 		progress.value = progress.min;
 	}
 	var activeButtons = 0;
 	if(progress.value==progress.min){	
-		for (var i=0; i<elements.length; i++) {			
+		for (var i=0; i<elements.length; i++) {
+			elements[i].playing = false;	
 			if(elements[i].active && elements[i].unlocked){
 				elements[i].playSample();
 				activeButtons++;
+			}
+			if(!elements[i].active && elements[i].unlocked){
+				elements[i].stopBlinking();
 			}
 		}
 		if(activeButtons==0){			
