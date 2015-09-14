@@ -26,7 +26,15 @@
 
 	.no_decoration{
 		text-decoration: none;
+	}
+
+	.dark_blue{		
 		color: var(--main-bg-color); 
+	}
+
+	.no_decoration_zawette{
+		text-decoration: none;
+		color: #ffffff; 
 	}
 
 	#icon_view_agenda{
@@ -283,6 +291,7 @@
    		margin-top: -5px;
    		margin-right: 18px;
    		z-index: 4;
+   		color: white;
 
    		display: none;
 	}
@@ -415,11 +424,49 @@
 		top: 35px;
 	}
 
+	.playground_fab{		
+		--paper-fab-background: transparent;
+	}
+
 	#playground_buttons_bottom{
 		position: absolute;
 		right: 35px;
 		bottom: 35px;
 		display: none;
+	}
+
+	#playground_footer{
+		position: fixed;
+      	width: 100%;
+      	bottom: 10px;
+      	color: #ddd;
+	}
+
+	#zawette_container{	
+		margin-left: 35px;
+		margin-top: 10px;
+		padding-right: 35px;
+		padding-left: 15px;
+	}
+
+	#zawette_container:hover{
+		background-color: rgba(255,255,255,0.05);
+		cursor: pointer;
+	}
+
+	#zawette_icon{
+		width: 50px;
+		height: 50px;
+		color: white;
+		margin-top:5px;
+	}
+
+	#zawette_title{
+		line-height: 8px;
+	}
+
+	#playground_hed_button{
+		margin-left: -80px;
 	}
 
 	#playVideo_btn{
@@ -639,7 +686,13 @@
 
 		#playground_buttons_top{
 			top: 70px;
+			right: 20px;
 		}
+
+		#playground_buttons_bottom{
+			right: 20px;
+		}
+
 		.sendBtnBox {
 			text-align: center;
 			margin-top: 0;
@@ -648,6 +701,14 @@
 		#contactCaptcha{
 			transform:scale(0.9);
 			transform-origin:0 0;
+		}
+
+		#zawette_container{	
+			margin-left: 0px;
+			margin-bottom: 26px;
+
+			padding-right: 20px;
+			padding-left: 5px;
 		}
 
 	}

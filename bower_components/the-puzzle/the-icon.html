@@ -13,14 +13,26 @@
    :host {
       display: inline-block;
       position: relative;
-      color: #fff;
+      color: #ffffff;
       margin: 0px -15px;
       width: 130px;
       height: 130px;
       cursor: pointer;
       padding: 8px;
+      stroke: white;
+      -webkit-transform: rotate(-45deg) scale(0.85);
+      transform: rotate(-45deg) scale(0.85);
+
+      -webkit-transition: transform 0.5s;
+      transition: transform 0.5s;
+
+      -webkit-transition-timing-function: ease;
+      transition-timing-function: ease;
     }
+    
     :host #ink {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
     }
 
     #icon {
@@ -56,14 +68,14 @@
   </style>
 
   <template>
-    <paper-ripple id="ink" class="circle" center></paper-ripple>
-    <iron-icon id="icon" icon="[[icon]]"></iron-icon>   
+    <paper-ripple id="ink" recenters></paper-ripple>
+    <iron-icon id="icon" icon="[[icon]]"></iron-icon>
   </template>
 
   <script>
 
     var sound = new Howl({
-      src: ['zawette_samples/bass.mp3'],
+      src: ['zawette_samples/lead.mp3'],
       autoplay: false,
     });
     var sound2 = new Howl({
@@ -75,7 +87,7 @@
       autoplay: false,
     });
     var sound4 = new Howl({
-      src: ['zawette_samples/lead.mp3'],
+      src: ['zawette_samples/bass.mp3'],
       autoplay: false,
     });
     var sound5 = new Howl({
@@ -83,11 +95,11 @@
       autoplay: false,
     });
     var sound6 = new Howl({
-      src: ['zawette_samples/saxo.mp3'],
+      src: ['zawette_samples/st1.mp3'],
       autoplay: false,
     });
     var sound7 = new Howl({
-      src: ['zawette_samples/st1.mp3'],
+      src: ['zawette_samples/saxo.mp3'],
       autoplay: false,
     });
     var sound8 = new Howl({
@@ -120,55 +132,80 @@
         active: {
           type: Boolean,
           value: false
+        },
+        unlocked: {
+          type: Boolean,
+          value: false
         }
       },
 
       attached:function() {
-        switch(this.identifier){
-          case "0":
-            this.$.ink.style.color = '#486f79';
-          break;
-          case "1":
-            this.$.ink.style.color = '#486f79';
-          break;
-          case "2":
-            this.$.ink.style.color = '#206573';
-          break;
-          case "3":
-            this.$.ink.style.color = '#206573';
-          break;
-          case "4":
-            this.$.ink.style.color = '#204469';
-          break;
-          case "5":
-            this.$.ink.style.color = '#204469';
-          break;
-          case "6":
-            this.$.ink.style.color = '#7365f1';
-          break;
-          case "7":
-            this.$.ink.style.color = '#7365f1';
-          break;
-          case "8":
-            this.$.ink.style.color = '#6f6f6f';
-          break;
-       }
+        this.$.ink.initialOpacity = 1;
+        this.$.ink.opacityDecayVelocity = 2;
+        this._updateColors();
+
+        if(!this.unlocked){
+          this.$.ink.style.color = '#242424';
+        }
       },
 
       regularTap: function() {
-        this.$.ink.downAction();
-        this.$.ink.holdDown=!this.$.ink.holdDown;
-        this.active=this.$.ink.holdDown;
+        if(this.unlocked){
+          this.$.ink.downAction();
+          this.$.ink.holdDown=!this.$.ink.holdDown;
+          this.active=this.$.ink.holdDown;
+        }
       },
 
       stopSound: function() {
-        songList[this.identifier].stop();
-        this.$.ink.holdDown=false;
+        if(this.unlocked){
+          songList[this.identifier].stop();
+          this.$.ink.holdDown=false;
+        }
       },
 
       playSample: function() {
-        songList[this.identifier].stop();
-        songList[this.identifier].play();      
+        if(this.unlocked){
+          songList[this.identifier].stop();
+          songList[this.identifier].play(); 
+        }     
+      },
+
+      _updateColors: function() {
+        switch(this.identifier){
+          case "0":
+            this.$.ink.style.color = '#b10022';
+          break;
+          case "1":
+            this.$.ink.style.color = '#ca0027';
+          break;
+          case "2":
+            this.$.ink.style.color = '#e3002c';
+          break;
+          case "3":
+            this.$.ink.style.color = '#fd0031';
+          break;
+          case "4":
+            this.$.ink.style.color = '#ff1744';
+          break;
+          case "5":
+            this.$.ink.style.color = '#fd0031';
+          break;
+          case "6":
+            this.$.ink.style.color = '#e3002c';
+          break;
+          case "7":
+            this.$.ink.style.color = '#ca0027';
+          break;
+          case "8":
+            this.$.ink.style.color = '#b10022';
+          break;
+        }
+        if(!this.unlocked){
+          this.$.icon.style.stroke = "rgba(0,0,0,1)";
+        }else{
+          this.$.icon.style.stroke = "#ffffff";
+        }
       }
 
     });

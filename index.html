@@ -50,6 +50,7 @@
 	<!-- Magic stuff -->
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 	<script src="jquery.min.js"></script>
+	<script src="mousetrap.min.js"></script>	
 	<link rel="import" href="elements.html">
 	
 </head>
@@ -66,7 +67,7 @@
 				<paper-icon-button icon="menu" id="menu_button" paper-drawer-toggle></paper-icon-button>
 			</paper-toolbar>
 			
-			<a href="#!/"><iron-icon icon="puzzle-icons:logo" id="logo_top"></iron-icon></a>
+			<iron-icon icon="puzzle-icons:logo" id="logo_top" onclick="goLink('#!/')"></iron-icon>
 			<iron-image id="bg_splash" class="bg_img" preload fade sizing="cover"></iron-image>
 			
 			<more-route-selector>
@@ -96,14 +97,28 @@
 						</paper-toolbar>
 						<the-puzzle></the-puzzle>
 						<div id="playground_buttons_top" class="layout vertical">
-							<paper-fab mini icon="info-outline" onclick="playgroundInfo()"></paper-fab>
+							<paper-fab class="playground_fab" mini icon="info-outline" onclick="playgroundInfo()"></paper-fab>
 							<div class="divider"></div>
-							<paper-fab mini icon="social:share"></paper-fab>
+							<paper-fab class="playground_fab" mini icon="social:share"></paper-fab>
 						</div>
+						<div id="playground_footer" class="layout horizontal">
+							<div class="layout horizontal center flex self-center">
+							<a class="no_decoration_zawette" href="http://youtube.com/zawette" target="_blank">
+								<div id="zawette_container" class="layout horizontal center">
+									<iron-icon id="zawette_icon" icon="puzzle-icons:zawette"></iron-icon>
+									<div id="" class="layout vertical">									
+										<div class="paper-font-caption">Música por</div>
+										<div id="zawette_title" class="paper-font-subhead">Zawette</div>
+									</div>
+								</div>
+							</a>
+							</div>
+							<paper-icon-button id="playground_hed_button" icon="puzzle-icons:logo" class="small flex self-center" onclick="goLink('#!/')"></paper-icon-button>
+						</div>
+
 						<div id="playground_buttons_bottom" class="layout vertical">
 							<paper-fab mini icon="av:stop" onclick="stopSamples()"></paper-fab>
-						</div>
-						
+						</div>											
 				 	</section>
 
 				 	<section route="envivo">
@@ -146,7 +161,7 @@
 		     								<h5 class="workshop_time paper-font-caption">2:00 PM</h5>
 		     							</div>
 						 				
-						 				<a class="no_decoration" href="#!/agenda">
+						 				<a class="no_decoration dark_blue" href="#!/agenda">
 						 					<div class="layout horizontal workshop_box">
 												<h3 class="activity_title paper-font-subhead">Ver agenda</h3>
 												<div class="flex"></div>
@@ -265,7 +280,7 @@
 			
 		    <div id="footer" class="horizontal layout center">            
 		        <div id="left_info_wrapper" class="horizontal layout center-center">		           
-		            <paper-icon-button route="inicio" icon="puzzle-icons:logo" title="Hoy es Diseño" class="small" onclick="goLink('#!/')"></paper-icon-button>		            
+		            <paper-icon-button route="inicio" icon="puzzle-icons:logo" title="Hoy es Diseño" class="small" onclick="goLink('#!/')"></paper-icon-button>           
 		            <div id="location_info" class="left_text vertical layout">
 		              <div class="dateHome">Octubre 15 - 16, 2015</div>
 		              <div class="placeHome">Universidad Icesi</div>   
@@ -329,6 +344,12 @@
 	</div>
 
 	<paper-toast id="caching-complete" duration="12000" text="Esta app funcionará offline"></paper-toast>
+
+	<paper-toast id="newSound" duration="3000" text=""></paper-toast>
+
+	<paper-toast id="lockedSound" duration="4000" text="Sonido bloqueado.">
+		<a style="color: #00EDFF; margin: 10px" class="no_decoration" href="http://fb.com/hoyesdiseno" target="_blank">Más información</span>
+	</paper-toast>
 
 	<paper-toast id="msgSent" duration="6000" text="¡Tu mensaje ha sido enviado!"></paper-toast>
 	<paper-toast id="msgNotSent" duration="8000" text="Ocurrió un error al enviar tu mensaje, revisa tu correo o inténtalo de nuevo más tarde."></paper-toast>

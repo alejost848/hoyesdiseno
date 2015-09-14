@@ -15,6 +15,10 @@
       margin: 0 auto;
     }
 
+    the-icon:hover{
+      background-color: rgba(255,255,255,0.02);
+    }
+
     @media (max-width: 850px) {
       .section_container{
         width: 100%;      
@@ -36,7 +40,7 @@
         </div>
         <div class="layout horizontal">
           <template is="dom-repeat" items="{{puzzleRow2}}">
-            <the-icon identifier="{{item.id}}" icon="{{item.icon}}"></the-icon>
+            <the-icon identifier="{{item.id}}" icon="{{item.icon}}" unlocked></the-icon>
           </template>
         </div>
         <div class="layout horizontal">
@@ -69,15 +73,15 @@
 
       attached: function(){
         var puzzleArray = [
-          {id: '0', icon: 'puzzle-icons:f1'},       
-          {id: '1', icon: 'puzzle-icons:79'},
-          {id: '2', icon: 'puzzle-icons:64'},          
-          {id: '3', icon: 'puzzle-icons:6f'},
-          {id: '4', icon: 'puzzle-icons:6f'},
-          {id: '5', icon: 'puzzle-icons:73'},
-          {id: '6', icon: 'puzzle-icons:65'},
-          {id: '7', icon: 'puzzle-icons:68'},
-          {id: '8', icon: 'puzzle-icons:65'}
+          {id: '0', icon: 'puzzle-icons:lead'},       
+          {id: '1', icon: 'puzzle-icons:hihat'},
+          {id: '2', icon: 'puzzle-icons:kick'},          
+          {id: '3', icon: 'puzzle-icons:bass'},
+          {id: '4', icon: 'puzzle-icons:rhodes'},
+          {id: '5', icon: 'puzzle-icons:st1'},
+          {id: '6', icon: 'puzzle-icons:saxo'},
+          {id: '7', icon: 'puzzle-icons:st2'},
+          {id: '8', icon: 'puzzle-icons:sthit'}
         ];
 
         var puzzleRow1 = [

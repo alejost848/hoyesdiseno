@@ -13,13 +13,13 @@ var urlString = "?s=";
 window.addEventListener('WebComponentsReady', function(e) {
 	elements = document.getElementsByTagName("the-icon");
     $("the-icon").on("tap", function (event) {
-		if(firstTrigger){
-			$('#playground_buttons_bottom').fadeIn();
+		if(firstTrigger){			
 			firstTrigger = false;
 			progressCount();
 			//window.history.pushState("", "", urlString);		
 		}
 		if(this.active){
+			$('#playground_buttons_bottom').fadeIn();
 			userSequence.push(this.identifier);
 			urlString = urlString + this.identifier;
 			//window.history.pushState("", "", urlString);				
@@ -31,6 +31,10 @@ window.addEventListener('WebComponentsReady', function(e) {
 		}
 		if(userSequence.join('') === secretSequence){
 		    alert("YOU'RE WINNER");
+		}
+
+		if(!this.unlocked){
+    		document.querySelector('#lockedSound').show(); 
 		}
 
 		//console.log(location.search);
@@ -46,7 +50,7 @@ function progressCount(){
 	var activeButtons = 0;
 	if(progress.value==progress.min){	
 		for (var i=0; i<elements.length; i++) {			
-			if(elements[i].active){
+			if(elements[i].active && elements[i].unlocked){
 				elements[i].playSample();
 				activeButtons++;
 			}
@@ -349,6 +353,51 @@ function validateCaptcha() {
 		return true; 
 	}
 }
+
+Mousetrap.bind('1', function() {
+    elements[0].unlocked=true;
+    elements[0]._updateColors();    
+    document.querySelector('#newSound').setAttribute("text", "¡Sonido 1 desbloqueado!");
+    document.querySelector('#newSound').show(); 
+});
+
+Mousetrap.bind('2', function() {
+    elements[1].unlocked=true;
+    elements[1]._updateColors();    
+    document.querySelector('#newSound').setAttribute("text", "¡Sonido 2 desbloqueado!");
+    document.querySelector('#newSound').show(); 
+});
+
+Mousetrap.bind('3', function() {
+    elements[2].unlocked=true;
+    elements[2]._updateColors();    
+    document.querySelector('#newSound').setAttribute("text", "¡Sonido 3 desbloqueado!");
+    document.querySelector('#newSound').show(); 
+});
+
+Mousetrap.bind('7', function() {
+    elements[6].unlocked=true;
+    elements[6]._updateColors();    
+    document.querySelector('#newSound').setAttribute("text", "¡Sonido 7 desbloqueado!");
+    document.querySelector('#newSound').show(); 
+});
+
+Mousetrap.bind('8', function() {
+    elements[7].unlocked=true;
+    elements[7]._updateColors();    
+    document.querySelector('#newSound').setAttribute("text", "¡Sonido 8 desbloqueado!");
+    document.querySelector('#newSound').show(); 
+});
+
+Mousetrap.bind('9', function() {
+    elements[8].unlocked=true;
+    elements[8]._updateColors();    
+    document.querySelector('#newSound').setAttribute("text", "¡Sonido 9 desbloqueado!");
+    document.querySelector('#newSound').show(); 
+});
+		
+	
+
 
 
 //console.log( '%c  __        ______________________  \n /  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n ||_/|  <--| ¿Necesitas ayuda?    | \n |___/     |______________________/ \n                                    ', "color: #272430;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );

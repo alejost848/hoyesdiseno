@@ -43,7 +43,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     #playground_dialog{
-      width: 30%;
+      width: 580px;
     }
 
     #signup_toolbar{
@@ -58,7 +58,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     #content{
-      padding: 20px 50px;
+      padding: 20px 50px 5px 50px;
     }
 
     .divider{
@@ -73,6 +73,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       padding: 0px 25px;
       margin: 0px;
       color: #656565;
+    }
+
+    .buttons{
+      margin-top: 20px;
+      color: var(--accent-color);
     }
 
     @media (max-width: 850px) {
@@ -92,7 +97,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <div id="content">
         <h2>Playground</h2>
         <div class="divider"></div>
-        <div class="paper-font-subhead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat cumque sint alias quae! Aliquam quo sequi, quasi reprehenderit corporis fuga ea natus quaerat. Dolorum laborum similique saepe porro, modi nam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio dolorum culpa dolor hic ipsa debitis reiciendis veniam, id, quae magnam adipisci. Animi ipsum unde officiis ea ex at soluta dolor.</div>
+        <div class="paper-font-subhead">Bienvenido a una nueva sección en la página de Hoy es Diseño. Aquí podrás interactuar con nuestra consola de audio y combinar los sonidos a tu gusto. Sigue las pistas que hemos dejado en nuestras redes sociales y desbloquea nuevos sonidos para que agregues a tu playground. Comparte tus creaciones con amigos usando el hashtag #playgroundhed y diviértete sampleando.</div>
+        <div class="buttons">
+          <paper-button dialog-confirm autofocus>A samplear</paper-button>
+        </div>
       </div>
     </paper-dialog>
   </template>
