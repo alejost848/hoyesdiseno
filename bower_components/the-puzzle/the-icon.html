@@ -20,6 +20,10 @@
       cursor: pointer;
       padding: 8px;
       stroke: white;
+      
+    }
+
+    #wrapper_icon{
       -webkit-transform: rotate(-45deg) scale(0.85);
       transform: rotate(-45deg) scale(0.85);
 
@@ -29,8 +33,12 @@
       -webkit-transition-timing-function: ease;
       transition-timing-function: ease;
     }
+
+    #wrapper_icon:hover{
+      background-color: rgba(255,255,255,0.07);
+    }
     
-    :host #ink {
+    #ink {
       -webkit-transform: rotate(0deg);
       transform: rotate(0deg);
     }
@@ -83,8 +91,10 @@
   </style>
 
   <template>
-    <paper-ripple class="" id="ink" recenters></paper-ripple>
-    <iron-icon id="icon" icon="[[icon]]"></iron-icon>
+    <div id="wrapper_icon">
+      <paper-ripple class="" id="ink" recenters></paper-ripple>
+      <iron-icon id="icon" icon="[[icon]]"></iron-icon>
+    </div>
   </template>
 
   <script>

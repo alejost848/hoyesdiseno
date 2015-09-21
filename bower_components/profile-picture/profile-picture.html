@@ -1,0 +1,470 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE
+The complete set of authors may be found at http://polymer.github.io/AUTHORS
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../iron-list/iron-list.html">
+
+<dom-module id="profile-picture">
+  <style>
+    /*Default typography styles*/
+    .paper-font-display4 {@apply(--paper-font-display4);}
+    .paper-font-display3 {@apply(--paper-font-display3);}
+    .paper-font-display2 {@apply(--paper-font-display2);}
+    .paper-font-display1 {@apply(--paper-font-display1);}
+    .paper-font-headline {@apply(--paper-font-headline);}
+    .paper-font-title {@apply(--paper-font-title);}
+    .paper-font-subhead {@apply(--paper-font-subhead);}
+    .paper-font-body2 {@apply(--paper-font-body2);}
+    .paper-font-body1 {@apply(--paper-font-body1);}
+    .paper-font-caption {@apply(--paper-font-caption);}
+    .paper-font-menu {@apply(--paper-font-menu);}
+    .paper-font-button {@apply(--paper-font-button);}
+    
+    #picture{
+      margin: 20px 0;
+      width: 700px;
+      height: 700px;
+      background-color: var(--main-bg-color);
+    }
+
+    #profile_pic_dialog{
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      margin: 0;
+      padding: 0;
+    }
+
+    #signup_header{
+      margin: 0;
+      padding: 0;
+      left: 0;
+      right: 0;
+      position: absolute;
+    }
+
+    #signup_toolbar{
+      background-color: var(--accent-color);
+    }
+
+    .day_title{
+      padding: 10px 25px;
+      margin: 0px;
+    }
+
+    .divider{
+      width: 20px;
+    }
+
+    .spacer{
+      height: 40px;
+    }
+
+    .colorful{
+      background-color: var(--accent-color);
+      color: #fff;
+    }
+
+    .gray{
+      background-color: #242424;
+      color: #fff;
+    }
+
+    .darkgray{
+      background-color: #141414;
+      color: #fff;
+    }
+
+    #files{
+      position: absolute;
+      left: 0;
+      top:0;
+      bottom:0;
+      right: 0;
+      opacity: 0;
+      width: 140px;
+      cursor: pointer;
+      z-index: 9;
+    }
+
+    #loadSomething{
+      width: 140px;
+      cursor: pointer;
+    }
+
+    #buttons{
+      width: 600px;
+    }
+
+    h4{
+      padding: 0px 25px;
+      margin: 0px;
+      color: #656565;
+    }
+
+    #canvas_wrapper{
+      margin-top: 80px;
+    }
+
+    @media (max-width: 1400px) {
+
+      #canvas_wrapper{
+        margin-top: 30px;
+        transform-origin:50% 0;
+        transform:scale(0.75);
+      }
+
+    }
+
+    @media (max-width: 850px) {
+      #canvas_wrapper{
+        margin-top: 40px;
+        transform:scale(0.7);
+      }
+
+    }
+
+    @media (max-width: 400px) {
+      #canvas_wrapper{
+        margin-top: 50px;
+        transform:scale(0.6);
+        transform-origin:50% 0;
+        height: 300px;
+      }
+
+    }
+
+  </style>
+  <template>
+    <paper-dialog id="profile_pic_dialog" entry-animation="slide-up-animation" exit-animation="fade-out-animation" with-backdrop modal>
+      <paper-header-panel mode="standard" id="signup_header">
+        <paper-toolbar id="signup_toolbar">        
+          <paper-icon-button icon="arrow-back" dialog-dismiss></paper-icon-button>
+          <div class="divider"></div>
+          <div class="paper-font-subhead">Crea tu imagen de perfil</div>
+        </paper-toolbar>
+        <div id="canvas_wrapper" class="layout vertical center">
+          <div id="mycanvas"></div>
+          <div id="buttons" class="layout horizontal">
+            <paper-button raised id="loadSomething" class="gray">
+              <input type="file" id="files" name="file" accept="image/*" value=""/><iron-icon icon="file-upload"></iron-icon>Cargar foto
+            </paper-button>
+            <paper-button raised id="camera" class="darkgray"><iron-icon icon="image:camera-alt"></iron-icon></paper-button>
+            <div class="flex"></div>           
+            <paper-button raised id="glitch" class="colorful"><iron-icon icon="image:tune"></iron-icon></paper-button>
+            <paper-button raised id="dl" class="gray"><iron-icon icon="file-download"></iron-icon></paper-button>
+          </div>
+        </div>
+      </paper-header-panel>
+      <paper-toast id="notImage" duration="3000" text="El archivo no es una imagen válida"></paper-toast>
+    </paper-dialog>    
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'profile-picture',
+
+    properties: {
+
+      content: {
+        type: String
+      },
+
+      time: {
+        type: String
+      },
+
+      title: {
+        type: String
+      }
+    },
+
+    attached: function(){
+      var picsArray = [
+        {src: 'images/hed20151/pic1.jpg'},       
+        {src: 'images/hed20151/pic2.jpg'},
+        {src: 'images/hed20151/pic3.jpg'},   
+        {src: 'images/hed20151/pic5.jpg'},
+        {src: 'images/hed20151/pic6.jpg'},
+        {src: 'images/hed20151/pic7.jpg'},
+        {src: 'images/hed20151/pic8.jpg'},
+        {src: 'images/hed20151/pic9.jpg'},
+        {src: 'images/hed20151/pic10.jpg'},    
+        {src: 'images/hed20151/pic11.jpg'},   
+        {src: 'images/hed20151/pic12.jpg'},
+        {src: 'images/hed20151/pic13.jpg'},          
+        {src: 'images/hed20151/pic14.jpg'},
+        {src: 'images/hed20151/pic15.jpg'},
+        {src: 'images/hed20151/pic16.jpg'},
+        {src: 'images/hed20151/pic17.jpg'},
+        {src: 'images/hed20151/pic18.jpg'},
+        {src: 'images/hed20151/pic19.jpg'},
+        {src: 'images/hed20151/pic20.jpg'}
+      ];
+      this.picsArray = picsArray;
+    },
+
+    openDialog: function() {
+      var dialog = document.getElementById("profile_pic_dialog");
+      if (dialog) {
+        dialog.open();
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" src="p5.js"></script>
+<script src="p5.dom.js"></script>
+<script>
+var img;
+var blueFilter;
+
+var x1;
+var y1;
+
+var y2;
+var x2;
+
+var w;
+var h;
+
+var posX;
+var posY;
+
+var canvas;
+var imgPuntos;
+var imgLineas;
+var dashedLines;
+var dropIt;
+
+var capture;
+var capturing = false;
+var snapshot = false;
+
+var aspectRatioScreenshot;
+
+function preload(){
+  imgPuntos = loadImage("bower_components/profile-picture/logo.png");
+  imgLineas = loadImage("bower_components/profile-picture/4.png");
+  dashedLines = loadImage("bower_components/profile-picture/dashed_lines.png");
+  dropIt = loadImage("bower_components/profile-picture/dropIt.png");
+  img = createImage(600, 600);
+  img.loadPixels();
+  for(var x = 0; x < img.width; x++) {
+    for(var y = 0; y < img.height; y++) {
+      img.set(x, y, [22, 21, 39, 255]); 
+    }
+  }
+  img.updatePixels();
+}
+
+function setup() {
+  canvas = createCanvas(600, 600);
+  canvas.parent("mycanvas");
+  canvas.drop(gotFile);
+  canvas.dragOver(overHere);
+  canvas.dragLeave(overThere);
+
+  var test1 = img.width;
+  var test2 = img.height;
+  aspectRatio = test1/test2;
+  posX = width/2;
+  posY = height/2;
+  
+  imageMode(CENTER);
+  noStroke();
+  textSize(24);
+  textAlign(CENTER);
+
+  image(img, posX, posY, 600, 600);
+
+  image(dashedLines, posX, posY);
+
+  document.getElementById("dl").addEventListener('click', dlCanvas, false);
+  document.getElementById("glitch").addEventListener('click', glitch, false);
+  document.getElementById("camera").addEventListener('click', camera, false);
+  document.getElementById("files").addEventListener('change', handleFileSelect, false);
+
+  blueFilter = createImage(600, 600);
+  blueFilter.loadPixels();
+  for(var x = 0; x < blueFilter.width; x++) {
+    for(var y = 0; y < blueFilter.height; y++) {
+      blueFilter.set(x, y, [22, 21, 39, 140]); 
+    }
+  }
+  blueFilter.updatePixels();
+}
+
+function draw (){
+  if(capturing && !snapshot){
+    image(capture, posX, posY, 600*aspectRatioScreenshot, 600);
+  }
+}
+
+function camera (){
+  if(!capturing){
+    capture = createCapture(VIDEO);
+    aspectRatioScreenshot = capture.width/capture.height;
+    capturing = true;
+    snapshot = false;    
+  }else{  
+    capturing = false;    
+  }
+}
+
+function glitch() {
+  background(22,21,39);
+
+  image(img, posX, posY);
+  if(capturing){
+    image(capture, posX, posY, 600*aspectRatioScreenshot, 600);
+    snapshot = true;
+
+    img.loadPixels();
+    for(var x = 0; x < img.width; x++) {
+      for(var y = 0; y < img.height; y++) {
+        img.set(x, y, [22, 21, 39, 100]); 
+      }
+    }
+    img.updatePixels();
+  }
+   
+  for(var i=0; i<10; i++){
+    x1 = 0;
+    y1 = Math.round(random(0, img.height)); 
+
+    x2 = round(random(-10, 10));
+    y2 = round(y1 + random(-15, 15));
+    
+    w = img.width;
+    h = Math.round( random(35, 50));
+
+    copy(img, x1, y1, w, h, x2, y2, w, h);
+  }
+
+  image(imgLineas, posX+random(-230, 230), posY);
+
+  for(var x = 0; x < 2; x++) {
+    push();
+    strokeWeight(1);
+    stroke(255);
+    noFill();
+    rectMode(CENTER);
+    translate(width/2, height/2);
+    rotate(PI/4.0);
+    translate(-width/2, -height/2);
+    var tam = random(50,100);
+    rect(random(0,width),random(0,height),tam,tam);
+    pop();
+    rectMode(CORNER);
+  }
+
+  image(blueFilter, posX, posY);
+ 
+  createLines();
+
+  image(imgPuntos, posX, posY); 
+  
+}
+
+function createLines(){
+  var tst = random(0,8);
+  for(var i=0; i<75; i++){
+    fill(22, 21, 39, 120);
+    rect(0,i*8+tst,width,4);
+  }
+}
+
+function gotFile(file) {
+  var imageType = /image.*/;
+
+  if (file.type === 'image' || file.type.match(imageType)) {
+    var newImg;
+
+  // Create an image DOM element but don't show it
+  if(file.data=== undefined)//si file es de p5.file existe file.data
+    newImg = createImg(URL.createObjectURL(file)).hide();   
+  else
+    newImg = createImg(file.data).hide();
+
+    img = loadImage(newImg.elt.src, function(){
+
+    var test1 = img.width;
+    var test2 = img.height;
+    aspectRatio = test1/test2;
+    posX = width/2;
+    posY = height/2;      
+
+    if (aspectRatio<1) {
+      img.resize(600, round(600/aspectRatio));
+    } else {
+      img.resize(round(600*aspectRatio), 600);
+    }
+
+    image(img, posX, posY);
+      
+    
+    });
+    
+  } else {
+    document.querySelector('#notImage').show(); 
+    overThere();
+  }
+}
+
+
+function overHere(){
+  img.loadPixels();
+  for(var x = 0; x < img.width; x++) {
+    for(var y = 0; y < img.height; y++) {
+      img.set(x, y, [0, 164, 120, 255]); 
+    }
+  }
+  img.updatePixels();
+  image(img, posX, posY);
+  image(dropIt, posX, posY);
+}
+
+function overThere(){
+  img.loadPixels();
+  for(var x = 0; x < img.width; x++) {
+    for(var y = 0; y < img.height; y++) {
+      img.set(x, y, [22, 21, 39, 255]);
+    }
+  }
+  img.updatePixels();
+  image(img, posX, posY);
+  image(dashedLines, posX, posY);
+}
+
+function dlCanvas() {
+  saveCanvas("profile_pic.png");
+}
+
+function handleFileSelect(evt) {
+  capturing = false;
+  var files = evt.target.files;
+  var output = [];
+  for (var i = 0, f; f = files[i]; i++) {
+    gotFile(f);
+  }
+}
+</script>

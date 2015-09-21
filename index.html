@@ -50,7 +50,7 @@
 	<!-- Magic stuff -->
 	<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 	<script src="jquery.min.js"></script>
-	<script src="mousetrap.min.js"></script>	
+	<script src="mousetrap.min.js"></script>
 	<link rel="import" href="elements.html">
 	
 </head>
@@ -83,8 +83,9 @@
 				 					<div>PLAYGROUND</div>
 			 					</div>
 				 			</paper-button> -->
-							<div class="layout horizontal center-center">
-								<paper-fab id="playVideo_btn" onclick="clickHandlerVideo(event)" icon="av:play-arrow" data-dialog="coolVideo"></paper-fab>
+							<div id="buttons_wrapper" class="layout horizontal center-center">
+								<paper-fab id="" onclick="clickHandlerVideo(event)" icon="av:play-arrow" data-dialog="coolVideo"></paper-fab>
+								<paper-fab id="" icon="image:portrait" onclick="profilePics()"></paper-fab>
 							</div>
 				 		</div>
 				 	</section>
@@ -331,7 +332,7 @@
 		<dialog-hed id="dialog_schedule" title="{{dialogTitle}}" time="{{dialogTime}}" content="{{dialogContent}}"></dialog-hed>
 	</template>
 
-	<dialog-signup id="dialog_signup"></dialog-signup>
+	<profile-picture id="dialog_profile_pic"></profile-picture>
 
 	<dialog-playground id="dialog_playground"></dialog-playground>
 

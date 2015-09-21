@@ -78,13 +78,17 @@ function progressCount(){
 	var activeButtons = 0;
 	if(progress.value==progress.min){	
 		for (var i=0; i<elements.length; i++) {
-			elements[i].playing = false;	
+			elements[i].playing = false;				
 			if(elements[i].active && elements[i].unlocked){
-				elements[i].playSample();
+				elements[i].playSample();				
+				$('#a'+elements[i].id).fadeIn();
 				activeButtons++;
 			}
 			if(!elements[i].active && elements[i].unlocked){
 				elements[i].stopBlinking();
+			}
+			if(!elements[i].playing){
+				$('#a'+elements[i].id).fadeOut();
 			}
 		}
 		if(activeButtons==0){			
@@ -107,7 +111,9 @@ function stopSamples (){
 	firstTrigger = true;
 	for (var i=0; i<elements.length; i++) {			
 		elements[i].active=false;
+		elements[i].playing = false;
 		elements[i].stopSound();
+		$('#a'+elements[i].id).fadeOut();
 	}
 }
 
@@ -278,6 +284,11 @@ function playgroundInfo (){
 	dialogPlayground.openDialog();
 }
 
+function profilePics (){
+	var dialogProfilePics = document.getElementById("dialog_profile_pic");
+	dialogProfilePics.openDialog();
+}
+
 function viewPictures (){
 	var dialogPictures = document.getElementById("dialog_pictures");
 	dialogPictures.openDialog();
@@ -386,11 +397,11 @@ function validateCaptcha() {
 	}
 }
 
-Mousetrap.bind('1', function() {
+Mousetrap.bind('f u t u r o', function(e, combo) {
     elements[0].unlocked=true;
     elements[0]._updateColors();    
     document.querySelector('#newSound').setAttribute("text", "¡Sonido 1 desbloqueado!");
-    document.querySelector('#newSound').show(); 
+    document.querySelector('#newSound').show();
 });
 
 Mousetrap.bind('2', function() {
@@ -427,9 +438,7 @@ Mousetrap.bind('9', function() {
     document.querySelector('#newSound').setAttribute("text", "¡Sonido 9 desbloqueado!");
     document.querySelector('#newSound').show(); 
 });
-		
+
 	
-
-
 
 //console.log( '%c  __        ______________________  \n /  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n ||_/|  <--| ¿Necesitas ayuda?    | \n |___/     |______________________/ \n                                    ', "color: #272430;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );
