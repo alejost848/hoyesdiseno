@@ -169,7 +169,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </paper-button>
             <paper-button raised id="camera" class="darkgray"><iron-icon icon="image:camera-alt"></iron-icon></paper-button>
             <div class="flex"></div>           
-            <paper-button raised id="glitch" class="colorful"><iron-icon icon="image:tune"></iron-icon></paper-button>
+            <paper-button raised id="glitch" class="colorful"><iron-icon icon="puzzle-icons:magic"></iron-icon></paper-button>
             <paper-button raised id="dl" class="gray"><iron-icon icon="file-download"></iron-icon></paper-button>
           </div>
         </div>
@@ -298,16 +298,16 @@ function setup() {
 
   image(dashedLines, posX, posY);
 
-  document.getElementById("dl").addEventListener('click', dlCanvas, false);
-  document.getElementById("glitch").addEventListener('click', glitch, false);
-  document.getElementById("camera").addEventListener('click', camera, false);
+  $("#dl").on("tap", function (event) { dlCanvas(); });
+  $("#glitch").on("tap", function (event) { glitch(); });
+  $("#camera").on("tap", function (event) { camera(); });
   document.getElementById("files").addEventListener('change', handleFileSelect, false);
 
   blueFilter = createImage(600, 600);
   blueFilter.loadPixels();
   for(var x = 0; x < blueFilter.width; x++) {
     for(var y = 0; y < blueFilter.height; y++) {
-      blueFilter.set(x, y, [22, 21, 39, 140]); 
+      blueFilter.set(x, y, [22, 21, 39, 90]); 
     }
   }
   blueFilter.updatePixels();
@@ -351,8 +351,8 @@ function glitch() {
     x1 = 0;
     y1 = Math.round(random(0, img.height)); 
 
-    x2 = round(random(-10, 10));
-    y2 = round(y1 + random(-15, 15));
+    x2 = round(random(-5, 5));
+    y2 = round(y1 + random(-5, 5));
     
     w = img.width;
     h = Math.round( random(35, 50));
@@ -456,7 +456,7 @@ function overThere(){
 }
 
 function dlCanvas() {
-  saveCanvas("profile_pic.png");
+  save("profile_pic.png");
 }
 
 function handleFileSelect(evt) {
