@@ -349,9 +349,16 @@ function glitch() {
    
   for(var i=0; i<10; i++){
     x1 = 0;
-    y1 = Math.round(random(0, img.height)); 
+    y1 = Math.round(random(0, img.height));
 
-    x2 = round(random(-5, 5));
+    if (aspectRatio<1) {
+      x2 = round(random(-5, 5));
+    }else if (aspectRatio>0.75 && aspectRatio<1.25) {      
+      x2 = round(random(-5, 5));
+    }else{
+      x2 = round(random(-250, -230));
+    }
+    
     y2 = round(y1 + random(-5, 5));
     
     w = img.width;
