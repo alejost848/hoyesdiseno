@@ -1,3 +1,6 @@
+function justDoIt (){
+
+
 var img;
 var blueFilter;
 
@@ -20,13 +23,19 @@ var dashedLines;
 var dropIt;
 
 var capture;
+var capturing = false;
+var snapshot = false;
+
+var aspectRatioScreenshot;
+
+preload();
 
 function preload(){
   imgPuntos = loadImage("bower_components/profile-picture/logo.png");
   imgLineas = loadImage("bower_components/profile-picture/4.png");
   dashedLines = loadImage("bower_components/profile-picture/dashed_lines.png");
   dropIt = loadImage("bower_components/profile-picture/dropIt.png");
-	img = createImage(600, 600);
+  img = createImage(600, 600);
   img.loadPixels();
   for(var x = 0; x < img.width; x++) {
     for(var y = 0; y < img.height; y++) {
@@ -42,11 +51,6 @@ function setup() {
   canvas.drop(gotFile);
   canvas.dragOver(overHere);
   canvas.dragLeave(overThere);
-
-  console.log('sucess');
-
-  //capture = createCapture(VIDEO);
-  //capture.size(800, 600);
 
   var test1 = img.width;
   var test2 = img.height;
@@ -65,30 +69,68 @@ function setup() {
 
   document.getElementById("dl").addEventListener('click', dlCanvas, false);
   document.getElementById("glitch").addEventListener('click', glitch, false);
+  document.getElementById("camera").addEventListener('click', camera, false);
   document.getElementById("files").addEventListener('change', handleFileSelect, false);
 
   blueFilter = createImage(600, 600);
   blueFilter.loadPixels();
   for(var x = 0; x < blueFilter.width; x++) {
     for(var y = 0; y < blueFilter.height; y++) {
-      blueFilter.set(x, y, [22, 21, 39, 140]); 
+      blueFilter.set(x, y, [22, 21, 39, 90]); 
     }
   }
   blueFilter.updatePixels();
 }
 
+function draw (){
+  if(capturing && !snapshot){
+    image(capture, posX, posY, 600*aspectRatioScreenshot, 600);
+  }
+}
+
+function camera (){
+  if(!capturing){
+    capture = createCapture(VIDEO);
+    aspectRatioScreenshot = capture.width/capture.height;
+    capturing = true;
+    snapshot = false;    
+  }else{  
+    capturing = false;    
+  }
+}
+
 function glitch() {
   background(22,21,39);
-  image(img, posX, posY); 
+
+  image(img, posX, posY);
+  if(capturing){
+    image(capture, posX, posY, 600*aspectRatioScreenshot, 600);
+    snapshot = true;
+
+    img.loadPixels();
+    for(var x = 0; x < img.width; x++) {
+      for(var y = 0; y < img.height; y++) {
+        img.set(x, y, [22, 21, 39, 100]); 
+      }
+    }
+    img.updatePixels();
+  }
+   
   for(var i=0; i<10; i++){
     x1 = 0;
-    y1 = Math.round(random(0, img.height));
+    y1 = Math.round(random(0, 600));
 
-    y2 = round(y1 + random(-15, 15));
-    x2 = round(random(-10, 10));
-
+    if (aspectRatio<1.25) {
+      x2 = round(random(-5, 5));
+    }else{
+      x2 = round(random(-250, -230));
+    }
+    
+    y2 = round(y1 + random(-5, 5));
+    
     w = img.width;
     h = Math.round( random(35, 50));
+
     copy(img, x1, y1, w, h, x2, y2, w, h);
   }
 
@@ -157,7 +199,7 @@ function gotFile(file) {
     });
     
   } else {
-    alert("not a pic");
+    document.querySelector('#notImage').show(); 
     overThere();
   }
 }
@@ -188,14 +230,15 @@ function overThere(){
 }
 
 function dlCanvas() {
-	saveCanvas("profile_pic.png");
+  save("profile_pic.png");
 }
 
 function handleFileSelect(evt) {
-  
+  capturing = false;
   var files = evt.target.files;
   var output = [];
   for (var i = 0, f; f = files[i]; i++) {
-  	gotFile(f);
+    gotFile(f);
   }
+}
 }

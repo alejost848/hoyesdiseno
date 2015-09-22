@@ -73,7 +73,7 @@
 			<more-route-selector>
 				<iron-pages>
 				 	<section route="inicio">
-				 		<div id="splash_logo" class="layout vertical center-center">
+				 		<div id="splash_logo" class="layout vertical center">
 				 			<iron-image id="bg_bg" src="images/bg.jpg" preload fade sizing="cover"></iron-image>
 				 			
 				 			<!-- <paper-button id="playground_btn" onclick="goLink('#!/play')" class="colorful">
@@ -83,9 +83,15 @@
 				 					<div>PLAYGROUND</div>
 			 					</div>
 				 			</paper-button> -->
+				 			
 							<div id="buttons_wrapper" class="layout horizontal center-center">
-								<paper-fab id="" onclick="clickHandlerVideo(event)" icon="av:play-arrow" data-dialog="coolVideo"></paper-fab>
-								<paper-fab id="" icon="image:portrait" onclick="profilePics()"></paper-fab>
+								<paper-button onclick="profilePics()" class="colorful">
+									<div class="layout horizontal center-center">
+					 					<iron-icon icon="social:person"></iron-icon>
+					 					<div class="spacer"></div>
+					 					<div>Crea tu foto</div>
+				 					</div>
+				 				</paper-button>
 							</div>
 				 		</div>
 				 	</section>

@@ -22,6 +22,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../paper-header-panel/paper-header-panel.html">
 <link rel="import" href="../iron-list/iron-list.html">
 
+
 <dom-module id="profile-picture">
   <style>
     /*Default typography styles*/
@@ -114,6 +115,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       width: 600px;
     }
 
+    #mycanvas{
+      width: 600px;
+      height: 600px;
+      margin-bottom: 7px;
+      background-color: var(--main-bg-color);
+      background-image: url("chromeOnly.png");
+    }
+
     h4{
       padding: 0px 25px;
       margin: 0px;
@@ -175,6 +184,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
       </paper-header-panel>
       <paper-toast id="notImage" duration="3000" text="El archivo no es una imagen válida"></paper-toast>
+      <paper-toast id="notYet" duration="3000" text="Carga una foto primero"></paper-toast>
     </paper-dialog>    
   </template>
 </dom-module>
@@ -232,8 +242,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </script>
 
 <script type="text/javascript" src="p5.js"></script>
-<script src="p5.dom.js"></script>
-<script>
+<script type="text/javascript" src="p5.dom.js"></script>
+
+<script type="text/javascript">
 var img;
 var blueFilter;
 
@@ -258,6 +269,7 @@ var dropIt;
 var capture;
 var capturing = false;
 var snapshot = false;
+var imageSelected = false;
 
 var aspectRatioScreenshot;
 
@@ -298,9 +310,9 @@ function setup() {
 
   image(dashedLines, posX, posY);
 
-  $("#dl").on("tap", function (event) { dlCanvas(); });
-  $("#glitch").on("tap", function (event) { glitch(); });
-  $("#camera").on("tap", function (event) { camera(); });
+  document.getElementById("dl").addEventListener('click', dlCanvas, false);
+  document.getElementById("glitch").addEventListener('click', glitch, false);
+  document.getElementById("camera").addEventListener('click', camera, false);
   document.getElementById("files").addEventListener('change', handleFileSelect, false);
 
   blueFilter = createImage(600, 600);
@@ -322,73 +334,79 @@ function draw (){
 function camera (){
   if(!capturing){
     capture = createCapture(VIDEO);
+    capture.size(800, 600);
     aspectRatioScreenshot = capture.width/capture.height;
+    imageSelected = true;    
+    snapshot = false;
     capturing = true;
-    snapshot = false;    
   }else{  
     capturing = false;    
   }
 }
 
 function glitch() {
-  background(22,21,39);
+  if(imageSelected){
+    background(22,21,39);
 
-  image(img, posX, posY);
-  if(capturing){
-    image(capture, posX, posY, 600*aspectRatioScreenshot, 600);
-    snapshot = true;
+    image(img, posX, posY);
+    if(capturing){
+      image(capture, posX, posY, 600*aspectRatioScreenshot, 600);
+      snapshot = true;
 
-    img.loadPixels();
-    for(var x = 0; x < img.width; x++) {
-      for(var y = 0; y < img.height; y++) {
-        img.set(x, y, [22, 21, 39, 100]); 
+      img.loadPixels();
+      for(var x = 0; x < img.width; x++) {
+        for(var y = 0; y < img.height; y++) {
+          img.set(x, y, [22, 21, 39, 100]); 
+        }
       }
+      img.updatePixels();
     }
-    img.updatePixels();
-  }
+
+
+    var overflowX = img.width - 600;
+    var overflowY = img.height - 600;
+
+    img = get();
+     
+    for(var i=0; i<10; i++){
+      x1 = 0;
+      y1 = Math.round(random(0, 600));
+
+      x2 = round(random(-5, 5));
+      
+      y2 = round(y1 + random(-5, 5));
+      
+      w = img.width;
+      h = Math.round( random(35, 50));
+
+      copy(img, x1, y1, w, h, x2, y2, w, h);
+    }
+
+    image(imgLineas, posX+random(-230, 230), posY);
+
+    for(var x = 0; x < 2; x++) {
+      push();
+      strokeWeight(1);
+      stroke(255);
+      noFill();
+      rectMode(CENTER);
+      translate(width/2, height/2);
+      rotate(PI/4.0);
+      translate(-width/2, -height/2);
+      var tam = random(50,100);
+      rect(random(0,width),random(0,height),tam,tam);
+      pop();
+      rectMode(CORNER);
+    }
+
+    image(blueFilter, posX, posY);
    
-  for(var i=0; i<10; i++){
-    x1 = 0;
-    y1 = Math.round(random(0, img.height));
+    createLines();
 
-    if (aspectRatio<1) {
-      x2 = round(random(-5, 5));
-    }else if (aspectRatio>0.75 && aspectRatio<1.25) {      
-      x2 = round(random(-5, 5));
-    }else{
-      x2 = round(random(-250, -230));
-    }
-    
-    y2 = round(y1 + random(-5, 5));
-    
-    w = img.width;
-    h = Math.round( random(35, 50));
-
-    copy(img, x1, y1, w, h, x2, y2, w, h);
+    image(imgPuntos, posX, posY); 
+  }else{
+    document.querySelector('#notYet').show(); 
   }
-
-  image(imgLineas, posX+random(-230, 230), posY);
-
-  for(var x = 0; x < 2; x++) {
-    push();
-    strokeWeight(1);
-    stroke(255);
-    noFill();
-    rectMode(CENTER);
-    translate(width/2, height/2);
-    rotate(PI/4.0);
-    translate(-width/2, -height/2);
-    var tam = random(50,100);
-    rect(random(0,width),random(0,height),tam,tam);
-    pop();
-    rectMode(CORNER);
-  }
-
-  image(blueFilter, posX, posY);
- 
-  createLines();
-
-  image(imgPuntos, posX, posY); 
   
 }
 
@@ -413,22 +431,22 @@ function gotFile(file) {
     newImg = createImg(file.data).hide();
 
     img = loadImage(newImg.elt.src, function(){
+      var test1 = img.width;
+      var test2 = img.height;
+      aspectRatio = test1/test2;
+      posX = width/2;
+      posY = height/2;      
 
-    var test1 = img.width;
-    var test2 = img.height;
-    aspectRatio = test1/test2;
-    posX = width/2;
-    posY = height/2;      
+      if (aspectRatio<1) {
+        img.resize(600, round(600/aspectRatio));
+      } else {
+        img.resize(round(600*aspectRatio), 600);
+      }
 
-    if (aspectRatio<1) {
-      img.resize(600, round(600/aspectRatio));
-    } else {
-      img.resize(round(600*aspectRatio), 600);
-    }
-
-    image(img, posX, posY);
+      image(img, posX, posY);
       
-    
+      imageSelected = true;
+      
     });
     
   } else {
@@ -463,7 +481,11 @@ function overThere(){
 }
 
 function dlCanvas() {
-  save("profile_pic.png");
+  if(imageSelected){
+    save("profile_pic.png");
+  }else{
+    document.querySelector('#notYet').show(); 
+  }
 }
 
 function handleFileSelect(evt) {
