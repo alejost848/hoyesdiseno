@@ -124,8 +124,10 @@ function toggleDrawer (argument){
 	drawer_panel.removeAttribute( "disable-swipe" );
 }	
 
+var app0 = document.querySelector("#app0");
 var app = document.querySelector("#app");
 app.selected_day = "1";
+app0.selected_person = "1";
 
 window.onload=function(){	   
     $('#loadingCard').fadeOut(1000);	
@@ -146,7 +148,7 @@ function checkHash (){
 			$('#footer').css( "display", "flex");		
 		}else{
 			$('#footer').css( "display", "none");
-			if (currentHash=="#!/play") {			
+			if (currentHash=="#!/play" || currentHash=="#!/fotos") {			
 				$('#menu_button').css( "display", "none");
 			}else{
 				$('#menu_button').css( "display", "inline");

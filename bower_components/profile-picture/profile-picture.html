@@ -39,19 +39,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     .paper-font-menu {@apply(--paper-font-menu);}
     .paper-font-button {@apply(--paper-font-button);}
     
+    :host{
+      background-color: green;
+    }
+
     #picture{
       margin: 20px 0;
       width: 700px;
       height: 700px;
       background-color: var(--main-bg-color);
-    }
-
-    #profile_pic_dialog{
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      margin: 0;
-      padding: 0;
     }
 
     #signup_header{
@@ -63,7 +59,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     #signup_toolbar{
-      background-color: var(--accent-color);
+      background-color: transparent;
     }
 
     .day_title{
@@ -101,14 +97,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       bottom:0;
       right: 0;
       opacity: 0;
-      width: 140px;
+      width: 150px;
       cursor: pointer;
       z-index: 9;
     }
 
     #loadSomething{
-      width: 140px;
+      width: 150px;
       cursor: pointer;
+      font-size: 14px;
     }
 
     #buttons{
@@ -130,13 +127,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     #canvas_wrapper{
-      margin-top: 80px;
+      position: relative;
+      top: 80px;
     }
 
-    @media (max-width: 1400px) {
+    paper-toast{
+      z-index: 999;
+    }
+
+    @media (max-width: 1600px) {
 
       #canvas_wrapper{
-        margin-top: 30px;
+        position: relative;
+        top: 30px;
         transform-origin:50% 0;
         transform:scale(0.75);
       }
@@ -145,7 +148,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     @media (max-width: 850px) {
       #canvas_wrapper{
-        margin-top: 40px;
+        position: relative;
+        top: 40px;
         transform:scale(0.7);
       }
 
@@ -153,7 +157,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     @media (max-width: 400px) {
       #canvas_wrapper{
-        margin-top: 50px;
+        position: relative;
+        top: 50px;
         transform:scale(0.6);
         transform-origin:50% 0;
         height: 300px;
@@ -163,29 +168,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </style>
   <template>
-    <paper-dialog id="profile_pic_dialog" entry-animation="slide-up-animation" exit-animation="fade-out-animation" with-backdrop modal>
-      <paper-header-panel mode="standard" id="signup_header">
-        <paper-toolbar id="signup_toolbar">        
-          <paper-icon-button icon="arrow-back" dialog-dismiss></paper-icon-button>
-          <div class="divider"></div>
-          <div class="paper-font-subhead">Crea tu imagen de perfil</div>
-        </paper-toolbar>
-        <div id="canvas_wrapper" class="layout vertical center">
-          <div id="mycanvas"></div>
-          <div id="buttons" class="layout horizontal">
-            <paper-button raised id="loadSomething" class="gray">
-              <input type="file" id="files" name="file" accept="image/*" value=""/><iron-icon icon="file-upload"></iron-icon>Cargar foto
-            </paper-button>
-            <paper-button raised id="camera" class="darkgray"><iron-icon icon="image:camera-alt"></iron-icon></paper-button>
-            <div class="flex"></div>           
-            <paper-button raised id="glitch" class="colorful"><iron-icon icon="puzzle-icons:magic"></iron-icon></paper-button>
-            <paper-button raised id="dl" class="gray"><iron-icon icon="file-download"></iron-icon></paper-button>
-          </div>
+    <paper-header-panel mode="seamed" id="signup_header">
+      <paper-toolbar id="signup_toolbar">        
+        <paper-icon-button icon="arrow-back" onclick="goLink('#!/')"></paper-icon-button>
+      </paper-toolbar>
+      <div id="canvas_wrapper" class="layout vertical center">
+        <div id="mycanvas"></div>
+        <div id="buttons" class="layout horizontal">
+          <paper-button raised id="loadSomething" class="gray">
+            <input type="file" id="files" name="file" accept="image/*" value=""/><iron-icon icon="file-upload"></iron-icon>Cargar foto
+          </paper-button>
+          <div class="flex"></div>           
+          <paper-button raised id="glitch" class="colorful"><iron-icon icon="puzzle-icons:magic"></iron-icon></paper-button>
+          <paper-button raised id="dl" class="gray"><iron-icon icon="file-download"></iron-icon></paper-button>
         </div>
-      </paper-header-panel>
-      <paper-toast id="notImage" duration="3000" text="El archivo no es una imagen válida"></paper-toast>
-      <paper-toast id="notYet" duration="3000" text="Carga una foto primero"></paper-toast>
-    </paper-dialog>    
+      </div>
+    </paper-header-panel>
+    <paper-toast id="notImage" duration="3000" text="El archivo no es una imagen válida"></paper-toast>
+    <paper-toast id="notYet" duration="3000" text="Carga una foto primero"></paper-toast> 
   </template>
 </dom-module>
 <script>
@@ -230,13 +230,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         {src: 'images/hed20151/pic20.jpg'}
       ];
       this.picsArray = picsArray;
-    },
-
-    openDialog: function() {
-      var dialog = document.getElementById("profile_pic_dialog");
-      if (dialog) {
-        dialog.open();
-      }
     }
   });
 </script>
@@ -267,8 +260,6 @@ var dashedLines;
 var dropIt;
 
 var capture;
-var capturing = false;
-var snapshot = false;
 var imageSelected = false;
 
 var aspectRatioScreenshot;
@@ -312,7 +303,6 @@ function setup() {
 
   document.getElementById("dl").addEventListener('click', dlCanvas, false);
   document.getElementById("glitch").addEventListener('click', glitch, false);
-  document.getElementById("camera").addEventListener('click', camera, false);
   document.getElementById("files").addEventListener('change', handleFileSelect, false);
 
   blueFilter = createImage(600, 600);
@@ -325,43 +315,11 @@ function setup() {
   blueFilter.updatePixels();
 }
 
-function draw (){
-  if(capturing && !snapshot){
-    image(capture, posX, posY, 600*aspectRatioScreenshot, 600);
-  }
-}
-
-function camera (){
-  if(!capturing){
-    capture = createCapture(VIDEO);
-    capture.size(800, 600);
-    aspectRatioScreenshot = capture.width/capture.height;
-    imageSelected = true;    
-    snapshot = false;
-    capturing = true;
-  }else{  
-    capturing = false;    
-  }
-}
-
 function glitch() {
   if(imageSelected){
     background(22,21,39);
 
     image(img, posX, posY);
-    if(capturing){
-      image(capture, posX, posY, 600*aspectRatioScreenshot, 600);
-      snapshot = true;
-
-      img.loadPixels();
-      for(var x = 0; x < img.width; x++) {
-        for(var y = 0; y < img.height; y++) {
-          img.set(x, y, [22, 21, 39, 100]); 
-        }
-      }
-      img.updatePixels();
-    }
-
 
     var overflowX = img.width - 600;
     var overflowY = img.height - 600;
@@ -489,7 +447,6 @@ function dlCanvas() {
 }
 
 function handleFileSelect(evt) {
-  capturing = false;
   var files = evt.target.files;
   var output = [];
   for (var i = 0, f; f = files[i]; i++) {
