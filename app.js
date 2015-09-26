@@ -191,6 +191,9 @@ if(screen.width<=850){
 
 	$( "#envivo_wrapper" ).removeClass("horizontal");
 	$( "#envivo_wrapper" ).addClass("vertical");
+
+	$( ".ponente_container" ).removeClass("horizontal");
+	$( ".ponente_container" ).addClass("vertical");	
 }
 
 if($(window).width()<=850){
@@ -206,6 +209,9 @@ if($(window).width()<=850){
 
 	$( "#envivo_wrapper" ).removeClass("horizontal");
 	$( "#envivo_wrapper" ).addClass("vertical");
+
+	$( ".ponente_container" ).removeClass("horizontal");
+	$( ".ponente_container" ).addClass("vertical");	
 }
 
 $(window).resize(function() {
@@ -222,6 +228,9 @@ $(window).resize(function() {
 
 		$( "#envivo_wrapper" ).removeClass("horizontal");
 		$( "#envivo_wrapper" ).addClass("vertical");		
+		
+		$( ".ponente_container" ).removeClass("horizontal");
+		$( ".ponente_container" ).addClass("vertical");	
 	}else{
 		drawer_panel.closeDrawer();
 		footer_height = 136;
@@ -243,7 +252,10 @@ $(window).resize(function() {
 		$( "#element_rows" ).addClass("horizontal");
 
 		$( "#envivo_wrapper" ).removeClass("vertical");
-		$( "#envivo_wrapper" ).addClass("horizontal");		
+		$( "#envivo_wrapper" ).addClass("horizontal");
+
+		$( ".ponente_container" ).removeClass("vertical");
+		$( ".ponente_container" ).addClass("horizontal");	
 	}
 	checkHash();
 });

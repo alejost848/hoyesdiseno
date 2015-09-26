@@ -193,10 +193,10 @@
 							 		<h1 class="titulo paper-font-display2">Evento</h1>			 		
 									<paper-material id="event_description" elevation="1">
 										<div class="parrafo paper-font-headline">
-										Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.
+										Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la ciudad de Cali y la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.
 										<br>
 										<br>
-										El evento está enfocado principalmente a la comunidad del diseño, sin embargo, es una importante ventana para que empresarios y personas de diversas disciplinas amplíen su percepción y conocimiento del tema para construir una verdadera cultura de diseño en la región.
+										El evento está enfocado principalmente a la comunidad del diseño, sin embargo, es una importante ventana para que empresarios y personas de diversas disciplinas amplíen su percepción y conocimiento del tema impulsando una verdadera cultura de diseño en Colombia.
 										</div>											 	 
 								 	
 								 		<div id="ver_fotos_wrapper" onclick="viewPictures()">
@@ -235,19 +235,17 @@
 						<div class="section_container">
 					 		<h1 class="titulo paper-font-display2">Ponentes</h1>
 				 			<template is="dom-bind" id="app0">
-						 		<paper-tabs noink attr-for-selected="person" selected="{{selected_person}}">
+						 		<paper-tabs id="ponentes_tabs" noink attr-for-selected="person" selected="{{selected_person}}" scrollable>
 									<paper-tab person="1">LAURA</paper-tab>
-									<paper-tab person="2">AMWAY</paper-tab>					
+									<paper-tab person="2">ANWAR</paper-tab>					
 									<paper-tab person="3">OGILVY</paper-tab>					
-									<paper-tab person="4">MUT</paper-tab>					
-									<paper-tab person="5">TLAPALERIA</paper-tab>					
-									<paper-tab person="6">TALLER DISEÑO</paper-tab>					
-									<paper-tab person="7">OTRO</paper-tab>					
-								</paper-tabs>							
-
+									<paper-tab person="4">PATAGONIA</paper-tab>					
+									<paper-tab person="5">TLAPALERÍA</paper-tab>					
+									<paper-tab person="6">TU TALLER</paper-tab>		
+									<paper-tab person="7">MAFE</paper-tab>					
+								</paper-tabs>
 								<div class="divider"></div>
 								<div class="divider"></div>
-
 								<iron-pages attr-for-selected="person" selected="{{selected_person}}">	
 									<person-info person="1"></person-info>							
 									<person-info person="2"></person-info>							
@@ -268,11 +266,9 @@
 						 		<paper-tabs noink attr-for-selected="day" selected="{{selected_day}}">
 									<paper-tab day="1">DÍA 1</paper-tab>
 									<paper-tab day="2">DÍA 2</paper-tab>					
-								</paper-tabs>							
-
+								</paper-tabs>			
 								<div class="divider"></div>
 								<div class="divider"></div>
-
 								<iron-pages attr-for-selected="day" selected="{{selected_day}}">
 									<div day="1">
 										<paper-material class="agenda_box" elevation="1">	

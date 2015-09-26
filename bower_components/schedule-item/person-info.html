@@ -35,7 +35,7 @@
     }
 
     .day_title{
-      padding: 32px;
+      padding: 32px 27px;
       color: #212121;
       border-bottom: 1px solid #ddd;
     }
@@ -46,7 +46,7 @@
     }
 
     .person_description{
-      margin-left: 20px;
+      margin-left: 30px;
     }
 
     .divider{
@@ -57,10 +57,53 @@
       margin-top: 10px;
     }
 
+    #social_two[href=""]{
+      display: none;
+    }
+
+    a{
+      text-decoration: none;
+    }
+
+    a + a{
+      margin-left: -8px;
+    }
+
+    a:link {
+        color: #909090;
+    }
+    a:visited {
+        color: #909090;
+    }
+    a:hover {
+        color: #606060;
+    }
+    a:active {
+        color: #909090;
+    }
+
+    paper-button{
+      margin: 0;
+    }
+
+    .divider2{
+      height: 0px;
+    }
+
+    .accent{
+      color: var(--accent-color);
+    }
+    
+
     @media (max-width: 1500px) {
       .person_img{
         width: 250px;
         height: 250px;
+      }
+
+      #descript{
+        font-size: 15px;
+        line-height: 19px;
       }
     }
 
@@ -77,6 +120,24 @@
         font-size: 20px;
       }
 
+      .person_img{
+        width: 100%;
+        height: 200px;
+      }
+
+      .person_description{
+        margin-left: 0px;
+      }
+
+      .divider2{
+        height: 10px;
+      }
+
+      #descript{
+        font-size: 14px;
+        line-height: 18px;
+      }
+
     }
 
   </style>
@@ -84,27 +145,30 @@
     
     <paper-material class="agenda_box" elevation="1">
       <template is="dom-repeat" items="{{personInfo}}">
-        <div class="day_title layout horizontal"> 
+        <div class="day_title layout horizontal ponente_container"> 
           <div>
-            <iron-image class="person_img" src="{{item.src}}" preload sizing="cover"></iron-image>
+            <iron-image class="person_img" src="{{item.src}}" preload fade sizing="cover"></iron-image>
           </div>
+          <div class="divider2"></div>
           <div class="person_description layout vertical">
             <div class="paper-font-headline">{{item.name}}</div>
             <div class="paper-font-subhead">{{item.country}}</div>
             <div class="divider"></div>
             <div class="divider"></div>
-            <div class="paper-font-subhead">{{item.description}}</div>
+            <div class="paper-font-subhead" id="descript">{{item.description}}</div>
             <div class="flex"></div>
-            <div class="layout horizontal">
+            <div class="divider"></div>
+            <div class="divider"></div>
+            <div class="layout horizontal center-center">
               <div>
-                <div class="paper-font-body2">Página web</div>
-                <div class="paper-font-subhead">{{item.website}}</div>
+                <a href="{{item.website}}" target="_blank">
+                  <div class="paper-font-subhead accent">Página web</div>
+                </a>
               </div>
               <div class="flex"></div>
-              <div class="social_things">
-                <a href="{{item.social1}}"><paper-icon-button icon="search"></paper-icon-button></a>
-                <a href="{{item.social2}}"><paper-icon-button icon="search"></paper-icon-button></a>
-                <a href="{{item.social3}}"><paper-icon-button icon="search"></paper-icon-button></a>
+              <div class="social_things layout horizontal">
+                <a href="{{item.social1}}" target="_blank"><paper-icon-button icon="puzzle-icons:fb"></paper-icon-button></a>
+                <a href="{{item.social2}}" target="_blank" id="social_two"><paper-icon-button icon="puzzle-icons:insta"></paper-icon-button></a>
               </div>
             </div>
           </div>
@@ -160,38 +224,38 @@
       attached: function(){
         if(this.person==1){
           var personInfo = [
-            {src:'images/ponentes/pic4.jpg', name: 'Laura Jade', country: 'Australia', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed quae, optio in ratione eaque debitis omnis deserunt aliquam velit dolor rem dolorum facere aut minima, harum dolorem odio molestiae natus?', website: 'www.laurajade.com', social1:'', social2: '', social3:''}
+            {src:'images/ponentes/laura.jpg', name: 'Laura Jade', country: 'Australia', description: 'Artista australiana con una gran variedad de estudios profesionales que van desde las Bellas Artes, el Diseño de Iluminación hasta la Ciencia y la Biología. Su trabajo se basa en la combinación de todas estas disciplinas, demostrando cada vez más la cercanía entre la ciencia y el arte. Con "BrainLight", su más reconocido trabajo, conecta el arte, el diseño, la neurociencia y las tecnologías BCI (interfaz cerebro-ordenador) como nunca antes.', website: 'http://laurajade.com.au', social1:'http://fb.com/LauraJadeArtist', social2: 'http://instagr.am/lunaduck'}
           ];
           this.personInfo = personInfo;
         }
         if(this.person==2){
           var personInfo = [
-            {src:'images/ponentes/pic4.jpg', name: 'Laura Jade', country: 'Australia', description: 'Test', website: '', social1:'', social2: '', social3:''}
+            {src:'images/ponentes/anwar.jpg', name: 'Anwar Bey-Taylor', country: 'Estados Unidos', description: 'Es el fundador y director creativo de la compañía Mind Traveler Design en San Francisco, Estados Unidos. Mind Traveler es un estudio de arte creado para la industria del entretenimiento, donde se especializan en la creación de arte 3D con énfasis en el desarrollo de personajes. Han trabajado para compañías como Activision, EA Games, Academy of Art, Sony Computer Entertainment y Blizzard Entertainment, entre otros.', website: 'http://mindtravelerdesign.com', social1:'http://fb.com/mindtravelerdesign', social2: 'http://instagr.am/mindtravelerdesign'}
           ];
         }
         if(this.person==3){
           var personInfo = [
-            {src:'images/ponentes/pic4.jpg', name: 'Laura Jade', country: 'Australia', description: 'Test', website: '', social1:'', social2: '', social3:''}
+            {src:'images/ponentes/ogilvy.jpg', name: 'Ogilvy & Mather', country: 'Colombia', description: 'La sede en Colombia de Ogilvy & Mather está dentro de las 10 agencias publicitarias más creativas de la red a nivel mundial. Han trabajado con docenas de creativos creando nuevas ideas para clientes como Coca-Cola, Kia Motors, Canon, Pfizer, Unilever, Nestlé, Carulla, Kimberly Clark, Claro, Mercedes Benz, Ecofill, entre otros.', website: 'http://www.ogilvy.com', social1:'http://fb.com/ogilvy', social2: ''}
           ];
         }
         if(this.person==4){
           var personInfo = [
-            {src:'images/ponentes/pic4.jpg', name: 'Laura Jade', country: 'Australia', description: 'Test', website: '', social1:'', social2: '', social3:''}
+            {src:'images/ponentes/patagonia.jpg', name: 'Designo Patagonia', country: 'Argentina', description: 'Es un estudio de diseño radicado en Bariloche, Argentina. Tiene como objetivo crear objetos que rescatan las historias, los materiales y la mano de obra artesana de la Patagonia. Tienen una concepción optimista del diseño argentino, de su valor estético y social como medio de afirmación a su cultura. La piedra, la madera, el cuero son parte inescindible de su vocabulario, siempre con una filosofía de respeto por sus recursos naturales y humanos.', website: 'http://designopatagonia.com.ar/', social1:'http://fb.com/designopatagonia.objetosdelsur', social2: ''}
           ];
         }
         if(this.person==5){
           var personInfo = [
-            {src:'images/ponentes/pic4.jpg', name: 'Laura Jade', country: 'Australia', description: 'Test', website: '', social1:'', social2: '', social3:''}
+            {src:'images/ponentes/tlapaleria.jpg', name: 'La Tlapalería', country: 'México', description: 'Está conformada por un grupo de diseñadores recién graduados de la carrera de Diseño Industrial del Tecnológico de Monterrey en Guadalajara. Fue fundada en el 2013 como una plataforma para difundir e impulsar el talento de los jóvenes. Allí se crean objetos y colecciones inspirados en la cultura y las tradiciones mexicanas utilizando materiales locales y técnicas artesanales con la colaboración de artesanos expertos de México.', website: 'http://www.latlapaleria.com', social1:'http://fb.com/latlapaleria', social2: 'http://instagr.am/latlapaleria'}
           ];
         }
         if(this.person==6){
           var personInfo = [
-            {src:'images/ponentes/pic4.jpg', name: 'Laura Jade', country: 'Australia', description: 'Test', website: '', social1:'', social2: '', social3:''}
+            {src:'images/ponentes/tu_taller.jpg', name: 'Tu Taller Design', country: 'Colombia', description: 'Son un estudio de diseño que investiga, desarrolla y produce productos para personas y empresas en diferentes sistemas de fabricación, apoyándose en la fabricación digital, maquinaria de vanguardia y procesos artesanales para generar valor único a sus proyectos. Son un estudio que es consciente que el cliente debe recibir más de lo que espera y que el proceso debe ser su bien más valioso, mejorando y reflexionando siempre sobre sí mismo.', website: 'http://tutaller.com.co', social1:'http://fb.com/tutallerdesign', social2: 'http://instagr.am/tutallerdesign'}
           ];
         }
         if(this.person==7){
           var personInfo = [
-            {src:'images/ponentes/pic4.jpg', name: 'Laura Jade', country: 'Australia', description: 'Test', website: '', social1:'', social2: '', social3:''}
+            {src:'images/ponentes/mafe.jpg', name: 'Mafe Maldonado', country: 'Colombia', description: 'Artista Plástica y Diseñadora con grandes conocimientos en historia del arte contemporáneo y filosofía del arte. Entró en el universo de la creación desde su adolescencia trabajando en escenografías teatrales y cinematográficas además de hacer vitrinas para grandes marcas. Ha dirigido galerías en Paris, organizando exposiciones y stands para grandes shows en toda Europa.', website: 'http://www.mafemaldonado.com', social1:'http://fb.com/mafe.maldonado.35', social2: 'http://instagr.am/mafemaldonadog'}
           ];
         }
 
