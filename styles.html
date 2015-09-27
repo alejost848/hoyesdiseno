@@ -37,10 +37,6 @@
 		color: #ffffff; 
 	}
 
-	#icon_view_agenda{
-		color: var(--accent-color);
-	}
-
 	section{
 		position: absolute;
 		display: inline-block;
@@ -97,6 +93,16 @@
 	.section_container:nth-child(2){
 		width: 65%;
 		margin: 0 auto;
+	}
+
+	.envivo_container{
+		width: 45%;
+		margin: 0 auto;
+		margin-top: 100px;
+	}
+
+	#video_wrapper{
+		background-color: transparent;
 	}
 
 	paper-progress {
@@ -351,7 +357,6 @@
     .colorful {
       background-color: var(--accent-color);
       color: #fff;
-      margin-left: 15px;
     }
 
     .dateHome{
@@ -371,6 +376,11 @@
 		padding: 20px;
 	}
 
+	#view_agenda_icon{
+		--iron-icon-width: 32px;
+		--iron-icon-height: 32px;
+	}
+
 	.workshop_box{
 		padding: 10px 20px;
 		border-bottom: 1px solid #ddd;
@@ -386,7 +396,6 @@
 
 	.next_box{
 		width: 250px;
-		padding: 0;
 	}
 
 	#contactForm {
@@ -417,21 +426,14 @@
 		--paper-spinner-layer-4-color: #fad03f;		
 	}
 
-	#playground_btn{
-		--paper-fab-background: var(--accent-color);
-		color: white;
-		position: absolute;
-		left: 0;
-	    right: 0;
-	    margin: 0 auto;
-	    margin-top: 50px;
-	    width: 158px;
-	}
-
 	#playground_buttons_top{
 		position: absolute;
 		right: 35px;
 		top: 35px;
+	}
+
+	.dark_gray{
+		background-color: rgba(255,255,255,0.1);
 	}
 
 	.playground_fab{		
@@ -566,6 +568,11 @@
 			width: 60%;
 			margin-top: 30px;
 		}
+
+		.envivo_container{
+			width: 50%;
+			margin-top: 30px;
+		}
 	}
 
 	@media (max-width: 1200px) {
@@ -584,6 +591,11 @@
 
 	@media (max-width: 850px) {
 		.section_container{
+			width: 95%;
+			margin-top: 100px;		
+		}
+
+		.envivo_container{
 			width: 95%;
 			margin-top: 100px;		
 		}

@@ -120,10 +120,6 @@ function stopSamples (){
 /*Toggles the drawer panel when in a different section than home*/
 var drawer_panel = document.getElementById("drawerPanel");
 
-function toggleDrawer (argument){	
-	drawer_panel.removeAttribute( "disable-swipe" );
-}	
-
 var app0 = document.querySelector("#app0");
 var app = document.querySelector("#app");
 app.selected_day = "1";
@@ -178,7 +174,6 @@ $( "#event_bg" ).width(event_bg_width);
 $( "#event_bg" ).height(available_height);
 
 if(screen.width<=850){
-	toggleDrawer();
 	available_width = $(window).width();
 	available_height = $(window).height();
 	$( "#event_bg" ).width(available_width);
@@ -188,9 +183,6 @@ if(screen.width<=850){
 	$( "#evento_container" ).removeClass("center");
 	$( "#element_rows" ).removeClass("horizontal");
 	$( "#element_rows" ).addClass("vertical");
-
-	$( "#envivo_wrapper" ).removeClass("horizontal");
-	$( "#envivo_wrapper" ).addClass("vertical");
 
 	$( ".ponente_container" ).removeClass("horizontal");
 	$( ".ponente_container" ).addClass("vertical");	
@@ -206,9 +198,6 @@ if($(window).width()<=850){
 	$( "#evento_container" ).removeClass("center");
 	$( "#element_rows" ).removeClass("horizontal");
 	$( "#element_rows" ).addClass("vertical");
-
-	$( "#envivo_wrapper" ).removeClass("horizontal");
-	$( "#envivo_wrapper" ).addClass("vertical");
 
 	$( ".ponente_container" ).removeClass("horizontal");
 	$( ".ponente_container" ).addClass("vertical");	
@@ -226,9 +215,6 @@ $(window).resize(function() {
 		$( "#element_rows" ).removeClass("horizontal");
 		$( "#element_rows" ).addClass("vertical");
 
-		$( "#envivo_wrapper" ).removeClass("horizontal");
-		$( "#envivo_wrapper" ).addClass("vertical");		
-		
 		$( ".ponente_container" ).removeClass("horizontal");
 		$( ".ponente_container" ).addClass("vertical");	
 	}else{
@@ -250,9 +236,6 @@ $(window).resize(function() {
 		$( "#evento_container" ).addClass("center");
 		$( "#element_rows" ).removeClass("vertical");
 		$( "#element_rows" ).addClass("horizontal");
-
-		$( "#envivo_wrapper" ).removeClass("vertical");
-		$( "#envivo_wrapper" ).addClass("horizontal");
 
 		$( ".ponente_container" ).removeClass("vertical");
 		$( ".ponente_container" ).addClass("horizontal");	
@@ -277,12 +260,14 @@ function openDialog (element){
 	var itemTime = element.time;
 	var itemTitle = element.title;
 	var itemContent = element.content;
+	var itemIcon = element.icon;
 
 	var app = document.querySelector("#app2");
  	
  	app.dialogTitle = itemTitle;
  	app.dialogTime = itemTime;
- 	app.dialogContent = itemContent; 	
+ 	app.dialogContent = itemContent;
+ 	app.dialogIcon = itemIcon; 
 
  	var dialogFrame = document.getElementById("dialog_schedule");
  	dialogFrame.openDialog(); 	

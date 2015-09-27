@@ -74,20 +74,19 @@
 				<iron-pages>
 				 	<section route="inicio">
 				 		<div id="splash_logo" class="layout vertical center">
-				 			<iron-image id="bg_bg" src="images/bg.jpg" preload fade sizing="cover"></iron-image>
-				 			
-				 			<!-- <paper-button id="playground_btn" onclick="goLink('#!/play')" class="colorful">
-			 					<div class="layout horizontal center-center">
-				 					<iron-icon icon="av:games"></iron-icon>
-				 					<div class="spacer"></div>
-				 					<div>PLAYGROUND</div>
-			 					</div>
-				 			</paper-button> -->
-				 			
-							<div id="buttons_wrapper" class="layout horizontal center-center">
-								<paper-button onclick="goLink('#!/fotos')" class="colorful">
+				 			<iron-image id="bg_bg" src="images/bg.jpg" preload fade sizing="cover"></iron-image>				 			
+							<div id="buttons_wrapper" class="layout vertical center-center">
+								<paper-button onclick="goLink('#!/play')" class="colorful">
+				 					<div class="layout horizontal center-center">
+					 					<iron-icon icon="av:games"></iron-icon>
+					 					<div class="spacer"></div>
+					 					<div>PLAYGROUND</div>
+				 					</div>
+					 			</paper-button>
+					 			<div class="divider"></div>
+								<paper-button onclick="goLink('#!/fotos')" class="dark_gray">
 									<div class="layout horizontal center-center">
-					 					<iron-icon icon="social:person"></iron-icon>
+					 					<iron-icon icon="account-circle"></iron-icon>
 					 					<div class="spacer"></div>
 					 					<div>Crea tu foto</div>
 				 					</div>
@@ -130,54 +129,49 @@
 				 	</section>
 
 				 	<section route="envivo">
-				 		<div class="section_container">
+				 		<div class="envivo_container">
 				 			<h1 class="titulo paper-font-display2">En vivo</h1>	
-				 			<div id="envivo_wrapper" class="layout horizontal">							 	
+				 			<div id="envivo_wrapper" class="layout vertical">							 	
 						 		<paper-material id="video_wrapper" class="agenda_box flex" elevation="1">
 						 			<template is="dom-bind" id="app4">
-								 		<google-youtube id="live_video" video-id="kPhbqLRDGpI" fluid autoplay="0" rel="0" showinfo="0" currenttime="{{currentTime}}" duration="{{duration}}">
+								 		<google-youtube id="live_video" video-id="ZQxIiliu9XQ" fluid autoplay="0" rel="0" showinfo="0" currenttime="{{currentTime}}" duration="{{duration}}">
 										</google-youtube>
 										<paper-progress id="conference_progress"></paper-progress>
 									</template>
-									<div id="envivo_info" class="layout horizontal">
-										<div class="layout vertical">
-											<h3 id="now_playing" class="paper-font-headline">Conferencia 1</h3>
-			     							<h4 id="now_playing_artist" class="paper-font-subhead">George Lucas</h4>
-			     						</div>
-			     						<div class="flex"></div>
-			     						<div class="layout horizontal end">
-	     									<h5 id="now_playing_time" class="workshop_time paper-font-subhead">9:00 AM - 10:30 AM</h5>
-	     								</div>
-	     							</div>
 	     						</paper-material>
 
-	     						<div class="spacer"></div>
-	     						<div class="divider"></div>	
+	     						<div class="divider"></div>		
 						 		
-						 		<div class="layout vertical">
-						 			<paper-material class="next_box" elevation="1">	
-										<div class="layout vertical workshop_box">
-											<h2 class="title_spacer paper-font-caption">A continuación</h2>	
-						 					<h3 class="activity_title paper-font-title">Conferencia 2</h3>
-			     							<h4 class="activity_artist paper-font-subhead">Hideo Kojima</h4>
-		     								<h5 class="workshop_time paper-font-caption">10:30 AM</h5>
-		     							</div>     					
-		     							<div class="layout vertical workshop_box">
-		     								<h2 class="title_spacer paper-font-caption">Más tarde</h2>
-						 					<h3 class="activity_title paper-font-title">Conferencia 3</h3>
-			     							<h4 class="activity_artist paper-font-subhead">Naughty Dog</h4>
-		     								<h5 class="workshop_time paper-font-caption">2:00 PM</h5>
-		     							</div>
-						 				
-						 				<a class="no_decoration dark_blue" href="#!/agenda">
-						 					<div class="layout horizontal workshop_box">
-												<h3 class="activity_title paper-font-subhead">Ver agenda</h3>
-												<div class="flex"></div>
-							 					<iron-icon id="icon_view_agenda" icon="arrow-forward"></iron-icon>
+					 			<div class="layout horizontal">
+						 			<paper-material elevation="1">
+						 				<div class="layout horizontal">
+							 				<div class="layout vertical workshop_box">
+												<h2 class="title_spacer paper-font-caption">Ahora</h2>	
+				     							<h4 class="activity_artist paper-font-subhead">Inauguración</h4>
+			     								<h5 class="workshop_time paper-font-caption">8:30 AM</h5>
+			     							</div>   
+											<div class="layout vertical workshop_box">
+												<h2 class="title_spacer paper-font-caption">A continuación</h2>	
+				     							<h4 class="activity_artist paper-font-subhead">La Tlapalería</h4>
+			     								<h5 class="workshop_time paper-font-caption">9:00 AM</h5>
+			     							</div>    
+			     							<div class="spacer"></div>	 					
+			     							<div class="layout vertical workshop_box">
+			     								<h2 class="title_spacer paper-font-caption">Más tarde</h2>
+				     							<h4 class="activity_artist paper-font-subhead">Anwar Bey-Taylor</h4>
+			     								<h5 class="workshop_time paper-font-caption">11:00 AM</h5>
 			     							</div>
-			     						</a>
-	     							</paper-material>							 		
-							 	</div>							 	
+			     						</div>
+		     						</paper-material>	
+
+					 				<paper-button onclick="goLink('#!/agenda')" class="colorful">
+					 					<div class="layout vertical center-center">
+						 					<iron-icon id="view_agenda_icon" icon="event"></iron-icon>
+						 					<div class="divider"></div>
+						 					<div class="paper-font-caption">Ver agenda</div>
+					 					</div>
+						 			</paper-button>	
+						 		</div>
 						 	</div>
 						 </div>				 		
 				 	</section>
@@ -293,6 +287,8 @@
 							<paper-material class="agenda_box" elevation="1">
 								<div id="contactForm" class="layout vertical">
 									<h4>Déjanos un mensaje, te responderemos lo más pronto posible.</h4>
+									<div class="divider"></div>
+									<div class="divider"></div>
 									<form is="iron-form" id="formPost" method="post" action="/">
 										<paper-input id="name" name="name" label="Nombre" required error-message="¡Ingresa tu nombre!"></paper-input>
 										<paper-input id="email" name="email" label="Correo" required error-message="¡Ingresa tu correo electrónico!"></paper-input>
@@ -371,7 +367,7 @@
 	</paper-drawer-panel>
 
 	<template is="dom-bind" id="app2">
-		<dialog-hed id="dialog_schedule" title="{{dialogTitle}}" time="{{dialogTime}}" content="{{dialogContent}}"></dialog-hed>
+		<dialog-hed id="dialog_schedule" title="{{dialogTitle}}" time="{{dialogTime}}" content="{{dialogContent}}" icon="{{dialogIcon}}"></dialog-hed>
 	</template>
 
 	<dialog-playground id="dialog_playground"></dialog-playground>

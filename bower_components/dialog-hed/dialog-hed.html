@@ -43,7 +43,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     #dialog{
-      width: 40%;
+      width: 600px;
     }
 
     #signup_toolbar{
@@ -55,13 +55,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
     .day_title{
-      padding: 10px 25px;
+      padding: 15px 25px;
       margin: 0px;
+    }
+
+    #fab_icon{
+      position: absolute;
+      right: 0;
+      margin-top: -35px;
+      text-align: right;
+    }
+
+    paper-fab{
+      --paper-fab-disabled-background: var(--accent-color);
+      --paper-fab-disabled-text: white;      
     }
 
     h4{
       padding: 0px 25px;
       margin: 0px;
+      margin-top: -8px;
       color: #656565;
     }
 
@@ -78,13 +91,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <paper-dialog id="dialog" entry-animation="slide-up-animation" exit-animation="fade-out-animation" with-backdrop>
 
       <paper-toolbar id="signup_toolbar">
-        <paper-icon-button icon="arrow-back" dialog-dismiss></paper-icon-button>
+        <paper-icon-button icon="arrow-back" dialog-dismiss></paper-icon-button>        
       </paper-toolbar>
 
       <iron-image id="picture" sizing="cover" preload fade src="../../images/placeholder.png"></iron-image>
+      
+      <div id="fab_icon">
+        <paper-fab disabled icon="[[icon]]"></paper-fab>
+      </div>
       <h3 class="day_title paper-font-headline">[[title]]</h3>
       <h4 class="paper-font-subhead">[[time]]</h4>
-      <div>[[content]]</div>
+      <div class="paper-font-subhead">[[content]]</div>
+
     </paper-dialog>
   </template>
 </dom-module>
@@ -103,6 +121,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       title: {
+        type: String
+      },
+
+      icon: {
         type: String
       }
     },
