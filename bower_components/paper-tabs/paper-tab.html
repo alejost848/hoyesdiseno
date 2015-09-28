@@ -46,7 +46,7 @@ Custom property | Description | Default
       @apply(--layout-inline);
       @apply(--layout-center);
       @apply(--layout-center-justified);
-      @apply(--layout-flex);
+      @apply(--layout-flex-auto);
 
       position: relative;
       padding: 0 12px;
@@ -89,12 +89,7 @@ Custom property | Description | Default
 
     .tab-content > ::content > a {
       height: 100%;
-      /* flex */
-      -ms-flex: 1 1 0.000000001px;
-      -webkit-flex: 1;
-      flex: 1;
-      -webkit-flex-basis: 0.000000001px;
-      flex-basis: 0.000000001px;
+      @apply(--flex-auto);
     }
 
   </style>

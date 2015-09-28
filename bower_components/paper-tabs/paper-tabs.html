@@ -112,6 +112,8 @@ Custom property | Description | Default
 
     #tabsContent {
       height: 100%;
+       -ms-flex-basis: auto;
+       flex-basis: auto;
     }
 
     #tabsContent.scrollable {
@@ -174,7 +176,7 @@ Custom property | Description | Default
 
     <paper-icon-button icon="paper-tabs:chevron-left" class$="[[_computeScrollButtonClass(_leftHidden, scrollable, hideScrollButtons)]]" on-up="_onScrollButtonUp" on-down="_onLeftScrollButtonDown"></paper-icon-button>
 
-    <div id="tabsContainer" class="flex" on-scroll="_scroll">
+    <div id="tabsContainer" class="flex-auto" on-scroll="_scroll">
 
       <div id="tabsContent" class$="[[_computeTabsContentClass(scrollable)]]">
 
