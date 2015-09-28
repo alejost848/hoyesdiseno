@@ -40,6 +40,38 @@ window.addEventListener('WebComponentsReady', function(e) {
 		//console.log(window.location.hash);
 		//window.history.pushState("", "", '?s=22');
 	});
+
+	if(screen.width<=850){
+		available_width = $(window).width();
+		available_height = $(window).height();
+		$( "#event_bg" ).width(available_width);
+		$( "#event_bg" ).height(available_height);
+		$( "#event_info" ).removeClass("flex-3");
+
+		$( "#evento_container" ).removeClass("center");
+		$( "#element_rows" ).removeClass("horizontal");
+		$( "#element_rows" ).addClass("vertical");
+
+		$( ".ponente_container" ).addClass("vertical");	
+		$( ".ponente_container" ).removeClass("horizontal");
+	
+	}
+
+	if($(window).width()<=850){
+		available_width = $(window).width();
+		available_height = $(window).height();	
+		$( "#event_bg" ).width(available_width);
+		$( "#event_bg" ).height(available_height);	
+		$( "#event_info" ).removeClass("flex-3");
+
+		$( "#evento_container" ).removeClass("center");
+		$( "#element_rows" ).removeClass("horizontal");
+		$( "#element_rows" ).addClass("vertical");
+
+		$( ".ponente_container" ).addClass("vertical");
+		$( ".ponente_container" ).removeClass("horizontal");
+			
+	}
 });
 
 var away = false;
@@ -172,38 +204,6 @@ $( "#sidebar" ).height(available_height);
 $( "#event_bg" ).width(event_bg_width);
 $( "#event_bg" ).height(available_height);
 
-
-if(screen.width<=850){
-	available_width = $(window).width();
-	available_height = $(window).height();
-	$( "#event_bg" ).width(available_width);
-	$( "#event_bg" ).height(available_height);
-	$( "#event_info" ).removeClass("flex-3");
-
-	$( "#evento_container" ).removeClass("center");
-	$( "#element_rows" ).removeClass("horizontal");
-	$( "#element_rows" ).addClass("vertical");
-
-	$( ".ponente_container" ).addClass("vertical");	
-	$( ".ponente_container" ).removeClass("horizontal");
-	
-}
-
-if($(window).width()<=850){
-	available_width = $(window).width();
-	available_height = $(window).height();	
-	$( "#event_bg" ).width(available_width);
-	$( "#event_bg" ).height(available_height);	
-	$( "#event_info" ).removeClass("flex-3");
-
-	$( "#evento_container" ).removeClass("center");
-	$( "#element_rows" ).removeClass("horizontal");
-	$( "#element_rows" ).addClass("vertical");
-
-	$( ".ponente_container" ).addClass("vertical");
-	$( ".ponente_container" ).removeClass("horizontal");
-		
-}
 
 $(window).resize(function() {
 	if($(window).width()<=850){
