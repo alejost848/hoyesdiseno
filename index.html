@@ -229,15 +229,30 @@
 						<div class="section_container">
 					 		<h1 class="titulo paper-font-display2">Ponentes</h1>
 				 			<template is="dom-bind" id="app0">
-						 		<paper-tabs id="ponentes_tabs" noink attr-for-selected="person" selected="{{selected_person}}" scrollable>
-									<paper-tab person="1">LAURA</paper-tab>
-									<paper-tab person="2">ANWAR</paper-tab>					
-									<paper-tab person="3">OGILVY</paper-tab>					
-									<paper-tab person="4">PATAGONIA</paper-tab>					
-									<paper-tab person="5">TLAPALERÍA</paper-tab>					
-									<paper-tab person="6">TU TALLER</paper-tab>		
-									<paper-tab person="7">MAFE</paper-tab>					
-								</paper-tabs>
+				 				<div id="desktop_tabs">
+							 		<paper-tabs noink attr-for-selected="person" selected="{{selected_person}}">
+										<paper-tab person="1">LAURA</paper-tab>
+										<paper-tab person="2">ANWAR</paper-tab>					
+										<paper-tab person="3">OGILVY</paper-tab>
+										<paper-tab person="7">MAFE</paper-tab>	
+										<paper-tab person="5">TLAPALERÍA</paper-tab>					
+										<paper-tab person="6">TU TALLER</paper-tab>				
+										<paper-tab person="4">PATAGONIA</paper-tab>				
+									</paper-tabs>
+								</div>
+				 				<div id="mobile_tabs">
+							 		<paper-tabs noink attr-for-selected="person" selected="{{selected_person}}">
+										<paper-tab person="1">LAURA</paper-tab>
+										<paper-tab person="2">ANWAR</paper-tab>					
+										<paper-tab person="3">OGILVY</paper-tab>
+										<paper-tab person="7">MAFE</paper-tab>				
+									</paper-tabs>
+									<paper-tabs noink attr-for-selected="person" selected="{{selected_person}}">
+										<paper-tab person="5">TLAPALERÍA</paper-tab>					
+										<paper-tab person="6">TU TALLER</paper-tab>				
+										<paper-tab person="4">PATAGONIA</paper-tab>	
+									</paper-tabs>
+								</div>
 								<div class="divider"></div>
 								<div class="divider"></div>
 								<iron-pages attr-for-selected="person" selected="{{selected_person}}">	
