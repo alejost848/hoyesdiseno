@@ -105,11 +105,11 @@
 						<div id="playground_buttons_top" class="layout vertical">
 							<paper-fab class="playground_fab" mini icon="info-outline" onclick="playgroundInfo()"></paper-fab>
 							<div class="divider"></div>
-							<paper-fab class="playground_fab" mini icon="social:share"></paper-fab>
+							<paper-fab class="playground_fab" mini icon="social:share" onclick="shareButtonPressed()"></paper-fab>
 						</div>
 						<div id="playground_footer" class="layout horizontal">
 							<div class="layout horizontal center flex self-center">
-							<a class="no_decoration_zawette" href="http://youtube.com/zawette" target="_blank">
+							<a class="no_decoration_zawette" href="http://youtube.com/zawette" target="_blank" onclick="zawetteButtonPressed()">
 								<div id="zawette_container" class="layout horizontal center">
 									<iron-icon id="zawette_icon" icon="puzzle-icons:zawette"></iron-icon>
 									<div id="" class="layout vertical">									
@@ -119,7 +119,7 @@
 								</div>
 							</a>
 							</div>
-							<paper-icon-button id="playground_hed_button" icon="puzzle-icons:logo" class="small"></paper-icon-button>
+							<paper-icon-button id="playground_hed_button" icon="puzzle-icons:logo" class="small" onclick="hedButtonPressed()"></paper-icon-button>
 							<div class="flex self-center"></div>
 						</div>
 

@@ -94,6 +94,11 @@
     .accent{
       color: var(--accent-color);
     }
+
+    .full_size{
+      width: 50%;
+      height: 100%;
+    }
     
 
     @media (max-width: 1500px) {
@@ -139,6 +144,10 @@
         line-height: 18px;
       }
 
+      .full_size{
+        width: 100%;
+      }
+    
     }
 
   </style>
@@ -147,7 +156,7 @@
     <paper-material class="agenda_box" elevation="1">
       <template is="dom-repeat" items="{{personInfo}}">
         <div class="day_title layout horizontal ponente_container"> 
-          <div>
+          <div class="full_size">
             <iron-image class="person_img" src="{{item.src}}" preload fade sizing="cover"></iron-image>
           </div>
           <div class="divider2"></div>

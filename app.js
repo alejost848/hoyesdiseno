@@ -36,7 +36,6 @@ window.addEventListener('WebComponentsReady', function(e) {
 		if(!this.unlocked){
     		document.querySelector('#lockedSound').show(); 
 		}
-
 		//console.log(location.search);
 		//console.log(window.location.hash);
 		//window.history.pushState("", "", '?s=22');
@@ -173,6 +172,7 @@ $( "#sidebar" ).height(available_height);
 $( "#event_bg" ).width(event_bg_width);
 $( "#event_bg" ).height(available_height);
 
+
 if(screen.width<=850){
 	available_width = $(window).width();
 	available_height = $(window).height();
@@ -184,8 +184,9 @@ if(screen.width<=850){
 	$( "#element_rows" ).removeClass("horizontal");
 	$( "#element_rows" ).addClass("vertical");
 
-	$( ".ponente_container" ).removeClass("horizontal");
 	$( ".ponente_container" ).addClass("vertical");	
+	$( ".ponente_container" ).removeClass("horizontal");
+	
 }
 
 if($(window).width()<=850){
@@ -199,8 +200,9 @@ if($(window).width()<=850){
 	$( "#element_rows" ).removeClass("horizontal");
 	$( "#element_rows" ).addClass("vertical");
 
+	$( ".ponente_container" ).addClass("vertical");
 	$( ".ponente_container" ).removeClass("horizontal");
-	$( ".ponente_container" ).addClass("vertical");	
+		
 }
 
 $(window).resize(function() {
@@ -396,21 +398,25 @@ function validateCaptcha() {
 	}
 }
 
-Mousetrap.bind('f u t u r o', function(e, combo) {
-    elements[0].unlocked=true;
+function zawetteButtonPressed (){
+	elements[0].unlocked=true;
     elements[0]._updateColors();    
     document.querySelector('#newSound').setAttribute("text", "¡Sonido 1 desbloqueado!");
     document.querySelector('#newSound').show();
-});
+}
 
-Mousetrap.bind('2', function() {
-    elements[1].unlocked=true;
-    elements[1]._updateColors();    
-    document.querySelector('#newSound').setAttribute("text", "¡Sonido 2 desbloqueado!");
-    document.querySelector('#newSound').show(); 
-});
+var hedButtonClicks = 0;
+function hedButtonPressed (){
+	hedButtonClicks++;
+	if(hedButtonClicks==5){
+		elements[1].unlocked=true;
+	    elements[1]._updateColors();    
+	    document.querySelector('#newSound').setAttribute("text", "¡Sonido 2 desbloqueado!");
+	    document.querySelector('#newSound').show(); 
+	}
+}
 
-Mousetrap.bind('3', function() {
+Mousetrap.bind('f u t u r o', function() {
     elements[2].unlocked=true;
     elements[2]._updateColors();    
     document.querySelector('#newSound').setAttribute("text", "¡Sonido 3 desbloqueado!");
@@ -424,12 +430,12 @@ Mousetrap.bind('7', function() {
     document.querySelector('#newSound').show(); 
 });
 
-Mousetrap.bind('8', function() {
-    elements[7].unlocked=true;
+function shareButtonPressed (){
+	elements[7].unlocked=true;
     elements[7]._updateColors();    
     document.querySelector('#newSound').setAttribute("text", "¡Sonido 8 desbloqueado!");
     document.querySelector('#newSound').show(); 
-});
+}
 
 Mousetrap.bind('9', function() {
     elements[8].unlocked=true;
@@ -438,6 +444,6 @@ Mousetrap.bind('9', function() {
     document.querySelector('#newSound').show(); 
 });
 
-	
+
 
 //console.log( '%c  __        ______________________  \n /  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n ||_/|  <--| ¿Necesitas ayuda?    | \n |___/     |______________________/ \n                                    ', "color: #272430;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );
