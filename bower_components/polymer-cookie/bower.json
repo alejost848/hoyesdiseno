@@ -1,0 +1,10 @@
+{
+  "name": "polymer-cookie",
+  "version": "1.0.0",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.4"
+  }
+}

@@ -5,40 +5,39 @@ var progress = document.querySelector('paper-progress');
 
 var elements;
 
-var secretSequence = "731652910804";
+/*var secretSequence = "731652910804";*/
+var secretSequence = "012345678";
 var userSequence = [];
 
-var urlString = "?s=";
+var urlString = "#!/play/?s=";
 
 window.addEventListener('WebComponentsReady', function(e) {
 	elements = document.getElementsByTagName("the-icon");
     $("the-icon").on("tap", function (event) {
 		if(firstTrigger){			
 			firstTrigger = false;
-			progressCount();
-			//window.history.pushState("", "", urlString);		
+			progressCount();	
 		}
 		if(this.active){
 			$('#playground_buttons_bottom').fadeIn();
-			userSequence.push(this.identifier);
-			urlString = urlString + this.identifier;
-			//window.history.pushState("", "", urlString);				
+			userSequence.push(this.id);
+			urlString = "#!/play/?s="+userSequence.join("");
+			window.history.replaceState("", "", urlString);
+			youWin(userSequence.join(""));				
 		}else{
-			var index = userSequence.indexOf(this.identifier);
+			var index = userSequence.indexOf(this.id);
 			if (index > -1) {
 			    userSequence.splice(index, 1);
+			    urlString = urlString.slice(0, -1);
+			    urlString = "#!/play/?s="+userSequence.join("");
+			    window.history.replaceState("", "", urlString);
 			}
-		}
-		if(userSequence.join('') === secretSequence){
-		    alert("YOU'RE WINNER");
+			window.history.replaceState("", "", urlString);
 		}
 
 		if(!this.unlocked){
     		document.querySelector('#lockedSound').show(); 
 		}
-		//console.log(location.search);
-		//console.log(window.location.hash);
-		//window.history.pushState("", "", '?s=22');
 	});
 
 	responsive();
@@ -106,6 +105,9 @@ function progressCount(){
 }
 
 function stopSamples (){
+	userSequence = [];
+	urlString = "#!/play/?s=";
+	window.history.replaceState("", "", "#!/play/?s=");	
 	clearTimeout(progressInterval);
 	progress.value=progress.min;
 	$('#playground_buttons_bottom').fadeOut();
@@ -118,6 +120,16 @@ function stopSamples (){
 	}
 }
 
+function youWin(validateWin) {
+	if (validateWin == secretSequence) {
+		alert("YOU'RE WINNER");
+		return true;
+	}
+	else {
+		return false; 
+	}
+}
+
 /*Toggles the drawer panel when in a different section than home*/
 var drawer_panel = document.getElementById("drawerPanel");
 
@@ -127,7 +139,12 @@ app.selected_day = "1";
 app0.selected_person = "1";
 
 window.onload=function(){	   
-    $('#loadingCard').fadeOut(1000);	
+    $('#loadingCard').fadeOut(1000);
+    var savedSequence = getUrlVars()["s"];
+	var decodedSavedSequence = decodeURIComponent(savedSequence);
+	triggerButtons(decodedSavedSequence);
+	var loadSequence = JSON.parse("[" + decodedSavedSequence + "]");
+	userSequence= [loadSequence];
 };
 
 checkHash();
@@ -169,6 +186,18 @@ function checkHash (){
 	}
 }
 
+
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 
 
 var footer_height = 136;
@@ -284,8 +313,28 @@ function openDialog (element){
 }
 
 function signup (){
-	var url = "https://www.icesi.edu.co/eventos/inscripcion.php?sched_conf_id=162&utm_source=Inscripci%C3%B3n%20HED&utm_medium=banner&utm_term=hoy%20es%20dise%C3%B1o&utm_content=Sitio%20HED&utm_campaign=Conversi%C3%B3n%20Sitio%20HED";
+	var url = 'https://www.icesi.edu.co/eventos/inscripcion.php?sched_conf_id=162';
 	window.open(url, '_blank');
+	trackOutboundLink(url);
+	return false;
+}
+
+var trackOutboundLink = function(url) {
+   ga('send', 'event', 'outbound', 'click', url, {'hitCallback':
+     function () {
+     document.location = url;
+     }
+   });
+}
+
+function playgroundInfoOpenOnce() {
+	var cookiePlayInfo = document.getElementById("playCookie");
+	
+	if (cookiePlayInfo.value == null || cookiePlayInfo.value == '') {
+		playgroundInfo();
+		cookiePlayInfo.value = '1';
+		cookiePlayInfo.expires = 'Sun, 18 Oct 2015 23:59:59 GMT';
+	}
 }
 
 function playgroundInfo (){
