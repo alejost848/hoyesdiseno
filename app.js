@@ -30,6 +30,9 @@ window.addEventListener('WebComponentsReady', function(e) {
 			    userSequence.splice(index, 1);
 			    urlString = urlString.slice(0, -1);
 			    urlString = "#!/play/?s="+userSequence.join("");
+			    if(urlString == "#!/play/?s="){
+			    	urlString = "#!/play";
+			    }
 			    window.history.replaceState("", "", urlString);
 			}
 			window.history.replaceState("", "", urlString);
@@ -106,8 +109,7 @@ function progressCount(){
 
 function stopSamples (){
 	userSequence = [];
-	urlString = "#!/play/?s=";
-	window.history.replaceState("", "", "#!/play/?s=");	
+	window.history.replaceState("", "", "#!/play");	
 	clearTimeout(progressInterval);
 	progress.value=progress.min;
 	$('#playground_buttons_bottom').fadeOut();
@@ -128,6 +130,17 @@ function youWin(validateWin) {
 	else {
 		return false; 
 	}
+}
+
+function triggerButtons(code) {
+	if (code) {
+		var inputCode = code.split("");
+		$.each(inputCode, function( index, value ) {
+			elements[value].unlocked=true;
+			elements[value]._updateColors();  
+			$("the-icon#"+value).trigger( "click" );
+		});
+	};
 }
 
 /*Toggles the drawer panel when in a different section than home*/
@@ -172,7 +185,10 @@ function checkHash (){
 			}
 		}
 	}else{
-		if (currentHash=="#!/play") {
+		if (currentHash.startsWith("#!/play")) {
+			window.addEventListener('WebComponentsReady', function(e) {
+				setTimeout(function(){ playgroundInfoOpenOnce(); }, 1000);
+			});
 			$('#footer').css( "display", "none");
 			$('#menu_button').css( "display", "none");
 		}else{
@@ -325,6 +341,27 @@ var trackOutboundLink = function(url) {
      document.location = url;
      }
    });
+}
+
+function facebookShare() {
+
+	FB.ui(
+		{
+			method: 'feed',
+			name: 'Crea música con el playground de Hoy es diseño',
+			link: 'http://www.hoyesdiseno.com/'+urlString,
+			picture: 'http://www.hoyesdiseno.com/images/fb-cover.jpg',
+			caption: 'www.hoyesdiseno.com/#!/play',
+			description: 'Juega con la consola de audio, desbloquea nuevos sonidos y crea tu propia música. #playgroundhed.',
+		},
+		function(response) {
+			if (response && response.post_id) {
+				document.querySelector('#fbShared').show();
+			} else {
+				document.querySelector('#fbNotShared').show();
+			}
+		}
+	);
 }
 
 function playgroundInfoOpenOnce() {
@@ -492,6 +529,7 @@ function shareButtonPressed (){
     elements[7]._updateColors();    
     document.querySelector('#newSound').setAttribute("text", "¡Sonido 8 desbloqueado!");
     document.querySelector('#newSound').show(); 
+    facebookShare();
 }
 
 Mousetrap.bind('9', function() {

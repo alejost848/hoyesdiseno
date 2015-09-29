@@ -56,6 +56,15 @@
 </head>
 <body unresolved class="fullbleed">
 
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=533607453454699";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
 	<div id="loadingCard" class="layout vertical center-center">
 		<iron-image id="logoHED" class="full_width" preload fade></iron-image>
 		<paper-spinner id="spinner" active></paper-spinner>
@@ -407,6 +416,9 @@
 	<paper-toast id="msgSent" duration="6000" text="¡Tu mensaje ha sido enviado!"></paper-toast>
 	<paper-toast id="msgNotSent" duration="8000" text="Ocurrió un error al enviar tu mensaje, revisa tu correo o inténtalo de nuevo más tarde."></paper-toast>
 	<paper-toast id="msgNoCaptcha" duration="8000" text="Debes completar la verificación reCaptcha antes de enviar tu mensaje."></paper-toast>
+
+	<paper-toast id="fbShared" duration="4000" text="¡Tu mezcla ha sido compartida!"></paper-toast>
+	<paper-toast id="fbNotShared" duration="4000" text="No se ha podido compartir tu mezcla, inténtalo de nuevo."></paper-toast>
 
 	<!-- <platinum-https-redirect></platinum-https-redirect> -->
 
