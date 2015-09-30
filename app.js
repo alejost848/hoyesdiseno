@@ -27,17 +27,20 @@ window.addEventListener('WebComponentsReady', function(e) {
 			window.history.replaceState("", "", urlString);
 			youWin(userSequence.join(""));				
 		}else{
-			var index = userSequence.indexOf(this.id);
-			if (index > -1) {
-			    userSequence.splice(index, 1);
-			    urlString = urlString.slice(0, -1);
-			    urlString = "#!/play/?s="+userSequence.join("");
-			    if(urlString == "#!/play/?s="){
-			    	urlString = "#!/play";
-			    }
-			    window.history.replaceState("", "", urlString);
+			if(this.unlocked){
+				var index = userSequence.indexOf(this.id);
+
+				if (index > -1) {
+				    userSequence.splice(index, 1);
+				    urlString = urlString.slice(0, -1);
+				    urlString = "#!/play/?s="+userSequence.join("");
+				    if(urlString == "#!/play/?s="){
+				    	urlString = "#!/play";
+				    }
+				    window.history.replaceState("", "", urlString);
+				}
+				window.history.replaceState("", "", urlString);
 			}
-			window.history.replaceState("", "", urlString);
 		}
 
 		if(!this.unlocked){
@@ -136,7 +139,8 @@ function youWin(validateWin) {
 }
 
 function triggerButtons(code) {
-	if (code !== null) {
+	if (code !== null && code !== "undefined") {
+		console.log('whaat');
 		var inputCode = code.split("");
 		$.each(inputCode, function( index, value ) {
 			elements[value].unlocked=true;
@@ -176,10 +180,12 @@ app0.selected_person = "1";
 window.onload=function(){	   
     $('#loadingCard').fadeOut(1000);
     var savedSequence = getUrlVars()["s"];
-	var decodedSavedSequence = decodeURIComponent(savedSequence);
-	triggerButtons(decodedSavedSequence);
-	var loadSequence = JSON.parse("[" + decodedSavedSequence + "]");
-	userSequence= [loadSequence];
+    if (savedSequence !== null && savedSequence !== undefined) {
+		var decodedSavedSequence = decodeURIComponent(savedSequence);
+		triggerButtons(decodedSavedSequence);
+		var loadSequence = JSON.parse("[" + decodedSavedSequence + "]");
+		userSequence= [loadSequence];
+	}
 };
 
 checkHash();
@@ -390,7 +396,7 @@ function playgroundInfoOpenOnce() {
 	var cookiePlayInfo = document.getElementById("playCookie");
 	var date = new Date();
 	date.setTime(date.getTime()+(24*60*60*1000));
-	
+
 	if (cookiePlayInfo.value === undefined || cookiePlayInfo.value === null) {
 		playgroundInfo();
 		cookiePlayInfo.value = '1';
@@ -516,55 +522,33 @@ function validateCaptcha() {
 	}
 }
 
-function zawetteButtonPressed (){
+function shareButtonPressed (){
 	unlockedButtons.push("0");
 	setUnlockedButtonsCookies();
 	elements[0].unlocked=true;
-    elements[0]._updateColors();    
+    elements[0]._updateColors();
+    facebookShare();
     document.querySelector('#newSound').setAttribute("text", "¡Sonido 1 desbloqueado!");
     document.querySelector('#newSound').show();
 }
 
-var hedButtonClicks = 0;
-function hedButtonPressed (){
-	hedButtonClicks++;
-	if(hedButtonClicks==5){
-		unlockedButtons.push("1");
-		setUnlockedButtonsCookies();
-		elements[1].unlocked=true;
-	    elements[1]._updateColors();    
-	    document.querySelector('#newSound').setAttribute("text", "¡Sonido 2 desbloqueado!");
-	    document.querySelector('#newSound').show(); 
-	}
-}
-
 Mousetrap.bind('f u t u r o', function() {
-	unlockedButtons.push("2");
+	unlockedButtons.push("1");
 	setUnlockedButtonsCookies();
-    elements[2].unlocked=true;
-    elements[2]._updateColors();    
-    document.querySelector('#newSound').setAttribute("text", "¡Sonido 3 desbloqueado!");
+    elements[1].unlocked=true;
+    elements[1]._updateColors();    
+    document.querySelector('#newSound').setAttribute("text", "¡Sonido 2 desbloqueado!");
     document.querySelector('#newSound').show(); 
 });
 
 Mousetrap.bind('7', function() {
-	unlockedButtons.push("6");
-	setUnlockedButtonsCookies();
-    elements[6].unlocked=true;
-    elements[6]._updateColors();    
-    document.querySelector('#newSound').setAttribute("text", "¡Sonido 7 desbloqueado!");
-    document.querySelector('#newSound').show(); 
-});
-
-function shareButtonPressed (){
 	unlockedButtons.push("7");
 	setUnlockedButtonsCookies();
-	elements[7].unlocked=true;
+    elements[7].unlocked=true;
     elements[7]._updateColors();    
     document.querySelector('#newSound').setAttribute("text", "¡Sonido 8 desbloqueado!");
     document.querySelector('#newSound').show(); 
-    facebookShare();
-}
+});
 
 Mousetrap.bind('9', function() {
 	unlockedButtons.push("8");
