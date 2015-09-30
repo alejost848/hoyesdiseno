@@ -5,7 +5,6 @@ var progress = document.querySelector('paper-progress');
 
 var elements;
 
-/*var secretSequence = "731652910804";*/
 var secretSequence = "012345678";
 var userSequence = [];
 var unlockedButtons = [];
@@ -140,7 +139,6 @@ function youWin(validateWin) {
 
 function triggerButtons(code) {
 	if (code !== null && code !== "undefined") {
-		console.log('whaat');
 		var inputCode = code.split("");
 		$.each(inputCode, function( index, value ) {
 			elements[value].unlocked=true;
@@ -452,13 +450,11 @@ function clickHandlerVideo(e) {
 
   var autoplay_video = document.querySelector("#home_video");
   autoplay_video.play()
-  console.log('tes');
 }
 
 document.getElementById('formPost').addEventListener('iron-form-submit', deliverIt);
 
 function deliverIt(event) {
-	console.log(JSON.stringify(event.detail));
 	
 	var email = $("#email").val(); // get email field value
 	var name = $("#name").val(); // get name field value
