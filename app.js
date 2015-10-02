@@ -181,8 +181,6 @@ window.onload=function(){
     if (savedSequence !== null && savedSequence !== undefined) {
 		var decodedSavedSequence = decodeURIComponent(savedSequence);
 		triggerButtons(decodedSavedSequence);
-		var loadSequence = JSON.parse("[" + decodedSavedSequence + "]");
-		userSequence= [loadSequence];
 	}
 };
 
@@ -374,11 +372,11 @@ function facebookShare() {
 	FB.ui(
 		{
 			method: 'feed',
-			name: 'Crea música con el playground de Hoy es diseño',
+			name: 'Crea música con el playground de Hoy es Diseño',
 			link: 'http://www.hoyesdiseno.com/'+urlString,
 			picture: 'http://www.hoyesdiseno.com/images/fb-cover.jpg',
 			caption: 'www.hoyesdiseno.com/#!/play',
-			description: 'Juega con la consola de audio, desbloquea nuevos sonidos y crea tu propia música. #playgroundhed.',
+			description: 'Juega con la consola de audio, desbloquea nuevos sonidos y crea tu propia música. #playgroundhed. El futuro, ahora.',
 		},
 		function(response) {
 			if (response && response.post_id) {
