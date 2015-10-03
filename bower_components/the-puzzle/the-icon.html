@@ -198,16 +198,16 @@
 
       pauseSound: function() {
         if(this.unlocked){
-          songList[this.id].fade(1.0, 0.0, 500);
+          songList[parseInt(this.id)-1].fade(1.0, 0.0, 500);
           this.async(function() {
-            songList[this.id].pause();
+            songList[parseInt(this.id)-1].pause();
           },600)
         }
       },
 
       stopSound: function() {
         if(this.unlocked){
-          songList[this.id].stop();
+          songList[parseInt(this.id)-1].stop();
           this.onHold = false;
           this.$.ink.holdDown=false;
         }
@@ -216,7 +216,7 @@
       playSample: function() {    
         this.playing = true;    
         if(this.unlocked){
-          songList[this.id].volume(1.0);
+          songList[parseInt(this.id)-1].volume(1.0);
           if(this.active){
             this.onHold = false;
             this.$.ink.classList.toggle('blink', false);
@@ -225,8 +225,8 @@
             this.$.ink.classList.toggle('blink', true);
           }
           
-          songList[this.id].stop();
-          songList[this.id].play();
+          songList[parseInt(this.id)-1].stop();
+          songList[parseInt(this.id)-1].play();
         }     
       },
 
@@ -239,7 +239,7 @@
       },
 
       _updateColors: function() {
-        switch(this.id){
+        switch((parseInt(this.id)-1).toString()){
           case "0":
             this.$.ink.style.color = '#b10022';
           break;

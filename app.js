@@ -5,7 +5,7 @@ var progress = document.querySelector('paper-progress');
 
 var elements;
 
-var sQs = atob('NzQzMDgyMTY1');
+var sQs = atob("ODU0MTkzMjc2");
 var userSequence = [];
 var unlockedButtons = [];
 var cookieUnlockButtons = document.getElementById("unlockedButtonsCookie");
@@ -145,7 +145,7 @@ function triggerButtons(code) {
 	if (code !== null && code !== "undefined") {
 		var inputCode = code.split("");
 		$.each(inputCode, function( index, value ) {
-			elements[value]._updateColors();  
+			elements[value-1]._updateColors();  		
 			$("the-icon#"+value).trigger( "click" );
 		});
 	};
@@ -189,7 +189,6 @@ window.onload=function(){
 
 checkHash();
 
-
 $(window).on('hashchange', function(e){
    checkHash();
 });
@@ -199,6 +198,7 @@ function checkHash (){
 	
 	if($(window).width()<=850){
 		if ( currentHash==""||currentHash=="#!/" ) {	
+			$('#menu_button').css( "display", "inline");
 			$('#footer').css({
 			    "display": "-webkit-flex",
 			    "display": "flex"
@@ -216,10 +216,14 @@ function checkHash (){
 			$('#footer').css( "display", "none");
 			$('#menu_button').css( "display", "none");
 		}else{
-			$('#footer').css({
-			    "display": "-webkit-flex",
-			    "display": "flex"
-			});
+			if (currentHash=="#!/fotos") {
+				$('#footer').css( "display", "none");
+			}else{
+				$('#footer').css({
+				    "display": "-webkit-flex",
+				    "display": "flex"
+				});
+			}
 
 			$('#menu_button').css( "display", "inline");
 		}
@@ -438,6 +442,23 @@ app5.displayInstalledToast = function() {
 function goLink (argument){
 	window.location.href = argument;
 }
+
+function goBack (argument){
+	userSequence = [];
+	window.location.href = argument;
+
+	clearTimeout(progressInterval);
+	progress.value=progress.min;
+	$('#playground_buttons_bottom').fadeOut();
+	firstTrigger = true;
+	for (var i=0; i<elements.length; i++) {			
+		elements[i].active=false;
+		elements[i].playing = false;
+		elements[i].stopSound();
+		$('#a'+elements[i].id).fadeOut();
+	}
+}
+
 
 function clickHandlerVideo(e) {
   var button = e.target;
