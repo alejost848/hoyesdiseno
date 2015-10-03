@@ -118,7 +118,7 @@
 						</div>
 						<div id="playground_footer" class="layout horizontal">
 							<div class="layout horizontal center flex self-center">
-							<a class="no_decoration_zawette" href="http://youtube.com/zawette" target="_blank">
+							<a class="no_decoration_zawette" href="http://youtube.com/zawette" target="_blank" onclick="zawetteButtonPressed()">
 								<div id="zawette_container" class="layout horizontal center">
 									<iron-icon id="zawette_icon" icon="puzzle-icons:zawette"></iron-icon>
 									<div id="" class="layout vertical">									
@@ -399,12 +399,13 @@
 
 	<dialog-playground id="dialog_playground"></dialog-playground>
 
+	<dialog-playground-win id="dialog_playground_win"></dialog-playground-win>
+
 	<dialog-pictures id="dialog_pictures"></dialog-pictures>
 
 	<div class="layout horizontal center-center">
 	<paper-dialog id="coolVideo" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
-		<google-youtube id="home_video" video-id="ZQxIiliu9XQ" fluid rel="0" showinfo="0">
-		</google-youtube>
+		
 	</paper-dialog>
 	</div>
 

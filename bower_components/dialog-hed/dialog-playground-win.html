@@ -1,0 +1,135 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE
+The complete set of authors may be found at http://polymer.github.io/AUTHORS
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../neon-animation/neon-animations.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
+
+<dom-module id="dialog-playground-win">
+  <style>
+    /*Default typography styles*/
+    .paper-font-display4 {@apply(--paper-font-display4);}
+    .paper-font-display3 {@apply(--paper-font-display3);}
+    .paper-font-display2 {@apply(--paper-font-display2);}
+    .paper-font-display1 {@apply(--paper-font-display1);}
+    .paper-font-headline {@apply(--paper-font-headline);}
+    .paper-font-title {@apply(--paper-font-title);}
+    .paper-font-subhead {@apply(--paper-font-subhead);}
+    .paper-font-body2 {@apply(--paper-font-body2);}
+    .paper-font-body1 {@apply(--paper-font-body1);}
+    .paper-font-caption {@apply(--paper-font-caption);}
+    .paper-font-menu {@apply(--paper-font-menu);}
+    .paper-font-button {@apply(--paper-font-button);}
+    
+    #picture{
+      width: 100%;
+      height: 350px;
+      margin: 0;
+      padding: 0;
+    }
+
+    #playground_dialog_win{
+      width: 580px;
+    }
+
+    #signup_toolbar{
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+    }
+
+    .day_title{
+      padding: 10px 25px;
+      margin: 0px;
+    }
+
+    #content{
+      padding: 20px 50px 5px 50px;
+    }
+
+    .divider{
+      height: 15px;
+    }
+
+    .darkGray{
+      color: #141414;
+    }
+
+    h4{
+      padding: 0px 25px;
+      margin: 0px;
+      color: #656565;
+    }
+
+    .buttons{
+      margin-top: 20px;
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 850px) {
+      #playground_dialog_win{
+        width: 100%;
+        margin: 0;
+      }
+
+    }
+
+  </style>
+  <template>
+    <paper-dialog id="playground_dialog_win" entry-animation="slide-up-animation" exit-animation="fade-out-animation" with-backdrop>
+      <paper-toolbar id="signup_toolbar">
+        <paper-icon-button icon="arrow-back" class="darkGray" dialog-dismiss></paper-icon-button>
+      </paper-toolbar>
+      <div id="content">
+        <h2>Game Over</h2>
+        <div class="divider"></div>
+        <div class="paper-font-subhead">Has superado el playground de Hoy es Diseño y queremos recompensarte. Envíanos tu nombre completo, documento de identidad y una captura de pantalla de este mensaje para participar por un premio especial.
+        <br><br> Escríbenos a <b>hoyesdisenomercadeo@gmail.com</b></div>
+        <div class="buttons">
+          <paper-button dialog-confirm autofocus>Entendido</paper-button>
+        </div>
+      </div>
+    </paper-dialog>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'dialog-playground-win',
+
+    properties: {
+
+      content: {
+        type: String
+      },
+
+      time: {
+        type: String
+      },
+
+      title: {
+        type: String
+      }
+    },
+
+    openDialog: function() {
+      var dialog8 = document.getElementById("playground_dialog_win");
+      if (dialog8) {
+        dialog8.open();
+      }
+    }
+  });
+</script>

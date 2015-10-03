@@ -5,7 +5,7 @@ var progress = document.querySelector('paper-progress');
 
 var elements;
 
-var secretSequence = "012345678";
+var sQs = atob('NzQzMDgyMTY1');
 var userSequence = [];
 var unlockedButtons = [];
 var cookieUnlockButtons = document.getElementById("unlockedButtonsCookie");
@@ -48,6 +48,10 @@ window.addEventListener('WebComponentsReady', function(e) {
 	});
 
 	responsive();
+
+	if (cookieUnlockButtons.value !== null && cookieUnlockButtons.value !== "undefined") {
+		unlockedButtons = cookieUnlockButtons.value.split("");
+	};
 	unlockSavedButtons(cookieUnlockButtons.value);
 });
 
@@ -128,8 +132,8 @@ function stopSamples (){
 }
 
 function youWin(validateWin) {
-	if (validateWin == secretSequence) {
-		alert("YOU'RE WINNER");
+	if (validateWin == sQs) {
+		playgroundInfoWin();
 		return true;
 	}
 	else {
@@ -141,7 +145,6 @@ function triggerButtons(code) {
 	if (code !== null && code !== "undefined") {
 		var inputCode = code.split("");
 		$.each(inputCode, function( index, value ) {
-			elements[value].unlocked=true;
 			elements[value]._updateColors();  
 			$("the-icon#"+value).trigger( "click" );
 		});
@@ -354,7 +357,6 @@ function openDialog (element){
 
 function signup (){
 	var url = 'https://www.icesi.edu.co/eventos/inscripcion.php?sched_conf_id=162';
-	window.open(url, '_blank');
 	trackOutboundLink(url);
 	return false;
 }
@@ -372,7 +374,7 @@ function facebookShare() {
 	FB.ui(
 		{
 			method: 'feed',
-			name: 'Crea música con el playground de Hoy es Diseño',
+			name: 'Crea música con el Playground de Hoy es Diseño',
 			link: 'http://www.hoyesdiseno.com/'+urlString,
 			picture: 'http://www.hoyesdiseno.com/images/fb-cover.jpg',
 			caption: 'www.hoyesdiseno.com/#!/play',
@@ -403,6 +405,11 @@ function playgroundInfoOpenOnce() {
 function playgroundInfo (){
 	var dialogPlayground = document.getElementById("dialog_playground");
 	dialogPlayground.openDialog();
+}
+
+function playgroundInfoWin (){
+	var dialogPlaygroundWin = document.getElementById("dialog_playground_win");
+	dialogPlaygroundWin.openDialog();
 }
 
 function profilePics (){
@@ -516,41 +523,65 @@ function validateCaptcha() {
 	}
 }
 
+var shareBoolean = true;
+
 function shareButtonPressed (){
-	unlockedButtons.push("0");
-	setUnlockedButtonsCookies();
-	elements[0].unlocked=true;
-    elements[0]._updateColors();
-    facebookShare();
-    document.querySelector('#newSound').setAttribute("text", "¡Sonido 1 desbloqueado!");
-    document.querySelector('#newSound').show();
+	if (shareBoolean) {
+		unlockedButtons.push("0");
+		setUnlockedButtonsCookies();
+		elements[0].unlocked=true;
+	    elements[0]._updateColors();
+	    document.querySelector('#newSound').setAttribute("text", "¡Sonido 1 desbloqueado!");
+	    document.querySelector('#newSound').show();
+	    shareBoolean = false;
+	}
+	facebookShare();
 }
 
-Mousetrap.bind('f u t u r o', function() {
-	unlockedButtons.push("1");
-	setUnlockedButtonsCookies();
-    elements[1].unlocked=true;
-    elements[1]._updateColors();    
-    document.querySelector('#newSound').setAttribute("text", "¡Sonido 2 desbloqueado!");
-    document.querySelector('#newSound').show(); 
+var futureBoolean = true;
+
+Mousetrap.bind(atob('ZiB1IHQgdSByIG8'), function() {
+	if (futureBoolean) {
+		unlockedButtons.push("1");
+		setUnlockedButtonsCookies();
+	    elements[1].unlocked=true;
+	    elements[1]._updateColors();    
+	    document.querySelector('#newSound').setAttribute("text", "¡Sonido 2 desbloqueado!");
+	    document.querySelector('#newSound').show(); 
+	    futureBoolean = false;
+	}
 });
 
-Mousetrap.bind('7', function() {
-	unlockedButtons.push("7");
-	setUnlockedButtonsCookies();
-    elements[7].unlocked=true;
-    elements[7]._updateColors();    
-    document.querySelector('#newSound').setAttribute("text", "¡Sonido 8 desbloqueado!");
-    document.querySelector('#newSound').show(); 
-});
+var sevenBoolean = true;
 
-Mousetrap.bind('9', function() {
-	unlockedButtons.push("8");
-	setUnlockedButtonsCookies();
-    elements[8].unlocked=true;
-    elements[8]._updateColors();    
-    document.querySelector('#newSound').setAttribute("text", "¡Sonido 9 desbloqueado!");
-    document.querySelector('#newSound').show(); 
-});
+function zawetteButtonPressed (){
+	if (sevenBoolean) {
+		unlockedButtons.push("7");
+		setUnlockedButtonsCookies();
+	    elements[7].unlocked=true;
+	    elements[7]._updateColors();    
+	    document.querySelector('#newSound').setAttribute("text", "¡Sonido 8 desbloqueado!");
+	    document.querySelector('#newSound').show(); 
+	    sevenBoolean = false;
+	}
+}
+
+var lastBoolean = true;
+
+var hedButtonClicks = 0;
+function hedButtonPressed (){
+	hedButtonClicks++;
+	if(hedButtonClicks==10){
+		if (lastBoolean) {
+			unlockedButtons.push("8");
+			setUnlockedButtonsCookies();
+		    elements[8].unlocked=true;
+		    elements[8]._updateColors();    
+		    document.querySelector('#newSound').setAttribute("text", "¡Sonido 9 desbloqueado!");
+		    document.querySelector('#newSound').show(); 
+		    lastBoolean = false;
+		}
+	}
+}
 
 //console.log( '%c  __        ______________________  \n /  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n ||_/|  <--| ¿Necesitas ayuda?    | \n |___/     |______________________/ \n                                    ', "color: #272430;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );
