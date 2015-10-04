@@ -205,7 +205,7 @@ function checkHash (){
 			});		
 		}else{
 			$('#footer').css( "display", "none");
-			if (currentHash=="#!/play" || currentHash=="#!/fotos") {			
+			if (currentHash.startsWith("#!/play") || currentHash=="#!/fotos") {			
 				$('#menu_button').css( "display", "none");
 			}else{
 				$('#menu_button').css( "display", "inline");
