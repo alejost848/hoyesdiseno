@@ -372,8 +372,8 @@
       font-size: 16px;
     }   
 
-	#envivo_info{
-		padding: 20px;
+	.envivo_info{
+		padding: 0px 5px;
 	}
 
 	#view_agenda_icon{
@@ -382,8 +382,9 @@
 	}
 
 	.workshop_box{
-		padding: 10px 20px;
+		padding: 10px 10px;
 		border-bottom: 1px solid #ddd;
+		width: 100%;
 	}
 
 	.workshop_time{
@@ -432,12 +433,19 @@
 		top: 35px;
 	}
 
+	#social_buttons_top{
+		position: absolute;
+		right: 20px;
+		top: 20px;
+	}
+
 	.dark_gray{
 		background-color: rgba(255,255,255,0.1);
 	}
 
 	.playground_fab{		
 		--paper-fab-background: transparent;
+		padding: 0;
 	}
 
 	#playground_buttons_bottom{
@@ -519,7 +527,6 @@
 
 	.transparent_text{
 		opacity: 0.5;
-		margin-left: -40px;
 		font-weight: 300;
 	}
 
@@ -620,7 +627,9 @@
 		}
 
 		#drawer{
-			display: inline;
+			display: -webkit-flex;
+			display: -ms-flex;
+			display: flex;
 		}
 
 		#app_toolbar{
@@ -720,6 +729,11 @@
 		#playground_buttons_top{
 			top: 70px;
 			right: 20px;
+		}
+
+		#social_buttons_top{
+			top: 60px;
+			right: 10px;
 		}
 
 		#playground_buttons_bottom{

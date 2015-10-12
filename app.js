@@ -426,13 +426,6 @@ function viewPictures (){
 	dialogPictures.openDialog();
 }
 
-//Progress of the conference
-var app4 = document.querySelector("#app4");
- setInterval(function() {	
-	var currentValue = app4.currentTime/app4.duration;
-	$("#conference_progress").attr("value", currentValue*100);
-}, 100);
-
 //Toast for displaying offline cache completed
 var app5 = document.querySelector("#app5");
 app5.displayInstalledToast = function() {
@@ -606,3 +599,17 @@ function hedButtonPressed (){
 }
 
 console.log( '%c  __        ______________________  \n /  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n ||_/|  <--| ¿Necesitas ayuda?    | \n |___/     |______________________/ \n                                    ', "color: #272430;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );
+
+
+var videos = [["Inauguración", "8:30 AM - 9:00 AM"],["La Tlapalería", "9:00 AM - 10:30 AM"],["Anwar Bey-Taylor", "11:00 AM - 12:30 PM"],["Ogilvy & Mather", "2:00 PM - 3:30 PM"],["Laura Jade", "4:00 PM - 6:00 PM"]];
+var nowStreaming = 0;
+
+var app10 = document.querySelector("#app10");
+app10.titulo_conferencia_ahora = videos[0][0];
+app10.hora_conferencia_ahora = videos[0][1];
+
+function streamingVideo (){
+	nowStreaming ++;
+	app10.titulo_conferencia_ahora = videos[nowStreaming][0];
+	app10.hora_conferencia_ahora = videos[nowStreaming][1];
+}
