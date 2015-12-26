@@ -56,168 +56,137 @@
 </head>
 <body unresolved class="fullbleed">
 
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=533607453454699";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-
 	<div id="loadingCard" class="layout vertical center-center">
+		<iron-image id="bg_splash" class="bg_img" preload fade sizing="cover"></iron-image>
 		<iron-image id="logoHED" class="full_width" preload fade></iron-image>
 		<paper-spinner id="spinner" active></paper-spinner>
 	</div>
 
 	<paper-drawer-panel id="drawerPanel" force-narrow disable-swipe responsiveWidth="850" unresolved>
-		<paper-header-panel mode="scroll" main>
+		<paper-header-panel mode="scroll" main>	
+
 			<paper-toolbar id="app_toolbar">
 				<paper-icon-button icon="menu" id="menu_button" paper-drawer-toggle></paper-icon-button>
 			</paper-toolbar>
-			
-			<iron-icon icon="puzzle-icons:logo" id="logo_top" onclick="goLink('#!/')"></iron-icon>
-			<iron-image id="bg_splash" class="bg_img" preload fade sizing="cover"></iron-image>
-			
+
+			<header class="horizontal layout center"> 
+		        <div id="left_info_wrapper" class="horizontal layout center-center">		           
+		            <paper-icon-button route="inicio" icon="puzzle-icons:logo" title="Hoy es Diseño" class="small" onclick="goLink('#!/')"></paper-icon-button>           
+		            <div id="location_info" class="left_text vertical layout">
+                    	<div class="dateHome">Octubre 15 - 16, 2015</div>
+                    	<div class="placeHome">Universidad Icesi</div>   
+                    	<div class="placeHome">Cali, Colombia</div>   
+                    </div>       
+		        </div>
+		        <div class="flex"></div>
+		        <div id="sections" class="horizontal layout center">
+					<more-route-selector> 
+						<paper-tabs noink>			
+							<paper-tab route="ponentes">PONENTES</paper-tab>				
+							<paper-tab route="agenda">AGENDA</paper-tab>
+							<paper-tab route="contacto">CONTACTO</paper-tab>            
+						</paper-tabs>
+					</more-route-selector>
+					<!-- <paper-button id="signup_button" noink class="colorful">INSCRIBIRSE</paper-button> -->
+		        </div>
+		    </header>   
+						
 			<more-route-selector>
 				<iron-pages>
 				 	<section route="inicio">
-				 		<div id="splash_logo" class="layout vertical center">
-				 			<iron-image id="bg_bg" src="images/bg.jpg" preload fade sizing="cover"></iron-image>
-				 			<div id="social_buttons_top" class="layout horizontal">
-				 				<a class="no_decoration_zawette" href="http://fb.me/hoyesdiseno" target="_blank">
-									<paper-fab class="playground_fab" mini icon="puzzle-icons:fb"></paper-fab>
-								</a>
-								<a class="no_decoration_zawette" href="http://instagr.am/_hoyesdiseno" target="_blank">
-									<paper-fab class="playground_fab" mini icon="puzzle-icons:insta"></paper-fab>
-								</a>
-							</div>			 			
-							<div id="buttons_wrapper" class="layout vertical center-center">
-								<paper-button onclick="goLink('#!/play')" class="colorful">
-				 					<div class="layout horizontal center-center">
-					 					<iron-icon icon="av:games"></iron-icon>
-					 					<div class="spacer"></div>
-					 					<div>PLAYGROUND</div>
-				 					</div>
-					 			</paper-button>
-					 			<div class="divider"></div>
-								<paper-button onclick="goLink('#!/fotos')" class="dark_gray">
-									<div class="layout horizontal center-center">
-					 					<iron-icon icon="account-circle"></iron-icon>
-					 					<div class="spacer"></div>
-					 					<div>Crea tu foto</div>
-				 					</div>
-				 				</paper-button>
-							</div>
-				 		</div>
-				 	</section>
-
-				 	<section route="playground">
-				 		<custom-ripple></custom-ripple>								
-						<paper-progress min="1" max="17"></paper-progress>
-						<paper-toolbar id="playground_toolbar">
-							<paper-icon-button icon="arrow-back" id="back_arrow" onclick="goBack('#!/')"></paper-icon-button>
-							<div class="transparent_text layout horizontal center-center flex">¿Tienes un código? Solo escríbelo.</div>
-						</paper-toolbar>
-						<the-puzzle></the-puzzle>
-						<div id="playground_buttons_top" class="layout vertical">
-							<paper-fab class="playground_fab" mini icon="info-outline" onclick="playgroundInfo()"></paper-fab>
-							<div class="divider"></div>
-							<paper-fab class="playground_fab" mini icon="social:share" onclick="shareButtonPressed()"></paper-fab>
-						</div>
-						<div id="playground_footer" class="layout horizontal">
-							<div class="layout horizontal center flex self-center">
-							<a class="no_decoration_zawette" href="http://youtube.com/zawette" target="_blank" onclick="zawetteButtonPressed()">
-								<div id="zawette_container" class="layout horizontal center">
-									<iron-icon id="zawette_icon" icon="puzzle-icons:zawette"></iron-icon>
-									<div id="" class="layout vertical">									
-										<div class="paper-font-caption">Música por</div>
-										<div id="zawette_title" class="paper-font-subhead">Zawette</div>
-									</div>
+				 		<iron-image id="bg_bg" src="images/bg.jpg" preload fade sizing="cover"></iron-image>
+						<div class="centered_material">
+							<paper-material id="event_description" elevation="1">
+								<div id="padding_description">
+									<div class="parrafo paper-font-headline">
+									Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la ciudad de Cali y la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.
+									</div>		
+								</div>									 	 
+						 	
+						 		<div id="ver_fotos_wrapper" onclick="viewPictures()">
+								 	<div id="ver_fotos" class="horizontal layout center">
+								 		<iron-icon icon="av:videocam"></iron-icon>
+								 		<div id="more_pics_text_mobile">Ver las conferencias de la edición 2015-2</div>
+								 	</div>
 								</div>
-							</a>
-							</div>
-							<paper-icon-button id="playground_hed_button" icon="puzzle-icons:logo" class="small" onclick="hedButtonPressed()"></paper-icon-button>
-							<div class="flex self-center"></div>
-						</div>
-
-						<div id="playground_buttons_bottom" class="layout vertical">
-							<paper-fab mini icon="av:stop" onclick="stopSamples()"></paper-fab>
-						</div>											
-				 	</section>
-
-				 	<section route="envivo">
-				 		<div class="envivo_container">
-				 			<h1 class="titulo paper-font-display2">En vivo</h1>	
-				 			<div id="envivo_wrapper" class="layout vertical">							 	
-						 		<div class="agenda_box flex">
-								 	<google-youtube id="live_video" video-id="ZQxIiliu9XQ" fluid autoplay="0" modestbranding="1" rel="0" ivloadpolicy="3"></google-youtube>
-	     						</div>
-	     						<div class="divider"></div>			 		
-					 			<div class="layout horizontal">
-						 			<paper-material elevation="1">
-						 				<div class="layout horizontal">
-						 					<template is="dom-bind" id="app10">
-								 				<div class="layout horizontal center-center workshop_box">
-								 					<div class="envivo_info"><h2 class="title_spacer paper-font-caption">Ahora</h2></div>
-								 					<div class="envivo_info"><h4 class="activity_artist paper-font-subhead">{{titulo_conferencia_ahora}}</h4></div>	
-				     								<div class="envivo_info"><h5 class="workshop_time paper-font-caption">{{hora_conferencia_ahora}}</h5></div>
-				     							</div>
-				     						</template>				     						
-			     						</div>
-		     						</paper-material>
-						 		</div>
-						 	</div>
-						 </div>				 		
-				 	</section>
-
-				 	<section route="evento">		 	
-						<div id="evento_container" class="layout horizontal center">
-							<div id="event_info" class="flex-3">
-								<div id="event_bg">
-									<iron-image class="bg_img" sizing="cover" preload fade src="images/hed20151/pic9.jpg"></iron-image>
-									<div class="overlay"></div>
+						 	</paper-material>						 	
+						 </div>
+						 <div id="conferences">
+						 	<div class="titulo paper-font-display1">Conferencias</div>
+						 	<div id="conferences_container" class="layout horizontal">
+							 	<div class="conference_wrapper" onclick="openDialogConference('0lHNCUIDWQg')">
+								 	<paper-material class="conference_item" elevation="2">	
+								 		<iron-image class="conference_image" src="images/conferences/1.jpg" sizing="cover" preload fade></iron-image>
+							 			<div class="conference_title_container">
+							 				<h3 class="conference_title">Inauguración / Conferencia 1</h3>
+	      									<h4 class="conference_subtitle">La Tlapalería / México</h4>
+	      								</div>
+	      								<paper-ripple></paper-ripple>
+		      						</paper-material>
+		      					</div>
+							 	<div class="conference_wrapper" onclick="openDialogConference('tD49U2jmyYY')">
+								 	<paper-material class="conference_item" elevation="2">
+								 		<iron-image class="conference_image" src="images/conferences/2.jpg" sizing="cover" preload fade></iron-image>
+							 			<div class="conference_title_container">
+							 				<h3 class="conference_title">Conferencia 2</h3>
+	      									<h4 class="conference_subtitle">Anwar Bey-Taylor / Estados Unidos</h4>
+	      								</div>
+	      								<paper-ripple></paper-ripple>
+		      						</paper-material>
+		      					</div>
+							 	<div class="conference_wrapper" onclick="openDialogConference('fGHTVrMYUyw')">
+								 	<paper-material class="conference_item" elevation="2">
+								 		<iron-image class="conference_image" src="images/conferences/3.jpg" sizing="cover" preload fade></iron-image>
+							 			<div class="conference_title_container">
+							 				<h3 class="conference_title">Conferencia 3</h3>
+	      									<h4 class="conference_subtitle">Ogilvy & Mather / Colombia</h4>
+	      								</div>
+	      								<paper-ripple></paper-ripple>
+		      						</paper-material>
+		      					</div>
+							 	<div class="conference_wrapper" onclick="openDialogConference('lbScDjMEjvc')">
+								 	<paper-material class="conference_item" elevation="2">
+								 		<iron-image class="conference_image" src="images/conferences/4.jpg" sizing="cover" preload fade></iron-image>
+							 			<div class="conference_title_container">
+							 				<h3 class="conference_title">Conferencia 4</h3>
+	      									<h4 class="conference_subtitle">Laura Jade / Australia</h4>
+	      								</div>
+	      								<paper-ripple></paper-ripple>
+		      						</paper-material>
+		      					</div>
+							 	<div class="conference_wrapper" onclick="openDialogConference('SOjjA-bxfo0')">
+								 	<paper-material class="conference_item" elevation="2">
+								 		<iron-image class="conference_image" src="images/conferences/5.jpg" sizing="cover" preload fade></iron-image>
+							 			<div class="conference_title_container">
+							 				<h3 class="conference_title">Conferencia 5</h3>
+	      									<h4 class="conference_subtitle">Tu Taller Design / Colombia</h4>
+	      								</div>
+	      								<paper-ripple></paper-ripple>
+		      						</paper-material>
+		      					</div>
+							 	<div class="conference_wrapper" onclick="openDialogConference('iqVeRPTfeas')">
+								 	<paper-material class="conference_item" elevation="2">
+								 		<iron-image class="conference_image" src="images/conferences/6.jpg" sizing="cover" preload fade></iron-image>
+							 			<div class="conference_title_container">
+							 				<h3 class="conference_title">Conferencia 6</h3>
+	      									<h4 class="conference_subtitle">Mafe Maldonado / Colombia</h4>
+	      								</div>
+	      								<paper-ripple></paper-ripple>
+		      						</paper-material>
+		      					</div>
+							 	<div class="conference_wrapper" onclick="openDialogConference('kNiGpM5tQqA')">
+								 	<paper-material class="conference_item" elevation="2">
+								 		<iron-image class="conference_image" src="images/conferences/7.jpg" sizing="cover" preload fade></iron-image>
+							 			<div class="conference_title_container">
+							 				<h3 class="conference_title">Conferencia 7</h3>
+	      									<h4 class="conference_subtitle">Designo Patagonia / Argentina</h4>
+	      								</div>
+	      								<paper-ripple></paper-ripple>
+		      						</paper-material>	
 								</div>
-								<div class="section_container">
-							 		<h1 class="titulo paper-font-display2">Evento</h1>			 		
-									<paper-material id="event_description" elevation="1">
-										<div class="parrafo paper-font-headline">
-										Hoy es Diseño es un evento organizado por estudiantes de Diseño Industrial y Diseño de Medios Interactivos de la Universidad Icesi que busca promover el diseño en la ciudad de Cali y la región. Durante el marco del evento se desarrollan conferencias, talleres, foros y muestras donde participan ponentes nacionales e internacionales.
-										<br>
-										<br>
-										El evento está enfocado principalmente a la comunidad del diseño, sin embargo, es una importante ventana para que empresarios y personas de diversas disciplinas amplíen su percepción y conocimiento del tema impulsando una verdadera cultura de diseño en Colombia.
-										</div>											 	 
-								 	
-								 		<div id="ver_fotos_wrapper" onclick="viewPictures()">
-										 	<div id="ver_fotos" class="horizontal layout center">
-										 		<iron-icon icon="image:photo-library"></iron-icon>
-										 		<div id="more_pics_text_mobile">Ver fotos de la edición anterior</div>
-										 	</div>
-										</div>
-								 	</paper-material>
-								 </div>	
-							 </div>		
-								
-							<div id="right_images" class="flex">
-								<div id="sidebar">
-									<template is="dom-bind" id="app3">
-								 		<div class="more_pictures">
-								 			<iron-image class="full_width" sizing="cover" placeholder="{{pholder1}}" preload fade src="images/hed20151/pic10.jpg"></iron-image>
-								 			<div class="overlay"></div>
-								 		</div>
-								
-								 		<div class="more_pictures">
-								 			<iron-image class="full_width" sizing="cover" style="background-color: #1f1d25;" preload fade src="images/hed20151/pic1.jpg"></iron-image>	
-								 			<div id="view_pics_button" class="layout vertical" onclick="viewPictures()">		
-												<iron-icon id="pictures_icon" icon="image:photo-library"></iron-icon>
-												<div id="more_pics_text">Ver fotos de la edición anterior</div>	
-											</div>
-											<div id="view_pics_overlay" class="overlay"></div>
-								 		</div>
-								 	</template>
-						 		</div>
-							</div>
+						 	</div>	
 						</div>
+						 
 				 	</section>
 
 				 	<section route="ponentes"> 	
@@ -294,8 +263,8 @@
 				 	<section route="patrocinadores">
 					 	<div class="section_container">
 							<h1 class="titulo paper-font-display2">Patrocinadores</h1>
-							<paper-material class="agenda_box" elevation="1">
-								
+							<paper-material class="agenda_box sponsorship-brands" elevation="1">
+								<div id="brands-container"></div>
 						 	</paper-material>
 					 	</div>
 				 	</section>	
@@ -335,29 +304,7 @@
 				</iron-pages>
 			</more-route-selector>	
 			
-		    <div id="footer" class="horizontal layout center">            
-		        <div id="left_info_wrapper" class="horizontal layout center-center">		           
-		            <paper-icon-button route="inicio" icon="puzzle-icons:logo" title="Hoy es Diseño" class="small" onclick="goLink('#!/')"></paper-icon-button>           
-		            <div id="location_info" class="left_text vertical layout">
-		              <div class="dateHome">Octubre 15 - 16, 2015</div>
-		              <div class="placeHome">Universidad Icesi</div>   
-		            </div>          
-		        </div>
-		        <div class="flex"></div>
-		        <div id="sections" class="horizontal layout center">
-					<more-route-selector> 
-						<paper-tabs noink>
-							<!-- <paper-tab route="envivo">EN VIVO</paper-tab> -->	
-							<paper-tab route="evento">EVENTO</paper-tab>							
-							<paper-tab route="ponentes">PONENTES</paper-tab>				
-							<paper-tab route="agenda">AGENDA</paper-tab>
-							<!-- <paper-tab route="patrocinadores">PATROCINADORES</paper-tab> -->
-							<paper-tab route="contacto">CONTACTO</paper-tab>            
-						</paper-tabs>
-					</more-route-selector>
-					<paper-button id="signup_button" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button>
-		        </div>
-		    </div>   
+		    
 
 		</paper-header-panel>
 
@@ -372,15 +319,13 @@
 			<more-route-selector>
 				<paper-menu>
 					<paper-item route="inicio">Inicio</paper-item>
-					<!-- <paper-item route="envivo">En vivo</paper-item> -->
-					<paper-item route="evento">Evento</paper-item>					
+					<!-- <paper-item route="envivo">En vivo</paper-item> -->				
 					<paper-item route="ponentes">Ponentes</paper-item>
-					<paper-item route="agenda">Agenda</paper-item>
-					<!-- <paper-item route="patrocinadores">Patrocinadores</paper-item> -->
+					<paper-item route="agenda">Agenda</paper-item>					
 					<paper-item route="contacto">Contacto</paper-item>
 				</paper-menu>
 			</more-route-selector>
-			<paper-button id="signup_button_mobile" onclick="signup()" raised class="colorful">INSCRIBIRSE</paper-button>
+			<!-- <paper-button id="signup_button" noink class="colorful">INSCRIBIRSE</paper-button> -->
 			
 		</paper-header-panel>
 	</paper-drawer-panel>
@@ -392,16 +337,15 @@
 	<polymer-cookie name="playCookie" id="playCookie"></polymer-cookie>
 	<polymer-cookie name="playgroundUnlockCookie" id="unlockedButtonsCookie"></polymer-cookie>
 
-	<dialog-playground id="dialog_playground"></dialog-playground>
+	<template is="dom-bind" id="app11">
+		<dialog-playground id="dialog_pictures" video="{{video}}"></dialog-playground>
+	</template>
 
 	<dialog-playground-win id="dialog_playground_win"></dialog-playground-win>
 
-	<dialog-pictures id="dialog_pictures"></dialog-pictures>
-
 	<div class="layout horizontal center-center">
-	<paper-dialog id="coolVideo" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
-		
-	</paper-dialog>
+		<paper-dialog id="coolVideo" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>		
+		</paper-dialog>
 	</div>
 
 	<paper-toast id="caching-complete" duration="12000" text="Esta app funcionará offline"></paper-toast>
