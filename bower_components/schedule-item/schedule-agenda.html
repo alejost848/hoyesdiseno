@@ -8,7 +8,14 @@
 <dom-module id="schedule-agenda">
   <style>
     .schedule_items{    
-      height: 100%;
+      height: 300px;
+      overflow: scroll;
+    }
+
+    @media (max-width: 1500px) {
+      .schedule_items{    
+        height: 240px;
+      }
     }
 
     @media (max-width: 850px) {

@@ -5,20 +5,6 @@
 	  --accent-color: #FF1744;
 	}
 
-	/*Default typography styles*/
-    .paper-font-display4 {@apply(--paper-font-display4);}
-    .paper-font-display3 {@apply(--paper-font-display3);}
-    .paper-font-display2 {@apply(--paper-font-display2);}
-    .paper-font-display1 {@apply(--paper-font-display1);}
-    .paper-font-headline {@apply(--paper-font-headline);}
-    .paper-font-title {@apply(--paper-font-title);}
-    .paper-font-subhead {@apply(--paper-font-subhead);}
-    .paper-font-body2 {@apply(--paper-font-body1);}
-    .paper-font-body1 {@apply(--paper-font-body1);}
-    .paper-font-caption {@apply(--paper-font-caption);}
-    .paper-font-menu {@apply(--paper-font-menu);}
-    .paper-font-button {@apply(--paper-font-button);}
-
 	*{
 	    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 	}
@@ -78,7 +64,10 @@
 
 	#bg_bg{
 		width: 100%;
-		height: 70%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;	
 	}
 
 	.bg_profile_pics{
@@ -95,99 +84,22 @@
 		z-index: -9;
 	}
 
-	.centered_material{
-		position: absolute;
-		width: 53%;
-		right: 0;
-		left: 0;
-		margin: 0 auto;
-	}
-
-	#padding_description{
-		padding: 40px 45px 20px 45px;	
-	}
-
-
-	#event_description{
-		margin-top: -15%;
-	}
-
-	#ver_fotos_wrapper{
-		cursor: pointer;
-		padding: 32px 40px;	
-	}	
-
-	#ver_fotos{
-		color: var(--accent-color);			
-	}
-
-	#more_pics_text_mobile{
-		font-size: 14px;
-		margin-left: 10px;
-		text-transform: uppercase;
-	}
-
-	#conferences{
-		padding: 170px 122px 100px 122px;
-		margin: 0 auto;
-	}
-
-	.titulo{
-		color:white;
-		font-weight: 300;
-		padding: 40px 10px;
-	}
-
-	#conferences_container{
-	  display: -webkit-flex;
-      -webkit-flex-wrap: wrap;
-      display: flex;
-      flex-wrap: wrap;
-	}
-
-	.conference_wrapper{
-		width: calc(25% - 20px);
-     	height: calc(25% - 20px);
-		padding: 10px;
-		cursor: pointer;
-	}
-
-	.conference_item{
-		width: 100%;
-		height: 100%;
-	}
-
-	.conference_image{
-		width: 100%;
-		height: 250px;
-		margin: 0;
-		padding: 0;
-	}
-
-	.conference_title_container{
-		padding: 12px 16px;
-	}
-
-	.conference_title{
-		font-weight: 400;
-		line-height: 25px;
-	}
-
-	.conference_subtitle{
-		font-weight: 300;
-		color: #888;
-		line-height: 25px;
-	}
-
-
 	.section_container{
-		width: 60%;
+		width: 52%;
 		margin: 0 auto;
-		padding: 100px 0px;
+		margin-top: 100px;
 	}
 
+	.section_container:nth-child(2){
+		width: 65%;
+		margin: 0 auto;
+	}
 
-
+	.envivo_container{
+		width: 45%;
+		margin: 0 auto;
+		margin-top: 100px;
+	}
 
 	#video_wrapper{
 		background-color: transparent;
@@ -251,7 +163,29 @@
 		box-sizing: border-box;
 		border-radius: 2px;
 	}
-	
+
+	#event_description{			
+		padding: 40px;
+	}
+
+	/*Default typography styles*/
+    .paper-font-display4 {@apply(--paper-font-display4);}
+    .paper-font-display3 {@apply(--paper-font-display3);}
+    .paper-font-display2 {@apply(--paper-font-display2);}
+    .paper-font-display1 {@apply(--paper-font-display1);}
+    .paper-font-headline {@apply(--paper-font-headline);}
+    .paper-font-title {@apply(--paper-font-title);}
+    .paper-font-subhead {@apply(--paper-font-subhead);}
+    .paper-font-body2 {@apply(--paper-font-body1);}
+    .paper-font-body1 {@apply(--paper-font-body1);}
+    .paper-font-caption {@apply(--paper-font-caption);}
+    .paper-font-menu {@apply(--paper-font-menu);}
+    .paper-font-button {@apply(--paper-font-button);}
+
+	.titulo{
+		color:white;
+		font-weight: 300;
+	}
 
 	.parrafo{
 		color: #5C5C5C;
@@ -342,6 +276,11 @@
 		width: 100%;
 	}
 
+	#ver_fotos_wrapper{
+		display: none;
+		cursor: pointer;
+	}
+
 	#view_pics_overlay{
 		transition: opacity 0.75s ease;
 	}
@@ -384,16 +323,11 @@
       color: white;
     }
 
-    header{
-    	position: absolute;
-      	width: 100%;
-      	top: 10px;
-      	z-index: 999;
+    #footer{
+      position: fixed;
+      width: 100%;
+      bottom: 10px;
     }
-
-	#signup_button{
-		cursor: not-allowed;
-	}
 
     #left_info_wrapper{
       position: relative;     
@@ -421,8 +355,8 @@
     }
 
     .colorful {
-      background-color: #ddd;
-      color: #A8A8A8;
+      background-color: var(--accent-color);
+      color: #fff;
     }
 
     .dateHome{
@@ -433,9 +367,9 @@
 
     .placeHome{
       color:white;
-      opacity: 0.7;
+      opacity: 0.6;
       font-weight: 300;
-      font-size: 15px;
+      font-size: 16px;
     }   
 
 	.envivo_info{
@@ -596,76 +530,6 @@
 		font-weight: 300;
 	}
 
-	/*/////////////////////Sponsorships//////////////////// */
-
-	.sponsorship-brands {
-		padding: 10px 20px 10px 10px;
-		height: 450px;
-		overflow-x: scroll;
-	}
-	#brands-container {
-		line-height: 0;
-		-webkit-column-count: 3;
-		-webkit-column-gap:   10px;
-		-moz-column-count:    3;
-		-moz-column-gap:      10px;
-		column-count:         3;
-		column-gap:           10px;
-	}
-
-	#brands-container img {
-		width: 100% !important;
-		border: 1px solid #ebebeb;
-		margin-bottom: 10px;
-	}
-
-	@media (min-width: 1440px) {
-		.sponsorship-brands {
-			height: 650px;
-		}
-	}
-	@media (max-width: 1200px) {
-		#brands-container {
-		-moz-column-count:    3;
-		-webkit-column-count: 3;
-		column-count:         3;
-		}
-		.sponsorship-brands {
-			height: 400px;
-		}
-	}
-	@media (max-width: 1000px) {
-		#brands-container {
-		-moz-column-count:    3;
-		-webkit-column-count: 3;
-		column-count:         3;
-		}
-		.sponsorship-brands {
-			height: 400px;
-		}
-	}
-	@media (max-width: 800px) {
-		#brands-container {
-		-moz-column-count:    2;
-		-webkit-column-count: 2;
-		column-count:         2;
-		}
-		.sponsorship-brands {
-			height: 450px;
-		}
-	}
-	@media (max-width: 400px) {
-		#brands-container {
-		-moz-column-count:    1;
-		-webkit-column-count: 1;
-		column-count:         1;
-		}
-		.sponsorship-brands {
-			height: 450px;
-		}
-	}
-
-	/*//////////////////////////////////////////////////////////////// */
 
 	@media (max-width: 1700px) {
 		.next_box{
@@ -677,6 +541,10 @@
 		.parrafo{
 			font-size: 18px;
 			line-height: 22px;		
+		}
+
+		#event_description {
+			padding: 32px;
 		}
 
 		#now_playing{
@@ -721,37 +589,19 @@
 			width: 50%;
 			margin-top: 30px;
 		}
+	}
 
-		#padding_description{
-			padding: 30px 30px 20px 30px;	
+	@media (max-width: 1200px) {
+		#event_description {
+			padding: 20px;
 		}
 
-		#ver_fotos_wrapper{
-			padding: 20px 20px;	
-		}	
-
-		#conferences{
-			padding: 170px 72px;
-		}
-
-		.conference_wrapper{
-			width: calc(33.333333% - 20px);
-	     	height: calc(33.333333% - 20px);
-		}
 	}
 
 	@media (max-width: 1000px) {
 		.parrafo{
 			font-size: 16px;
 			line-height: 20px;
-		}
-
-		#conferences{
-			padding: 170px 25px;
-		}
-
-		.centered_material{
-			width: 85%;
 		}
 	}
 
@@ -819,7 +669,22 @@
 		.day_title{
 			padding: 16px;
 			font-size: 20px;
+		}
+
+		#ver_fotos_wrapper{
+			display: inline;
+			border-top: 1px solid #ddd;
 		}	
+
+		#ver_fotos{
+			color: var(--accent-color);			
+		}
+
+		#more_pics_text_mobile{
+			font-size: 12px;
+			margin-left: 20px;
+			text-transform: uppercase;
+		}
 
 		#logo_top{
 			display: inline;
@@ -834,11 +699,11 @@
 			padding: 0;
 			left: 0;
 			right: 0;
-			top: 70px;
 		}
 
-		header{
-			top: 40px;			
+		#footer{
+			bottom: 40px;
+			display: none;
 		}
 
 		#sections{
@@ -850,7 +715,11 @@
 		}
 
 		.placeHome{
-			font-size: 12px;
+			font-size: 14px;
+		}
+
+		#signup_button{
+			font-size: 10px;
 		}
 
 		.next_box{
@@ -907,29 +776,7 @@
 			display: none;
 		}
 
-		.centered_material{
-			width: 100%;
-		}
-
-		#event_description{
-			margin-top: -50%;
-		}
-
-		.conference_wrapper{
-			width: calc(50% - 20px);
-	     	height: calc(50% - 20px);
-		}
-
 	}
-
-	@media (max-width: 500px) {
-		.conference_wrapper{
-			width: 100%;
-        	height: 100%;
-		}
-	}
-
-	
 
 	@media (max-width: 370px) {
 		.parrafo{

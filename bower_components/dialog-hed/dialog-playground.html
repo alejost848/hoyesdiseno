@@ -35,13 +35,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     .paper-font-menu {@apply(--paper-font-menu);}
     .paper-font-button {@apply(--paper-font-button);}
     
-    #video{
+    #picture{
+      width: 100%;
+      height: 350px;
       margin: 0;
       padding: 0;
     }
 
     #playground_dialog{
-      width: 70%;
+      width: 580px;
     }
 
     #signup_toolbar{
@@ -88,8 +90,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </style>
   <template>
-    <paper-dialog id="playground_dialog" entry-animation="slide-up-animation" exit-animation="fade-out-animation" with-backdrop on-iron-overlay-opened="_playVideo" on-iron-overlay-closed="_pauseVideo">
-      <google-youtube id="video" video-id="{{video}}" fluid autoplay="0" rel="0" ivloadpolicy="3"> </google-youtube>
+    <paper-dialog id="playground_dialog" entry-animation="slide-up-animation" exit-animation="fade-out-animation" with-backdrop>
+      <paper-toolbar id="signup_toolbar">
+        <paper-icon-button icon="arrow-back" class="darkGray" dialog-dismiss></paper-icon-button>
+      </paper-toolbar>
+      <div id="content">
+        <h2>Playground</h2>
+        <div class="divider"></div>
+        <div class="paper-font-subhead">Bienvenido a una nueva sección en la página de Hoy es Diseño. Aquí podrás interactuar con nuestra consola de audio y combinar los sonidos a tu gusto. Sigue las pistas que hemos dejado en nuestras redes sociales y desbloquea nuevos sonidos para que agregues a tu playground. Comparte tus creaciones con amigos usando el hashtag #playgroundhed y diviértete sampleando.</div>
+        <div class="buttons">
+          <paper-button dialog-confirm autofocus>A samplear</paper-button>
+        </div>
+      </div>
     </paper-dialog>
   </template>
 </dom-module>
@@ -99,7 +111,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     properties: {
 
-      video: {
+      content: {
+        type: String
+      },
+
+      time: {
+        type: String
+      },
+
+      title: {
         type: String
       }
     },
@@ -109,14 +129,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       if (dialog2) {
         dialog2.open();
       }
-    },
-
-    _playVideo: function() {
-      this.$.video.play();
-    },
-
-    _pauseVideo: function() {
-      this.$.video.pause();
     }
   });
 </script>

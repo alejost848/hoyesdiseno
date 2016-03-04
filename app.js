@@ -53,7 +53,6 @@ window.addEventListener('WebComponentsReady', function(e) {
 		unlockedButtons = cookieUnlockButtons.value.split("");
 	};
 	unlockSavedButtons(cookieUnlockButtons.value);
-
 });
 
 var away = false;
@@ -185,12 +184,6 @@ window.onload=function(){
     if (savedSequence !== null && savedSequence !== undefined) {
 		var decodedSavedSequence = decodeURIComponent(savedSequence);
 		triggerButtons(decodedSavedSequence);
-	}
-
-	for (var i = 0; i < 17; i++) {
-		/*var width = 400;
-		var height =  300;*/
-		$('#brands-container').append('<img src="images/patrocinadores/'+i+'.jpg" alt="patrocinadores">');
 	}
 };
 
@@ -366,16 +359,6 @@ function openDialog (element){
  	dialogFrame.openDialog(); 	
 }
 
-function openDialogConference (idVideo){
-	var itemVideo = idVideo;
-
-	var app11 = document.querySelector("#app11"); 	
- 	app11.video = itemVideo;
-
- 	var dialogPictures = document.getElementById("dialog_pictures");
-	dialogPictures.openDialog();
-}
-
 function signup (){
 	var url = 'https://www.icesi.edu.co/eventos/inscripcion.php?sched_conf_id=162';
 	trackOutboundLink(url);
@@ -439,17 +422,8 @@ function profilePics (){
 }
 
 function viewPictures (){
-	document.getElementById("conferences").scrollIntoView();
-}
-
-function findPos(obj) {
-    var curtop = 0;
-    if (obj.offsetParent) {
-        do {
-            curtop += obj.offsetTop;
-        } while (obj = obj.offsetParent);
-    return [curtop];
-    }
+	var dialogPictures = document.getElementById("dialog_pictures");
+	dialogPictures.openDialog();
 }
 
 //Toast for displaying offline cache completed
