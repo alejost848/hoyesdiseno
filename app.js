@@ -7,24 +7,22 @@ var elements;
 
 var sQs = atob("ODU0MTkzMjc2");
 var userSequence = [];
-var unlockedButtons = [];
-var cookieUnlockButtons = document.getElementById("unlockedButtonsCookie");
 
 var urlString = "#!/play/?s=";
 
 window.addEventListener('WebComponentsReady', function(e) {
 	elements = document.getElementsByTagName("the-icon");
     $("the-icon").on("tap", function (event) {
-		if(firstTrigger){			
+		if(firstTrigger){
 			firstTrigger = false;
-			progressCount();	
+			progressCount();
 		}
 		if(this.active){
 			$('#playground_buttons_bottom').fadeIn();
 			userSequence.push(this.id);
 			urlString = "#!/play/?s="+userSequence.join("");
 			window.history.replaceState("", "", urlString);
-			youWin(userSequence.join(""));				
+			youWin(userSequence.join(""));
 		}else{
 			if(this.unlocked){
 				var index = userSequence.indexOf(this.id);
@@ -43,25 +41,20 @@ window.addEventListener('WebComponentsReady', function(e) {
 		}
 
 		if(!this.unlocked){
-    		document.querySelector('#lockedSound').show(); 
+    		document.querySelector('#lockedSound').show();
 		}
 	});
 
 	responsive();
-
-	if (cookieUnlockButtons.value !== null && cookieUnlockButtons.value !== "undefined") {
-		unlockedButtons = cookieUnlockButtons.value.split("");
-	};
-	unlockSavedButtons(cookieUnlockButtons.value);
 });
 
 var away = false;
 
-document.addEventListener('visibilitychange', function(event) {	
+document.addEventListener('visibilitychange', function(event) {
 	if (!document.hidden) {
 		if(away){
 			for (var i=0; i<elements.length; i++) {
-				if(elements[i].paused){			
+				if(elements[i].paused){
 					elements[i].playSample();
 					elements[i].paused = false;
 				}
@@ -71,8 +64,8 @@ document.addEventListener('visibilitychange', function(event) {
 		}
 	} else {
 		away = true;
-		for (var i=0; i<elements.length; i++) {		
-			if(elements[i].playing){	
+		for (var i=0; i<elements.length; i++) {
+			if(elements[i].playing){
 				elements[i].pauseSound();
 				elements[i].paused = true;
 			}
@@ -88,11 +81,11 @@ function progressCount(){
 		progress.value = progress.min;
 	}
 	var activeButtons = 0;
-	if(progress.value==progress.min){	
+	if(progress.value==progress.min){
 		for (var i=0; i<elements.length; i++) {
-			elements[i].playing = false;				
+			elements[i].playing = false;
 			if(elements[i].active && elements[i].unlocked){
-				elements[i].playSample();				
+				elements[i].playSample();
 				$('#a'+elements[i].id).fadeIn();
 				activeButtons++;
 			}
@@ -103,13 +96,13 @@ function progressCount(){
 				$('#a'+elements[i].id).fadeOut();
 			}
 		}
-		if(activeButtons==0){			
+		if(activeButtons==0){
 			clearTimeout(progressInterval);
 			$('#playground_buttons_bottom').fadeOut();
 			firstTrigger = true;
 		}
 	}
-	
+
 	if(!firstTrigger){
 		progressInterval = setTimeout(progressCount, frequency/16);
 		progress.value += 1;
@@ -118,12 +111,12 @@ function progressCount(){
 
 function stopSamples (){
 	userSequence = [];
-	window.history.replaceState("", "", "#!/play");	
+	window.history.replaceState("", "", "#!/play");
 	clearTimeout(progressInterval);
 	progress.value=progress.min;
 	$('#playground_buttons_bottom').fadeOut();
 	firstTrigger = true;
-	for (var i=0; i<elements.length; i++) {			
+	for (var i=0; i<elements.length; i++) {
 		elements[i].active=false;
 		elements[i].playing = false;
 		elements[i].stopSound();
@@ -137,7 +130,7 @@ function youWin(validateWin) {
 		return true;
 	}
 	else {
-		return false; 
+		return false;
 	}
 }
 
@@ -145,30 +138,11 @@ function triggerButtons(code) {
 	if (code !== null && code !== "undefined") {
 		var inputCode = code.split("");
 		$.each(inputCode, function( index, value ) {
-			elements[value-1]._updateColors();  		
+			elements[value-1]._updateColors();
 			$("the-icon#"+value).trigger( "click" );
 		});
 	};
 }
-
-function setUnlockedButtonsCookies() {
-	var cookiePlayInfo = document.getElementById("playCookie");
-	var date = new Date();
-	date.setTime(date.getTime()+(24*60*60*1000));	
-	cookieUnlockButtons.value = unlockedButtons.join("");
-	cookieUnlockButtons.expires = date.toGMTString();
-}
-
-function unlockSavedButtons(unlkCode) {
-	if (unlkCode !== null) {
-		var unlkC = unlkCode.split("");
-		$.each(unlkC, function( index, value ) {
-			elements[value].unlocked=true;
-			elements[value]._updateColors();  
-		});
-	};
-}
-
 
 /*Toggles the drawer panel when in a different section than home*/
 var drawer_panel = document.getElementById("drawerPanel");
@@ -178,7 +152,7 @@ var app = document.querySelector("#app");
 app.selected_day = "1";
 app0.selected_person = "1";
 
-window.onload=function(){	   
+window.onload=function(){
     $('#loadingCard').fadeOut(1000);
     var savedSequence = getUrlVars()["s"];
     if (savedSequence !== null && savedSequence !== undefined) {
@@ -195,17 +169,17 @@ $(window).on('hashchange', function(e){
 
 function checkHash (){
 	var currentHash = window.location.hash;
-	
+
 	if($(window).width()<=850){
-		if ( currentHash==""||currentHash=="#!/" ) {	
+		if ( currentHash==""||currentHash=="#!/" ) {
 			$('#menu_button').css( "display", "inline");
 			$('#footer').css({
 			    "display": "-webkit-flex",
 			    "display": "flex"
-			});		
+			});
 		}else{
 			$('#footer').css( "display", "none");
-			if (currentHash.startsWith("#!/play") || currentHash=="#!/fotos") {			
+			if (currentHash.startsWith("#!/play") || currentHash=="#!/fotos") {
 				$('#menu_button').css( "display", "none");
 			}else{
 				$('#menu_button').css( "display", "inline");
@@ -277,9 +251,9 @@ function responsive(){
 
 	if($(window).width()<=850){
 		available_width = $(window).width();
-		available_height = $(window).height();	
+		available_height = $(window).height();
 		$( "#event_bg" ).width(available_width);
-		$( "#event_bg" ).height(available_height);	
+		$( "#event_bg" ).height(available_height);
 		$( "#event_info" ).removeClass("flex-3");
 
 		$( "#evento_container" ).removeClass("center");
@@ -287,7 +261,7 @@ function responsive(){
 		$( "#element_rows" ).addClass("vertical");
 
 		$( ".ponente_container" ).removeClass("horizontal");
-			
+
 	}
 }
 
@@ -297,7 +271,7 @@ $(window).resize(function() {
 		available_height = $(window).height();
 		$( "#event_bg" ).width(available_width);
 		$( "#event_bg" ).height(available_height);
-		$( "#event_info" ).removeClass("flex-3");	
+		$( "#event_info" ).removeClass("flex-3");
 
 		$( "#evento_container" ).removeClass("center");
 		$( "#element_rows" ).removeClass("horizontal");
@@ -324,7 +298,7 @@ $(window).resize(function() {
 		$( "#element_rows" ).removeClass("vertical");
 		$( "#element_rows" ).addClass("horizontal");
 
-		$( ".ponente_container" ).addClass("horizontal");	
+		$( ".ponente_container" ).addClass("horizontal");
 	}
 	checkHash();
 });
@@ -349,14 +323,14 @@ function openDialog (element){
 	var itemIcon = element.icon;
 
 	var app = document.querySelector("#app2");
- 	
+
  	app.dialogTitle = itemTitle;
  	app.dialogTime = itemTime;
  	app.dialogContent = itemContent;
- 	app.dialogIcon = itemIcon; 
+ 	app.dialogIcon = itemIcon;
 
  	var dialogFrame = document.getElementById("dialog_schedule");
- 	dialogFrame.openDialog(); 	
+ 	dialogFrame.openDialog();
 }
 
 function signup (){
@@ -379,9 +353,9 @@ function facebookShare() {
 		{
 			method: 'feed',
 			name: 'Crea música con el Playground de Hoy es Diseño',
-			link: 'http://www.hoyesdiseno.com/'+urlString,
-			picture: 'http://www.hoyesdiseno.com/images/fb-cover.jpg',
-			caption: 'www.hoyesdiseno.com/#!/play',
+			link: 'http://alejost848.github.io/hoyesdiseno/'+urlString,
+			picture: 'http://alejost848.github.io/hoyesdiseno/images/fb-cover.jpg',
+			caption: 'alejost848.github.io/hoyesdiseno/#!/play',
 			description: 'Juega con la consola de audio, desbloquea nuevos sonidos y crea tu propia música. #playgroundhed. El futuro, ahora.',
 		},
 		function(response) {
@@ -444,7 +418,7 @@ function goBack (argument){
 	progress.value=progress.min;
 	$('#playground_buttons_bottom').fadeOut();
 	firstTrigger = true;
-	for (var i=0; i<elements.length; i++) {			
+	for (var i=0; i<elements.length; i++) {
 		elements[i].active=false;
 		elements[i].playing = false;
 		elements[i].stopSound();
@@ -474,7 +448,7 @@ function clickHandlerVideo(e) {
 document.getElementById('formPost').addEventListener('iron-form-submit', deliverIt);
 
 function deliverIt(event) {
-	
+
 	var email = $("#email").val(); // get email field value
 	var name = $("#name").val(); // get name field value
 	var msg = $("#msg").val(); // get message field value
@@ -533,70 +507,14 @@ function validateCaptcha() {
 	}
 
 	else {
-		return true; 
+		return true;
 	}
 }
 
-var shareBoolean = true;
-
 function shareButtonPressed (){
-	if (shareBoolean) {
-		unlockedButtons.push("0");
-		setUnlockedButtonsCookies();
-		elements[0].unlocked=true;
-	    elements[0]._updateColors();
-	    document.querySelector('#newSound').setAttribute("text", "¡Sonido 1 desbloqueado!");
-	    document.querySelector('#newSound').show();
-	    shareBoolean = false;
-	}
 	facebookShare();
 }
 
-var futureBoolean = true;
-
-Mousetrap.bind(atob('ZiB1IHQgdSByIG8'), function() {
-	if (futureBoolean) {
-		unlockedButtons.push("1");
-		setUnlockedButtonsCookies();
-	    elements[1].unlocked=true;
-	    elements[1]._updateColors();    
-	    document.querySelector('#newSound').setAttribute("text", "¡Sonido 2 desbloqueado!");
-	    document.querySelector('#newSound').show(); 
-	    futureBoolean = false;
-	}
-});
-
-var sevenBoolean = true;
-
-function zawetteButtonPressed (){
-	if (sevenBoolean) {
-		unlockedButtons.push("7");
-		setUnlockedButtonsCookies();
-	    elements[7].unlocked=true;
-	    elements[7]._updateColors();    
-	    document.querySelector('#newSound').setAttribute("text", "¡Sonido 8 desbloqueado!");
-	    document.querySelector('#newSound').show(); 
-	    sevenBoolean = false;
-	}
-}
-
-var lastBoolean = true;
-
-var hedButtonClicks = 0;
-function hedButtonPressed (){
-	hedButtonClicks++;
-	if(hedButtonClicks==10){
-		if (lastBoolean) {
-			unlockedButtons.push("8");
-			setUnlockedButtonsCookies();
-		    elements[8].unlocked=true;
-		    elements[8]._updateColors();    
-		    document.querySelector('#newSound').setAttribute("text", "¡Sonido 9 desbloqueado!");
-		    document.querySelector('#newSound').show(); 
-		    lastBoolean = false;
-		}
-	}
-}
 
 console.log( '%c  __        ______________________  \n /  |      /                      | \n 0  0      | Parece que intentas  | \n || ||     | ver el código fuente | \n ||_/|  <--| ¿Necesitas ayuda?    | \n |___/     |______________________/ \n                                    ', "color: #272430;  font-size: 14px; font-family: 'Consolas', Helvetica, sans-serif;" );
 

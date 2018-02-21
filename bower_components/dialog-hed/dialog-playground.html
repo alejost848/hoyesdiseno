@@ -17,7 +17,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../paper-toolbar/paper-toolbar.html">
 
 <dom-module id="dialog-playground">
   <style>
@@ -34,7 +33,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     .paper-font-caption {@apply(--paper-font-caption);}
     .paper-font-menu {@apply(--paper-font-menu);}
     .paper-font-button {@apply(--paper-font-button);}
-    
+
     #picture{
       width: 100%;
       height: 350px;
@@ -43,13 +42,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     #playground_dialog{
-      width: 580px;
-    }
-
-    #signup_toolbar{
-      margin: 0;
-      padding: 0;
-      background-color: transparent;
+      width: 400px;
     }
 
     .day_title{
@@ -57,26 +50,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       margin: 0px;
     }
 
-    #content{
-      padding: 20px 50px 5px 50px;
-    }
-
-    .divider{
-      height: 15px;
-    }
-
-    .darkGray{
-      color: #141414;
-    }
-
-    h4{
-      padding: 0px 25px;
-      margin: 0px;
-      color: #656565;
-    }
-
     .buttons{
-      margin-top: 20px;
       color: var(--accent-color);
     }
 
@@ -90,17 +64,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </style>
   <template>
-    <paper-dialog id="playground_dialog" entry-animation="slide-up-animation" exit-animation="fade-out-animation" with-backdrop>
-      <paper-toolbar id="signup_toolbar">
-        <paper-icon-button icon="arrow-back" class="darkGray" dialog-dismiss></paper-icon-button>
-      </paper-toolbar>
-      <div id="content">
-        <h2>Playground</h2>
-        <div class="divider"></div>
-        <div class="paper-font-subhead">Bienvenido a una nueva sección en la página de Hoy es Diseño. Aquí podrás interactuar con nuestra consola de audio y combinar los sonidos a tu gusto. Sigue las pistas que hemos dejado en nuestras redes sociales y desbloquea nuevos sonidos para que agregues a tu playground. Comparte tus creaciones con amigos usando el hashtag #playgroundhed y diviértete sampleando.</div>
-        <div class="buttons">
-          <paper-button dialog-confirm autofocus>A samplear</paper-button>
-        </div>
+    <paper-dialog id="playground_dialog" entry-animation="slide-from-bottom-animation" exit-animation="fade-out-animation" with-backdrop>
+      <h2>Playground</h2>
+      <div>
+        <div>Bienvenido a una nueva sección en la página de Hoy es Diseño. Aquí podrás interactuar con nuestra consola de audio y combinar los sonidos a tu gusto. Sigue las pistas que hemos dejado en nuestras redes sociales y desbloquea nuevos sonidos para que agregues a tu playground. Comparte tus creaciones con amigos usando el hashtag #playgroundhed y diviértete sampleando.</div>
+      </div>
+      <div class="buttons">
+        <paper-button dialog-confirm autofocus>A samplear</paper-button>
       </div>
     </paper-dialog>
   </template>

@@ -8,14 +8,14 @@
 	*{
 	    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 	}
-	
+
 	html{
 		background-color: var(--main-bg-color);
 	}
 
 	body {
 		font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		
+
 	}
 
 	h2, h3, h4, h5, h6 {
@@ -28,13 +28,13 @@
 		text-decoration: none;
 	}
 
-	.dark_blue{		
-		color: var(--main-bg-color); 
+	.dark_blue{
+		color: var(--main-bg-color);
 	}
 
 	.no_decoration_zawette{
 		text-decoration: none;
-		color: #ffffff; 
+		color: #ffffff;
 	}
 
 	section{
@@ -67,7 +67,7 @@
 		height: 100%;
 		position: absolute;
 		left: 0;
-		top: 0;	
+		top: 0;
 	}
 
 	.bg_profile_pics{
@@ -75,7 +75,7 @@
 		height: 100%;
 		position: absolute;
 		left: 0;
-		top: 0;	
+		top: 0;
 		opacity: 0.4;
 		background-color: black;
 	}
@@ -106,24 +106,25 @@
 	}
 
 	paper-progress {
-		position: absolute;			
+		position: absolute;
 		width: 100%;
 		--paper-progress-active-color: var(--accent-color);
 	}
 
 	#app_toolbar{
 		position: absolute;
-      	right: 0;
-      	left: 0;
+  	right: 0;
+  	left: 0;
+		z-index: 999;
 		background-color: transparent;
-		display: none;		
+		display: none;
 	}
 
 	#playground_toolbar{
 		position: absolute;
       	right: 0;
       	left: 0;
-		background-color: transparent;	
+		background-color: transparent;
 	}
 
 	#drawer{
@@ -145,11 +146,11 @@
 		overflow: hidden;
 	}
 
-	#logoHED {	    	
+	#logoHED {
 		width: 300px;
 		height: 114px;
 		background-image: url("images/logo.png");
-		animation: playh 4.5s steps(89) infinite; 		    
+		animation: playh 4.5s steps(89) infinite;
 	}
 
 	@keyframes playh {
@@ -164,7 +165,7 @@
 		border-radius: 2px;
 	}
 
-	#event_description{			
+	#event_description{
 		padding: 40px;
 	}
 
@@ -197,8 +198,8 @@
 		z-index: -1;
 	}
 
-	.bg_img{	
-		position: absolute;	
+	.bg_img{
+		position: absolute;
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
@@ -223,15 +224,15 @@
 		cursor: pointer;
 	    z-index: 2;
 
-		-webkit-transform: translate(-50%, -50%);  
-    	transform: translate(-50%, -50%);  	  
+		-webkit-transform: translate(-50%, -50%);
+    	transform: translate(-50%, -50%);
 	}
 
 	#pictures_icon{
 		width: 70px;
 		height: 70px;
 		margin: 0 auto;
-		color: white;		
+		color: white;
 		transition: color 0.75s ease;
 	}
 
@@ -291,13 +292,13 @@
 	}
 
 	#view_pics_button:hover #pictures_icon{
-		color: var(--accent-color);	
+		color: var(--accent-color);
 		transition: color 0.75s ease;
 	}
 
 	#view_pics_button:hover + #view_pics_overlay{
 		opacity: 0.95;
-	}	
+	}
 
 	#logo_top{
 		position: absolute;
@@ -316,7 +317,7 @@
       --paper-tabs-selection-bar-color: var(--accent-color);
     }
 
-    paper-tab {    
+    paper-tab {
       -webkit-flex: none;
       -ms-flex: none;
       flex: none;
@@ -330,18 +331,15 @@
     }
 
     #left_info_wrapper{
-      position: relative;     
+      position: relative;
       left: 7%;
     }
 
-    .small{
+   	.small {
+			width: 100px;
+			height: 100px;
+			color: #fff;
     	margin-right: 10px;
-    }
-
-   	.small::shadow #icon {
-      width: 100px;
-      height: 100px;
-      color: #fff;
     }
 
     .spacer{
@@ -349,7 +347,7 @@
     }
 
     #sections{
-      position: relative; 
+      position: relative;
       right: 7%;
       font-size: 15px;
     }
@@ -370,7 +368,7 @@
       opacity: 0.6;
       font-weight: 300;
       font-size: 16px;
-    }   
+    }
 
 	.envivo_info{
 		padding: 0px 5px;
@@ -424,7 +422,7 @@
 		--paper-spinner-layer-1-color: #3ffa8e;
 		--paper-spinner-layer-2-color: #3fe2fa;
 		--paper-spinner-layer-3-color: var(--accent-color);
-		--paper-spinner-layer-4-color: #fad03f;		
+		--paper-spinner-layer-4-color: #fad03f;
 	}
 
 	#playground_buttons_top{
@@ -443,7 +441,7 @@
 		background-color: rgba(255,255,255,0.1);
 	}
 
-	.playground_fab{		
+	.playground_fab{
 		--paper-fab-background: transparent;
 		padding: 0;
 	}
@@ -462,7 +460,7 @@
       	color: #ddd;
 	}
 
-	#zawette_container{	
+	#zawette_container{
 		margin-left: 35px;
 		margin-top: 10px;
 		padding-right: 35px;
@@ -540,7 +538,7 @@
 	@media (max-width: 1500px) {
 		.parrafo{
 			font-size: 18px;
-			line-height: 22px;		
+			line-height: 22px;
 		}
 
 		#event_description {
@@ -578,7 +576,7 @@
 
 		.next_box{
 			width: 150px;
-		}		
+		}
 
 		.section_container{
 			width: 60%;
@@ -608,12 +606,12 @@
 	@media (max-width: 850px) {
 		.section_container{
 			width: 95%;
-			margin-top: 100px;		
+			margin-top: 100px;
 		}
 
 		.envivo_container{
 			width: 95%;
-			margin-top: 100px;		
+			margin-top: 100px;
 		}
 
 		#spinner{
@@ -622,8 +620,8 @@
 		}
 
 		.section_container:nth-child(2){
-			width: 95%;	
-			margin-top: 100px;	
+			width: 95%;
+			margin-top: 100px;
 		}
 
 		#drawer{
@@ -638,15 +636,15 @@
 
 		.left_text{
 			position: relative;
-			text-align: center;			
+			text-align: center;
 		}
 
 		.left_text2{
 			position: relative;
-			text-align: left;			
+			text-align: left;
 		}
 
-		#logoHED {	    	
+		#logoHED {
 			-webkit-transform: scale(0.6);
 			transform: scale(0.6);
 		}
@@ -674,10 +672,10 @@
 		#ver_fotos_wrapper{
 			display: inline;
 			border-top: 1px solid #ddd;
-		}	
+		}
 
 		#ver_fotos{
-			color: var(--accent-color);			
+			color: var(--accent-color);
 		}
 
 		#more_pics_text_mobile{
@@ -750,7 +748,7 @@
 			transform-origin:0 0;
 		}
 
-		#zawette_container{	
+		#zawette_container{
 			margin-left: 0px;
 			margin-bottom: 26px;
 

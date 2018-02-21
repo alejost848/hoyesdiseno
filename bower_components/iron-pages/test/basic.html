@@ -18,11 +18,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
-    <script src="../../test-fixture/test-fixture-mocha.js"></script>
-
     <link rel="import" href="../iron-pages.html">
-    <link rel="import" href="../../test-fixture/test-fixture.html">
-
+    
   </head>
   <body>
 
@@ -49,6 +46,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           test('to nothing selected', function() {
             assert.equal(pages.selected, undefined);
+          });
+
+          test('null activateEvent', function() {
+            // `activateEvent` is not a useful feature for iron-pages and it can interfere
+            // with ux; ensure iron-pages has cleared any default `activateEvent`
+            assert.equal(pages.activateEvent, null);
           });
 
           test('to iron-selected as selectedClass', function() {
