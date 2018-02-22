@@ -359,7 +359,7 @@ function facebookShare() {
 			description: 'Juega con la consola de audio, desbloquea nuevos sonidos y crea tu propia música. #playgroundhed. El futuro, ahora.',
 		},
 		function(response) {
-			if (response && response.post_id) {
+			if (response != undefined) {
 				document.querySelector('#fbShared').show();
 			} else {
 				document.querySelector('#fbNotShared').show();
