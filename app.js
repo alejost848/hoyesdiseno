@@ -353,8 +353,8 @@ function facebookShare() {
 		{
 			method: 'feed',
 			name: 'Crea música con el Playground de Hoy es Diseño',
-			link: 'http://alejost848.github.io/hoyesdiseno/'+urlString,
-			picture: 'http://alejost848.github.io/hoyesdiseno/images/fb-cover.jpg',
+			link: 'https://alejost848.github.io/hoyesdiseno/'+urlString,
+			picture: 'https://alejost848.github.io/hoyesdiseno/images/fb-cover.jpg',
 			caption: 'alejost848.github.io/hoyesdiseno/#!/play',
 			description: 'Juega con la consola de audio, desbloquea nuevos sonidos y crea tu propia música. #playgroundhed. El futuro, ahora.',
 		},
